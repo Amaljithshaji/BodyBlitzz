@@ -2,8 +2,6 @@ import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Rest_Screen.dart';
 import 'package:bodyblitz/view/Workout/workdone.dart';
 import 'package:bodyblitz/view/Workout/workout.dart';
-import 'package:bodyblitz/view/Workout/workout_starter.dart';
-import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -99,7 +97,7 @@ class _Workout_pageState extends State<Workout_page> {
                 width: double.infinity,
                 height: 400,
                 // color: Colors.red,
-                child: Lottie.asset('assets/img/a8.json'),
+                child: Lottie.asset('assets/img/man-doing-diagonal-mountain-climbers-exercise-8574469-6770290.mp4.lottie.json'),
               ),
               SizedBox(
                 height: 30,
@@ -180,8 +178,10 @@ class _Workout_pageState extends State<Workout_page> {
               ),
               GestureDetector(
                 onTap: () {
+                  _pauseCountdown();
                   Navigator.pushReplacement(
                       context,
+                      
                       MaterialPageRoute(
                         builder: (context) => Rest_Screen(),
                       ));

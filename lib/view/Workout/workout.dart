@@ -1,8 +1,11 @@
+import 'package:bodyblitz/controller/home.controller.dart';
+import 'package:bodyblitz/model/model.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/workout_starter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 import '../../utills/constant/images_constant/image_const.dart';
 
@@ -14,15 +17,18 @@ class Workout_Screen extends StatefulWidget {
 }
 
 class _Workout_ScreenState extends State<Workout_Screen> {
+  
   @override
   Widget build(BuildContext context) {
-    final img = Images_const();
+    var workoutz = Provider.of<WorkoutController>(context).workouts;
+   // final img = Images_const();
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10),
         child: GestureDetector(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Starter(),));
+           Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Starter(),));
+        
           },
           child: Container(
             width: 400,
@@ -72,13 +78,15 @@ class _Workout_ScreenState extends State<Workout_Screen> {
               width: double.infinity,
               height: 2000,
              // color: Colors.blue,
-              child: ListView.separated(itemCount: img.Anime.length,
+              child: ListView.separated(itemCount: workoutz.length,
               separatorBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Divider(thickness: 2,color:Colors.grey.shade500 ,),
               ),
               physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => Padding(
+                itemBuilder: (context, index) {
+                 
+                  return Padding(
                 padding: const EdgeInsets.only(left: 20,right: 20,),
                 child: Container(
                   width: 300,
@@ -90,20 +98,24 @@ class _Workout_ScreenState extends State<Workout_Screen> {
                         width: 100,
                         height: 100,
                       //  color: Colors.green,
-                        child: Lottie.asset(img.Anime[index],fit: BoxFit.fill,options: LottieOptions(enableApplyingOpacityToLayers: false,enableMergePaths: true)),
+                        child: Lottie.asset(workoutz[index].workoutDemo,fit: BoxFit.fill,),
                       ),
                       SizedBox(width: 35,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                         children:[
-                        Text('COBRA STRETCH',style: GoogleFonts.aDLaMDisplay(fontSize: 16)),
+                        Container(
+                          width: 200,
+                       
+                          child: Text(workoutz[index].workoutName,style: GoogleFonts.aDLaMDisplay(fontSize: 16,))),
                         Text('00:30',style: GoogleFonts.aDLaMDisplay(fontSize: 16))
                       ])
                     ],
                   ),
                 ),
                 
-              ),),
+              );
+                } ),
             )
           )
         ],

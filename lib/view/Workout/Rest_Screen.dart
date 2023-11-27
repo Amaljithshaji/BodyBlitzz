@@ -1,5 +1,6 @@
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Sample.dart';
+import 'package:bodyblitz/view/Workout/workout.dart';
 //import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,11 +60,13 @@ class _Rest_ScreenState extends State<Rest_Screen> {
  Widget build(BuildContext context) {
    int minutes = _countdownDuration.inMinutes;
     int seconds = _countdownDuration.inSeconds % 60;
-    return SafeArea(
+    return   SafeArea(
       child: Scaffold(
         
         backgroundColor: Theme.of(context).colorScheme.background,
-        body: Column(
+         
+        body:
+        Column(
           children: <Widget>[
             Column(mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -125,6 +128,97 @@ class _Rest_ScreenState extends State<Rest_Screen> {
           ],
         ),
       ),
-    );
+     );
+    
+    
   }
+  
+  //  _showQuitmodel() {
+  //   showModalBottomSheet(
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.only(
+  //             topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+  //     context: context,
+  //     builder: (context) {
+  //       return Container(
+  //         width: double.infinity,
+  //         height: 350,
+  //         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           crossAxisAlignment: CrossAxisAlignment.center,
+  //           children: [
+  //             Text(
+  //               '🙄',
+  //               style: GoogleFonts.aDLaMDisplay(
+  //                 fontSize: 50,
+  //               ),
+  //             ),
+  //             SizedBox(
+  //               height: 10,
+  //             ),
+  //             Center(
+  //               child: Container(
+  //                   child: Text('Are you Sure you want to Quit Exercise?',
+  //                       textAlign: TextAlign.center,
+  //                       style: GoogleFonts.aDLaMDisplay(
+  //                         fontSize: 24,
+  //                       ))),
+  //             ),
+  //             SizedBox(
+  //               height: 20,
+  //             ),
+  //             GestureDetector(
+  //               onTap: () {
+  //                 Navigator.pushReplacement(
+  //                     context,
+  //                     MaterialPageRoute(
+  //                       builder: (context) => Workout_Screen(),
+  //                     ));
+  //               },
+  //               child: Container(
+  //                 width: 270,
+  //                 height: 60,
+  //                 decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(30),
+  //                     color: Color_const.myButton),
+  //                 child: Center(
+  //                     child: Text(
+  //                   'Quit',
+  //                   style: GoogleFonts.aDLaMDisplay(
+  //                       fontSize: 24, color: Colors.white),
+  //                 )),
+  //               ),
+  //             ),
+  //             SizedBox(
+  //               height: 20,
+  //             ),
+  //             GestureDetector(
+  //               onTap: () {
+                 
+  //                 Navigator.pop(context);
+  //               },
+  //               child: Container(
+  //                 width: 270,
+  //                 height: 60,
+  //                 decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(30),
+  //                     color: Color_const.myButton),
+  //                 child: Center(
+  //                   child: Text(
+  //                     'Close',
+  //                     style: GoogleFonts.aDLaMDisplay(
+  //                         fontSize: 24, color: Colors.white),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 }
