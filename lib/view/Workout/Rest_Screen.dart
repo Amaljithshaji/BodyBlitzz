@@ -1,16 +1,20 @@
+import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Sample.dart';
 import 'package:bodyblitz/view/Workout/workout.dart';
 //import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'dart:async';
 
 import 'workdone.dart';
 import 'workout_page.dart';
 
 class Rest_Screen extends StatefulWidget {
-  const Rest_Screen({super.key});
+  const Rest_Screen({super.key,required this.counter});
+  final int counter;
+ 
 
   @override
   State<Rest_Screen> createState() => _Rest_ScreenState();
@@ -19,22 +23,25 @@ class Rest_Screen extends StatefulWidget {
 class _Rest_ScreenState extends State<Rest_Screen> {
  late Duration _countdownDuration;
   late bool _timerRunning;
-
+  late WorkoutController controller;
   @override
   void initState() {
     super.initState();
-    _countdownDuration = Duration(seconds: 30); // Initial duration is 1 minute
+    controller =Provider.of<WorkoutController>(context, listen: false);
+    _countdownDuration = Duration(seconds: 10); // Initial duration is 1 minute
     _timerRunning = true;
     _startCountdown();
   }
 
-  void _startCountdown() {
+  void _startCountdown( ) {
     const oneSec = const Duration(seconds: 1);
     Timer.periodic(
       oneSec,
       (Timer timer) {
         if (_countdownDuration.inSeconds == 0) {
           timer.cancel();
+          widget.counter == 0 ? controller.addcount() : controller.subcount();
+          print(controller.workout_count);
           _navigateToNextPage();
         } else if (_timerRunning) {
           setState(() {
@@ -44,12 +51,25 @@ class _Rest_ScreenState extends State<Rest_Screen> {
       },
     );
   }
-
+  void _stopcountdown(){
+     const oneSecs = const Duration(seconds: 1);
+    Timer.periodic(oneSecs, (timer) {
+     timer.cancel();
+     });
+  }
   void _navigateToNextPage() {
     Navigator.pushReplacement(
       context,
-     MaterialPageRoute(builder: (context) => Workout_page()),
+     MaterialPageRoute(builder: (context) => Workout_page(duration: controller.workouts[controller.workout_count].duration,
+                          workdemo: controller.workouts[controller.workout_count].workoutDemo,
+                          workoutName: controller.workouts[controller.workout_count].workoutName,
+                          count: controller.workouts[controller.workout_count].count,)),
     );
+  }
+   void _pauseCountdown() {
+    setState(() {
+      _timerRunning = false;
+    });
   }
 
   void _increaseDuration() {
@@ -58,6 +78,8 @@ class _Rest_ScreenState extends State<Rest_Screen> {
     });
   }
  Widget build(BuildContext context) {
+  final controller = Provider.of<WorkoutController>(context);
+      var workoutz = Provider.of<WorkoutController>(context).workouts;
    int minutes = _countdownDuration.inMinutes;
     int seconds = _countdownDuration.inSeconds % 60;
     return   SafeArea(
@@ -98,8 +120,19 @@ class _Rest_ScreenState extends State<Rest_Screen> {
                          ),
                        ),
                         GestureDetector(onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Sample(),));
-                            
+                         widget.counter == 0 ? controller.addcount() : controller.subcount();
+                          print(controller.workout_count);
+                          _stopcountdown();
+                          _pauseCountdown();
+                             Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Workout_page(duration: workoutz[controller.workout_count].duration,
+                          workdemo: workoutz[controller.workout_count].workoutDemo,
+                          workoutName: workoutz[controller.workout_count].workoutName,
+                          count: workoutz[controller.workout_count].count,
+                          ),
+                        ));
                           },
                           child: Container(
                           width: 130,
@@ -117,10 +150,19 @@ class _Rest_ScreenState extends State<Rest_Screen> {
                     style: GoogleFonts.aDLaMDisplay(fontSize: 36),
                   ),
                    SizedBox(height: 20,),
-                     Text(
-                    'Mountain Climber',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 30),
-                  )
+                     Center(
+                       child: Container(
+                        width: 350,
+                        height: 150,
+                         child: Center(
+                           child: Text(
+                                        widget.counter == 0 ? workoutz[controller.workout_count + 1].workoutName : workoutz[controller.workout_count - 1].workoutName ,
+                                              textAlign: TextAlign.center,
+                                               style: GoogleFonts.aDLaMDisplay(fontSize: 30),
+                                             ),
+                         ),
+                       ),
+                     )
               ],
             ),
             SizedBox(height: 50),

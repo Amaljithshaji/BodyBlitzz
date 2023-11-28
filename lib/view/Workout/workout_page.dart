@@ -6,10 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
+import 'package:provider/provider.dart';
+import 'package:bodyblitz/controller/home.controller.dart';
 
 class Workout_page extends StatefulWidget {
-  const Workout_page({super.key});
-
+  const Workout_page(
+      {super.key,
+      required this.duration,
+      required this.workdemo,
+      required this.workoutName,
+      required this.count});
+  final int duration;
+  final String workdemo;
+  final String workoutName;
+  final int count;
   @override
   State<Workout_page> createState() => _Workout_pageState();
 }
@@ -18,14 +28,16 @@ class _Workout_pageState extends State<Workout_page> {
   late Duration _countdownDuration;
   late Duration _initialDuration;
   late bool _timerRunning;
+  late WorkoutController controller;
 
   @override
   void initState() {
     super.initState();
-    _initialDuration = Duration(seconds: 30);
+    controller = Provider.of<WorkoutController>(context, listen: false);
+    _initialDuration = Duration(seconds: widget.duration);
     _countdownDuration = _initialDuration; // Initial duration is 1 minute
     _timerRunning = true;
-    _startCountdown();
+    widget.duration == 0 ? _stopcountdown() : _startCountdown();
   }
 
   void _startCountdown() {
@@ -35,7 +47,9 @@ class _Workout_pageState extends State<Workout_page> {
       (Timer timer) {
         if (_countdownDuration.inSeconds == 0) {
           timer.cancel();
-          _navigateToNextPage();
+          controller.workout_count == controller.workouts.length - 1
+              ? {_navigateToNextworkdone(), controller.resetCounter()}
+              : _navigateToNextPage();
         } else if (_timerRunning) {
           setState(() {
             _countdownDuration = _countdownDuration - oneSec;
@@ -45,10 +59,27 @@ class _Workout_pageState extends State<Workout_page> {
     );
   }
 
+  void _stopcountdown() {
+    const oneSecs = const Duration(seconds: 1);
+    Timer.periodic(oneSecs, (timer) {
+      timer.cancel();
+    });
+  }
+
   void _navigateToNextPage() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Rest_Screen()),
+      MaterialPageRoute(
+          builder: (context) => Rest_Screen(
+                counter: 0,
+              )),
+    );
+  }
+
+  void _navigateToNextworkdone() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Work_done()),
     );
   }
 
@@ -72,6 +103,7 @@ class _Workout_pageState extends State<Workout_page> {
 
   @override
   Widget build(BuildContext context) {
+    // final controller = Provider.of<WorkoutController>(context);
     int minutes = _countdownDuration.inMinutes;
     int seconds = _countdownDuration.inSeconds % 60;
     return Scaffold(
@@ -95,55 +127,102 @@ class _Workout_pageState extends State<Workout_page> {
             children: [
               Container(
                 width: double.infinity,
-                height: 400,
+                height: 330,
                 // color: Colors.red,
-                child: Lottie.asset('assets/img/man-doing-diagonal-mountain-climbers-exercise-8574469-6770290.mp4.lottie.json'),
+                child: Lottie.asset(widget.workdemo),
               ),
               SizedBox(
                 height: 30,
               ),
-              Text(
-                'Jumping Jacks',
-                style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+              Center(
+                child: Container(
+                  width: 350,
+                  height: 150,
+                  child: Center(
+                    child: Text(
+                      widget.workoutName,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 26),
+                    ),
+                  ),
+                ),
               ),
               SizedBox(
-                height: 40,
+                height: 10,
               ),
-              Text(
-                  '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-                  style: GoogleFonts.basic(fontSize: 48))
+              if (widget.duration == 0)
+                Text('${widget.count}x', style: GoogleFonts.basic(fontSize: 40))
+              else
+                Text(
+                    '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
+                    style: GoogleFonts.basic(fontSize: 40))
             ],
           ),
           SizedBox(height: 40),
-          GestureDetector(
-            onTap: () {
-              _pauseCountdown();
-              _showmodel();
-            },
-            child: Container(
-              width: 250,
-              height: 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color_const.myButton),
-              child: Center(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.pause,
-                    color: Colors.white,
-                    size: 36,
-                  ),
-                  Text(
-                    'PAUSE',
-                    style: GoogleFonts.aDLaMDisplay(
-                        fontSize: 28, color: Colors.white),
-                  ),
-                ],
-              )),
+          if (widget.duration == 0)
+            GestureDetector(
+              onTap: () {
+                controller.workout_count == controller.workouts.length - 1
+                    ? {_navigateToNextworkdone(), controller.resetCounter()}
+                    : _navigateToNextPage();
+              },
+              child: Container(
+                width: 250,
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Color_const.myButton),
+                child: Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'DONE',
+                      style: GoogleFonts.aDLaMDisplay(
+                          fontSize: 28, color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 36,
+                    ),
+                  ],
+                )),
+              ),
+            )
+          else
+            GestureDetector(
+              onTap: () {
+                _pauseCountdown();
+                _showmodel();
+              },
+              child: Container(
+                width: 250,
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Color_const.myButton),
+                child: Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.pause,
+                      color: Colors.white,
+                      size: 36,
+                    ),
+                    Text(
+                      'PAUSE',
+                      style: GoogleFonts.aDLaMDisplay(
+                          fontSize: 28, color: Colors.white),
+                    ),
+                  ],
+                )),
+              ),
             ),
-          ),
           SizedBox(
             height: 10,
           ),
@@ -151,9 +230,16 @@ class _Workout_pageState extends State<Workout_page> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Work_done()));
-                  _pauseCountdown();
+                  controller.workout_count == 0
+                      ? null
+                      : Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Rest_Screen(
+                              counter: 1,
+                            ),
+                          ));
+                  controller.workout_count == 0 ? null : _pauseCountdown();
                 },
                 child: Container(
                     width: 200,
@@ -178,13 +264,11 @@ class _Workout_pageState extends State<Workout_page> {
               ),
               GestureDetector(
                 onTap: () {
+                  _stopcountdown();
                   _pauseCountdown();
-                  Navigator.pushReplacement(
-                      context,
-                      
-                      MaterialPageRoute(
-                        builder: (context) => Rest_Screen(),
-                      ));
+                  controller.workout_count == controller.workouts.length - 1
+                      ? {_navigateToNextworkdone(), controller.resetCounter()}
+                      : _navigateToNextPage();
                 },
                 child: Container(
                     width: 200,
@@ -358,6 +442,7 @@ class _Workout_pageState extends State<Workout_page> {
               ),
               GestureDetector(
                 onTap: () {
+                  controller.resetCounter();
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

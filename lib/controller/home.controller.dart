@@ -18,9 +18,17 @@ class WorkoutController extends ChangeNotifier {
     notifyListeners();
   }
 
-void addcount(){
+  void addcount(){
   workout_count++;
   notifyListeners();
 }
+  void subcount(){
+  workout_count--;
+  notifyListeners();
+}
+ void resetCounter() {
+    workout_count = 0;
+    notifyListeners();
+  }
   // Add other functions to access the workout data as needed
 }
