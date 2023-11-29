@@ -2,10 +2,10 @@ import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../utills/constant/colors_constant/colors_const.dart';
 import '../bottomNavigation/Bottomnavigator.dart';
-import 'setup/profile_setup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,36 +29,36 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 10,),
+              SizedBox(height: 1.h),
              if (!iskeyboard)  Center(
                 child: 
                 Container(
-                  height: 350,
+                  height: 30.h,
                   child:  Image.asset('assets/img/Reg_logo.png',)),
               ),
               Center(child: Text('Hey there,',style: TextStyle(fontSize: 20),)),
               
               Text('Welcome Back',style: GoogleFonts.aDLaMDisplay(fontSize: 28),),
-              SizedBox(height: 30,),
+              SizedBox(height: 3.h,),
               Reg_field(controller: mailController, hintText: 'mail', obsecureText: false, prefixIcon: Icon(
                   Icons.mail_outline_rounded,
                   color: Theme.of(context).colorScheme.background,
                 ),),
-                SizedBox(height: 30,),
+                SizedBox(height: 3.h,),
                 Reg_field(controller: passwordController, hintText: 'Password', obsecureText: true, prefixIcon: Icon(
                   Icons.lock,
                   color: Theme.of(context).colorScheme.background,
                 ),),
-                SizedBox(height: 20,),
+                SizedBox(height: 2.h,),
                 Text('Forgot your password?',style: TextStyle(fontWeight: FontWeight.normal, decoration: TextDecoration.underline),),
-                SizedBox(height: 30,),
+                SizedBox(height: 3.h,),
                  GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottom_Naviagator(),));
                 },
                 child: Container(
-                  width: 250,
-                  height: 60,
+                  width: 60.w,
+                  height: 8.h,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30), color: Color_const.myButton),
                   child: Center(
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 2.h,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

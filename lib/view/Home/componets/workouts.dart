@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../Workout/workout.dart';
 
@@ -10,6 +12,7 @@ class Workouts extends StatelessWidget {
   final String Level;
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,17 +26,20 @@ class Workouts extends StatelessWidget {
     ),
     Container(
       width: double.infinity,
-      height: 300,
+      height: 35.h,
       child: ListView.builder(
         itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Screen(),)),
+            onTap: ()  {
+ Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Screen(),));
+            },
+            
             child: Container(
-              width: 250,
-              height: 100,
+              width: 25.h,
+              height: 10.h,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blue),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:sizer/sizer.dart';
 import 'package:vertical_weight_slider/vertical_weight_slider.dart';
 
 class Work_done extends StatefulWidget {
@@ -45,10 +46,10 @@ double  _height = 30.0;
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 290),
+                    padding: const EdgeInsets.only(top: 260),
                     child: Container(
                       width: double.infinity,
-                      height: 600,
+                      height: 400,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
@@ -287,7 +288,7 @@ double  _height = 30.0;
     return showModalBottomSheet(context: context, builder: (context)=>
     Container(
       width: double.infinity,
-      height: 400,
+      height: 40.h,
       color: Colors.black,
       child:  Column(
         children: [
@@ -299,7 +300,7 @@ double  _height = 30.0;
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(width: 100,
-              height: 340,
+              height: 34.h,
                 child: VerticalWeightSlider(
                   controller: _controller1,
                   decoration: const PointerDecoration(

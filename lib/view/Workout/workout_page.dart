@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Rest_Screen.dart';
 import 'package:bodyblitz/view/Workout/workdone.dart';
@@ -8,6 +9,7 @@ import 'package:lottie/lottie.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
 import 'package:bodyblitz/controller/home.controller.dart';
+import 'package:sizer/sizer.dart';
 
 class Workout_page extends StatefulWidget {
   const Workout_page(
@@ -33,6 +35,10 @@ class _Workout_pageState extends State<Workout_page> {
   @override
   void initState() {
     super.initState();
+    playAudioFromUrl();
+    Timer(Duration(seconds: 2), () { 
+      AudioPlayer().stop();
+    });
     controller = Provider.of<WorkoutController>(context, listen: false);
     _initialDuration = Duration(seconds: widget.duration);
     _countdownDuration = _initialDuration; // Initial duration is 1 minute
@@ -40,6 +46,10 @@ class _Workout_pageState extends State<Workout_page> {
     widget.duration == 0 ? _stopcountdown() : _startCountdown();
   }
 
+Future<void>  playAudioFromUrl() async {
+    await AudioPlayer().play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
+    
+  }
   void _startCountdown() {
     const oneSec = const Duration(seconds: 1);
     Timer.periodic(
@@ -127,17 +137,17 @@ class _Workout_pageState extends State<Workout_page> {
             children: [
               Container(
                 width: double.infinity,
-                height: 330,
+                height: 35.h,
                 // color: Colors.red,
                 child: Lottie.asset(widget.workdemo),
               ),
               SizedBox(
-                height: 30,
+                height: 3.h,
               ),
               Center(
                 child: Container(
-                  width: 350,
-                  height: 150,
+                  width: 80.w,
+                  height: 15.h,
                   child: Center(
                     child: Text(
                       widget.workoutName,
@@ -148,7 +158,7 @@ class _Workout_pageState extends State<Workout_page> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 1.h,
               ),
               if (widget.duration == 0)
                 Text('${widget.count}x', style: GoogleFonts.basic(fontSize: 40))
@@ -158,7 +168,7 @@ class _Workout_pageState extends State<Workout_page> {
                     style: GoogleFonts.basic(fontSize: 40))
             ],
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 4.h),
           if (widget.duration == 0)
             GestureDetector(
               onTap: () {
@@ -301,17 +311,17 @@ class _Workout_pageState extends State<Workout_page> {
       enableDrag: false,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+              topLeft: Radius.circular(15), topRight: Radius.circular(15))),
       context: context,
       builder: (context) {
         return Container(
           width: double.infinity,
-          height: 350,
+          height: 50.h,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
           child: Column(
             children: [
               SizedBox(
-                height: 30,
+                height: 3.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -329,7 +339,7 @@ class _Workout_pageState extends State<Workout_page> {
                 ],
               ),
               SizedBox(
-                height: 30,
+                height: 3.h,
               ),
               GestureDetector(
                 onTap: () {
@@ -353,7 +363,7 @@ class _Workout_pageState extends State<Workout_page> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 3.h,
               ),
               GestureDetector(
                 onTap: () {
@@ -374,7 +384,7 @@ class _Workout_pageState extends State<Workout_page> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 3.h,
               ),
               GestureDetector(
                 onTap: () {
@@ -409,13 +419,13 @@ class _Workout_pageState extends State<Workout_page> {
       enableDrag: false,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+              topLeft: Radius.circular(15), topRight: Radius.circular(15))),
       context: context,
       builder: (context) {
         return Container(
           width: double.infinity,
-          height: 350,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+          height: 50.h,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -427,7 +437,7 @@ class _Workout_pageState extends State<Workout_page> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 1.h,
               ),
               Center(
                 child: Container(
@@ -438,7 +448,7 @@ class _Workout_pageState extends State<Workout_page> {
                         ))),
               ),
               SizedBox(
-                height: 20,
+                height: 2.h,
               ),
               GestureDetector(
                 onTap: () {
@@ -464,7 +474,7 @@ class _Workout_pageState extends State<Workout_page> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 2.h,
               ),
               GestureDetector(
                 onTap: () {

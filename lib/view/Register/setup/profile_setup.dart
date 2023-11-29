@@ -4,6 +4,7 @@ import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
 
@@ -36,14 +37,14 @@ class _Setup_ScreenState extends State<Setup_Screen> {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                  height: 350,
+                  height: 35.h,
                   width: double.infinity,
                   color: Colors.transparent,
                   child: Image.asset(dropdownvalue == 'Male'
                       ? 'assets/img/setupimage1.png'
                       : 'assets/img/setupimage.png')),
               SizedBox(
-                height: 10,
+                height: 1.h,
               ),
               Text(
                 'Let’s complete your profile',
@@ -51,11 +52,11 @@ class _Setup_ScreenState extends State<Setup_Screen> {
               ),
               Text('It will help us to know more about you!'),
               SizedBox(
-                height: 20,
+                height: 2.h,
               ),
               Container(
                 width: 360,
-                height: 60,
+                height: 8.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.grey.shade200),

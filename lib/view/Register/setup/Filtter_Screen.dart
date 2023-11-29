@@ -4,6 +4,7 @@ import 'package:bodyblitz/view/Register/setup/GoalScreen.dart';
 import 'package:bodyblitz/view/Register/setup/profile_setup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
 import '../../bottomNavigation/Bottomnavigator.dart';
@@ -83,41 +84,43 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
       ],
     ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Column(
-        children: [
-          Center(child: Text('Please choose your focus area',style:GoogleFonts.aDLaMDisplay(fontSize: 24) ,)),
-          SizedBox(height: 50,),
-           for (int i = 0; i < 5; i++)
-         GestureDetector(
-            onTap: (){
-            _changeSelection(i);
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Container(
-                width: 260,
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Colors.transparent,
-                  border: Border.all(color: Theme.of(context).colorScheme.primary,width: 1)
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(child: Text('Please choose your focus area',style:GoogleFonts.aDLaMDisplay(fontSize: 24) ,)),
+            SizedBox(height: 5.h,),
+             for (int i = 0; i < 5; i++)
+           GestureDetector(
+              onTap: (){
+              _changeSelection(i);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Container(
+                  width: 260,
+                  height: 8.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Colors.transparent,
+                    border: Border.all(color: Theme.of(context).colorScheme.primary,width: 1)
+                  ),
+                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 20),)),
                 ),
-                child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 28),)),
               ),
             ),
-          ),
-          SizedBox(height: 100,),
-          GestureDetector(
-            onTap: (){
-             Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Goal_Screen(),) );
-            },
-            child: Container(
-              width: 350,
-              height: 60,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color_const.myButton),
-              child: Center(child: Text('NEXT',style: GoogleFonts.aDLaMDisplay(fontSize: 28),),),
-            ),
-          )
-        ],
+            SizedBox(height: 5.h,),
+            GestureDetector(
+              onTap: (){
+               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Goal_Screen(),) );
+              },
+              child: Container(
+                width: 350,
+                height: 8.h,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color_const.myButton),
+                child: Center(child: Text('NEXT',style: GoogleFonts.aDLaMDisplay(fontSize: 28),),),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

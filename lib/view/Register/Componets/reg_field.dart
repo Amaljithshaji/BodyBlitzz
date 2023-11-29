@@ -21,9 +21,9 @@ class Reg_field extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
-        validator: (value) {
+        // validator: (value) {
           
-        },
+        // },
         controller: controller,
         obscureText: obsecureText,
         style: TextStyle(color: Colors.black),

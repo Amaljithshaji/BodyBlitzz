@@ -1,13 +1,12 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/model/model.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/workout_starter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
-import '../../utills/constant/images_constant/image_const.dart';
 
 class Workout_Screen extends StatefulWidget {
   const Workout_Screen({super.key});
@@ -20,6 +19,11 @@ class _Workout_ScreenState extends State<Workout_Screen> {
   
   @override
   Widget build(BuildContext context) {
+    
+  // final player = AudioPlayer();
+  // Future<void>  playAudioFromUrl() async {
+  //   await player.play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
+  // };
     var workoutz = Provider.of<WorkoutController>(context).workouts;
    // final img = Images_const();
     return Scaffold(
@@ -28,11 +32,13 @@ class _Workout_ScreenState extends State<Workout_Screen> {
         child: GestureDetector(
           onTap: (){
            Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Starter(),));
-        
+        //  final player = AudioPlayer(); assets\audio\referee-whistle-blow-gymnasium-6320.mp3
+        //  player.play(AssetSource("assets/audio/065594_coach-whistle-88613.mp3"));
+       // playAudioFromUrl();
           },
           child: Container(
             width: 400,
-            height: 60,
+            height: 8.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),color: Color_const.myButton
             ),
@@ -76,7 +82,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
           SliverToBoxAdapter(
             child: Container(
               width: double.infinity,
-              height: 2000,
+              height: 270.h,
              // color: Colors.blue,
               child: ListView.separated(itemCount: workoutz.length,
               separatorBuilder: (context, index) => Padding(

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 import 'components/Workout_Timer.dart';
 
@@ -53,9 +54,9 @@ class _Workout_StarterState extends State<Workout_Starter> {
         children: [
           Container(
             width: double.infinity,
-            height: 400,
+            height: 40.h,
             color: Colors.transparent,
-            child: Lottie.asset('assets/img/a1.json'),
+            child: Lottie.asset('assets/img/jumping jack.json'),
           ),
           SizedBox(
             height: 18,

@@ -1,8 +1,8 @@
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import 'componets/workouts.dart';
 
@@ -25,7 +25,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 50,
+            height: 5.h,
           ),
           Center(
               child: Text(
@@ -36,12 +36,12 @@ class _Home_ScreenState extends State<Home_Screen> {
             height: 10,
           ),
           Container(
-            height: 788,
+            height: 87.5.h,
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   Container(width: 400,
-                  height: 150,
+                  height: 20.h,
                  
                     child: Column(mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,11 +73,11 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ),
                   Workouts(Level: 'BEGINER',),
                   SizedBox(
-                    height: 10,
+                    height: 1.h,
                   ),
                   Workouts(Level: 'INTERMEDIATE',),
                   SizedBox(
-                    height: 10,
+                    height: 1.h,
                   ),
                   Workouts(Level: 'ADVANCED',),
                 ],

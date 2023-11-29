@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
 import '../../bottomNavigation/Bottomnavigator.dart';
@@ -20,13 +21,14 @@ class _Start_ScreenState extends State<Start_Screen> {
       body: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: 10.h,
           ),
           Container(
-              height: 500,
+              height: 60.h,
               child: Column(
                 children: [
                   Image.asset('assets/img/Reg_logo.png'),
+                  SizedBox(height: 1.h,),
                    Container(
               width: 350,
               child: Text(
@@ -38,7 +40,8 @@ class _Start_ScreenState extends State<Start_Screen> {
               )),
           
           SizedBox(
-            height: 200,
+            height: 15.h
+            ,
           ),
           GestureDetector(
             onTap: () {

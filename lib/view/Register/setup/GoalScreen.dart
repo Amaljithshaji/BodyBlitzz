@@ -2,6 +2,7 @@ import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:bodyblitz/view/Register/setup/pushup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
@@ -72,7 +73,7 @@ class _Goal_ScreenState extends State<Goal_Screen> {
                     textAlign: TextAlign.center,
                   ))),
           SizedBox(
-            height: 50,
+            height: 5.h,
           ),
           for (int i = 0; i < 3; i++)
           GestureDetector(
@@ -80,9 +81,9 @@ class _Goal_ScreenState extends State<Goal_Screen> {
               _changeColor(i);
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Container(
-                height: 100,
+                height: 15.h,
                 width: 350,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -93,7 +94,7 @@ class _Goal_ScreenState extends State<Goal_Screen> {
               ),
             ),
           ),
-           SizedBox(height: 100,),
+           SizedBox(height: 4.h,),
           GestureDetector(
             onTap: (){
              Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => PushUp(),) );

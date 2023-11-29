@@ -4,6 +4,7 @@ import 'package:bodyblitz/view/Register/login.dart';
 import 'package:bodyblitz/view/Register/setup/profile_setup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -21,7 +22,7 @@ class _RegisterState extends State<Register> {
   bool values = false;
   @override
   Widget build(BuildContext context) {
-    final iskeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
+  
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
@@ -29,11 +30,7 @@ class _RegisterState extends State<Register> {
           child: Column(mainAxisAlignment: MainAxisAlignment.start,
             children: [
             
-           if (!iskeyboard) Center(
-              child: 
-              Container(height: 200,
-                child: Image.asset('assets/img/Reg_logo.png',)),
-            ),
+         SizedBox(height: 2.h,),
             Center(
                 child: Text(
               "Hy There",
@@ -45,7 +42,7 @@ class _RegisterState extends State<Register> {
               style: GoogleFonts.aDLaMDisplay(fontSize: 24),
             )),
             SizedBox(
-              height: 20,
+              height: 2.h,
             ),
             Reg_field(
               controller: fname_controller,
@@ -57,7 +54,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 2.5.h,
             ),
             Reg_field(
               controller: lname_controller,
@@ -69,7 +66,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             SizedBox(
-              height: 25,
+                height: 2.5.h,
             ),
             Reg_field(
               controller: mail_controller,
@@ -81,7 +78,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             SizedBox(
-              height: 25,
+                height: 2.5.h,
             ),
             Reg_field(
               controller: password_controller,
@@ -93,7 +90,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 2.h,
             ),
             Row(
               children: [
@@ -117,7 +114,7 @@ class _RegisterState extends State<Register> {
               ],
             ),
             SizedBox(
-              height: 25,
+               height: 4.h,
             ),
             InkWell(
               onTap: () {
@@ -125,7 +122,7 @@ class _RegisterState extends State<Register> {
               },
               child: Container(
                 width: 250,
-                height: 60,
+                height: 8.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30), color: Color_const.myButton),
                 child: Center(
@@ -136,7 +133,7 @@ class _RegisterState extends State<Register> {
               ),
             ),
             SizedBox(
-              height: 25,
+             height: 3.h,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

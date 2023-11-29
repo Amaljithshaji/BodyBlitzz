@@ -7,6 +7,7 @@ import 'package:bodyblitz/view/Register/login.dart';
 //import 'package:bodyblitz/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(const Myapp());
@@ -25,11 +26,15 @@ class Myapp extends StatelessWidget {
         return workoutController;
       },)
       ],
-      child: MaterialApp(
-        home: LoginScreen(),
-        theme: lightmode,
-        darkTheme: darkmode,
-        debugShowCheckedModeBanner: false,
+      child: Sizer(
+          builder: (context, orientation, deviceType) {
+        return  MaterialApp(
+          home: LoginScreen(),
+          theme: lightmode,
+          darkTheme: darkmode,
+          debugShowCheckedModeBanner: false,
+        );
+      },
       ),
     );
   }
