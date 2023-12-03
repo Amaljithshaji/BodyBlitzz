@@ -1,4 +1,5 @@
 import 'package:bodyblitz/controller/home.controller.dart';
+import 'package:bodyblitz/model/model.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Home/Home.dart';
 import 'package:bodyblitz/view/Workout/workout_starter.dart';
@@ -8,19 +9,31 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../bottomNavigation/Bottomnavigator.dart';
+
 
 class Workout_Screen extends StatefulWidget {
-  const Workout_Screen({super.key});
-
+  const Workout_Screen({super.key, required this.Workoutlist});
+  final List<Map<String, dynamic>> Workoutlist;
   @override
   State<Workout_Screen> createState() => _Workout_ScreenState();
 }
 
 class _Workout_ScreenState extends State<Workout_Screen> {
+
+  // @override
+  // void initState() {
+  //  Provider.of<WorkoutController>(context,).loadWorkouts(DataBase.Workoutitems1);
+  //   super.initState();
+  // }
   
   @override
   Widget build(BuildContext context) {
-      final controller = Provider.of<WorkoutController>(context);
+    var controller = Provider.of<WorkoutController>(context);
+
+    // Load the workouts when this screen is built
+    controller.loadWorkouts(widget.Workoutlist);
+    //  final controller = Provider.of<WorkoutController>(context);
   // final player = AudioPlayer();
   // Future<void>  playAudioFromUrl() async {
   //   await player.play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
@@ -178,7 +191,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Home_Screen(),
+                        builder: (context) => Bottom_Naviagator(),
                       ));
                 },
                 child: Container(

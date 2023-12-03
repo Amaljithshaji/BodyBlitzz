@@ -1,4 +1,5 @@
 
+import 'package:bodyblitz/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
@@ -34,7 +35,7 @@ class Workouts extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: ()  {
- Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Screen(),));
+       Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Screen(Workoutlist: DataBase.Workoutitems1,),));
             },
             
             child: Container(

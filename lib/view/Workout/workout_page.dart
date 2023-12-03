@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:bodyblitz/model/model.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Rest_Screen.dart';
 import 'package:bodyblitz/view/Workout/workdone.dart';
@@ -139,7 +140,7 @@ Future<void>  playAudioFromUrl() async {
                 width: double.infinity,
                 height: 35.h,
                 // color: Colors.red,
-                child: Lottie.asset(widget.workdemo),
+                child: Lottie.asset(widget.workdemo,fit: BoxFit.fill),
               ),
               SizedBox(
                 height: 3.h,
@@ -456,7 +457,7 @@ Future<void>  playAudioFromUrl() async {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Workout_Screen(),
+                        builder: (context) => Workout_Screen(Workoutlist: DataBase.Workoutitems1,),
                       ));
                 },
                 child: Container(

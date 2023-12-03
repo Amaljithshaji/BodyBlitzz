@@ -56,7 +56,7 @@ class _Workout_StarterState extends State<Workout_Starter> {
             width: double.infinity,
             height: 40.h,
             color: Colors.transparent,
-            child: Lottie.asset(controller.workouts[0].workoutDemo),
+            child: Lottie.asset(controller.workouts[0].workoutDemo,fit: BoxFit.fill),
           ),
           SizedBox(
             height: 18,

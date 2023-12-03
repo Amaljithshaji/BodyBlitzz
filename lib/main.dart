@@ -20,11 +20,7 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) {
-        var workoutController = WorkoutController();
-        workoutController.loadWorkouts(DataBase.Workoutitems1);
-        return workoutController;
-      },)
+        ChangeNotifierProvider(create: (_)=>WorkoutController())
       ],
       child: Sizer(
           builder: (context, orientation, deviceType) {
