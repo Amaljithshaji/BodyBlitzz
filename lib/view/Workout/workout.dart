@@ -1,5 +1,6 @@
 import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
+import 'package:bodyblitz/view/Home/Home.dart';
 import 'package:bodyblitz/view/Workout/workout_starter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,7 +20,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
   
   @override
   Widget build(BuildContext context) {
-    
+      final controller = Provider.of<WorkoutController>(context);
   // final player = AudioPlayer();
   // Future<void>  playAudioFromUrl() async {
   //   await player.play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
@@ -28,7 +29,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
    // final img = Images_const();
     return Scaffold(
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
         child: GestureDetector(
           onTap: (){
            Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Starter(),));
@@ -37,8 +38,8 @@ class _Workout_ScreenState extends State<Workout_Screen> {
        // playAudioFromUrl();
           },
           child: Container(
-            width: 400,
-            height: 8.h,
+            width: 300,
+            height: 7.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),color: Color_const.myButton
             ),
@@ -53,7 +54,9 @@ class _Workout_ScreenState extends State<Workout_Screen> {
           SliverAppBar(
             //title:  Text('ABS BEGINNER',style: GoogleFonts.aDLaMDisplay(fontSize: 16),),
             backgroundColor: Theme.of(context).colorScheme.background,
-            leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+            leading: IconButton(onPressed: () {
+              _showQuitmodel();
+            }, icon: Icon(Icons.arrow_back,color: Colors.white,)),
             pinned: false,
             primary: true,
             floating: false,
@@ -73,23 +76,25 @@ class _Workout_ScreenState extends State<Workout_Screen> {
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               
                 children: [
-                  Text('16 Workouts',style: GoogleFonts.aDLaMDisplay(fontSize: 16)),
-                  Text('20 mins',style: GoogleFonts.aDLaMDisplay(fontSize: 16)),
+                  Text('${controller.workouts.length} Workouts',style: GoogleFonts.aDLaMDisplay(fontSize: 26)),
+                  Text('20 mins',style: GoogleFonts.aDLaMDisplay(fontSize: 24)),
                 ],
               ),
             ),
           ),
           SliverToBoxAdapter(
             child: Container(
+              
               width: double.infinity,
-              height: 270.h,
-             // color: Colors.blue,
+              height: 50.h,
+             
               child: ListView.separated(itemCount: workoutz.length,
               separatorBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Divider(thickness: 2,color:Colors.grey.shade500 ,),
               ),
-              physics: NeverScrollableScrollPhysics(),
+           
+           
                 itemBuilder: (context, index) {
                  
                   return Padding(
@@ -114,7 +119,10 @@ class _Workout_ScreenState extends State<Workout_Screen> {
                           width: 200,
                        
                           child: Text(workoutz[index].workoutName,style: GoogleFonts.aDLaMDisplay(fontSize: 16,))),
-                        Text('00:30',style: GoogleFonts.aDLaMDisplay(fontSize: 16))
+                       if(controller.workouts[index].duration == 0) 
+                        Text('${controller.workouts[index].count}X',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)) 
+                       else
+                       Text('00:${controller.workouts[index].duration}',style: GoogleFonts.aDLaMDisplay(fontSize: 16))
                       ])
                     ],
                   ),
@@ -126,6 +134,94 @@ class _Workout_ScreenState extends State<Workout_Screen> {
           )
         ],
       ),
+    );
+  }
+  void _showQuitmodel() {
+    showModalBottomSheet(
+      isDismissible: false,
+      enableDrag: false,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+      context: context,
+      builder: (context) {
+        return Container(
+          width: double.infinity,
+          height: 40.h,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                '🙄',
+                style: GoogleFonts.aDLaMDisplay(
+                  fontSize: 50,
+                ),
+              ),
+              SizedBox(
+                height: 1.h,
+              ),
+              Center(
+                child: Container(
+                    child: Text('Are you Sure you want to Quit ?',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.aDLaMDisplay(
+                          fontSize: 24,
+                        ))),
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Home_Screen(),
+                      ));
+                },
+                child: Container(
+                  width: 270,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color_const.myButton),
+                  child: Center(
+                      child: Text(
+                    'Quit',
+                    style: GoogleFonts.aDLaMDisplay(
+                        fontSize: 24, color: Colors.white),
+                  )),
+                ),
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                 
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: 270,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color_const.myButton),
+                  child: Center(
+                    child: Text(
+                      'Close',
+                      style: GoogleFonts.aDLaMDisplay(
+                          fontSize: 24, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
