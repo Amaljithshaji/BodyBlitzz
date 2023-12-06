@@ -1,3 +1,5 @@
+import 'package:bodyblitz/utills/constant/Themedata/Light_theme.dart';
+import 'package:bodyblitz/utills/constant/Themedata/dark_theme.dart';
 import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/register.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +58,7 @@ String? newpass;
                   child: Container(
                       height: 30.h,
                       child: Image.asset(
-                        'assets/img/Reg_logo.png',
+                        'assets/img/Reg_logo.png',color: Theme.of(context).colorScheme.onPrimary,  
                       )),
                 ),
               Center(
@@ -92,7 +94,7 @@ String? newpass;
                             hintText: 'mail',
                             prefixIcon: Icon(
                               Icons.mail_outline_rounded,
-                              color: Theme.of(context).colorScheme.background,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),
@@ -126,7 +128,7 @@ String? newpass;
                             hintText: 'Password',
                             prefixIcon: Icon(
                               Icons.lock,
-                              color: Theme.of(context).colorScheme.background,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),
