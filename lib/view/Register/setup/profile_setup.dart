@@ -33,7 +33,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
@@ -46,11 +46,13 @@ class _Setup_ScreenState extends State<Setup_Screen> {
               SizedBox(
                 height: 1.h,
               ),
-              Text(
-                'Let’s complete your profile',
-                style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+              Center(
+                child: Text(
+                  'Let’s complete your profile',
+                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                ),
               ),
-              Text('It will help us to know more about you!'),
+              Center(child: Text('It will help us to know more about you!')),
               SizedBox(
                 height: 2.h,
               ),
@@ -75,16 +77,17 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       ),
                       DropdownButtonHideUnderline(
                         child: DropdownButton(
-                          style: TextStyle(color:  Theme.of(context).colorScheme.background),
+                          style: TextStyle(color: Colors.black),
                           hint: Text(
                             'Choose Gender',
-                            style: TextStyle(color: Theme.of(context).colorScheme.background),
+                            style: TextStyle(color: Colors.black),
                           ),
                           dropdownColor: Colors.grey.shade200,
+                          //style: TextStyle(color:  Theme.of(context).colorScheme.background),
                           value: dropdownvalue,
                           icon: Icon(
                             Icons.keyboard_arrow_down_outlined,
-                             color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.background,
                           ),
                           items: [
                             DropdownMenuItem<String>(
@@ -121,6 +124,8 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                        color: Theme.of(context).colorScheme.background,
                     )),
               ),
+               
+             
               SizedBox(
                 height: 20,
               ),
@@ -206,15 +211,15 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
                 },
                   child: Container(
-                    width: 60.w,
-                    height: 7.h,
+                    width: 250,
+                    height: 60,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Color_const.myButton),
                     child: Center(
                         child: Text(
                       'Next',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
                     )),
                   ),
                 ),
