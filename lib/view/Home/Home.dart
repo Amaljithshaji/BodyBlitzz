@@ -1,3 +1,5 @@
+import 'package:bodyblitz/model/model.dart';
+import 'package:bodyblitz/utills/Database/Database1.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
@@ -71,15 +73,16 @@ class _Home_ScreenState extends State<Home_Screen> {
                       ],
                     ),
                   ),
-                  Workouts(Level: 'BEGINER',),
+                  Workouts(Level: 'BEGINER',workoutlevel: Database1().beginner,length: Database1().beginner.length,),
                   SizedBox(
                     height: 1.h,
                   ),
-                  Workouts(Level: 'INTERMEDIATE',),
+                  Workouts(Level: 'INTERMEDIATE',workoutlevel: Database1().intermediate,length: Database1().intermediate.length,),
                   SizedBox(
                     height: 1.h,
                   ),
-                  Workouts(Level: 'ADVANCED',),
+                  Workouts(Level: 'ADVANCED',workoutlevel: Database1().advanced,length: Database1().advanced.length,),
+                  SizedBox(height: 10.h,)
                 ],
               ),
             ),
