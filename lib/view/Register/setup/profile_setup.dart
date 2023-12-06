@@ -66,7 +66,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                     onPressed: () => _showDatePicker(context),
                     icon: Icon(
                       Icons.date_range_sharp,
-                      color: Theme.of(context).colorScheme.background,
+                       color: Theme.of(context).colorScheme.background,
                     )),
               ),
                
@@ -85,7 +85,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         obsecureText: false,
                         prefixIcon: ImageIcon(
                           AssetImage('assets/img/weight-scale 1.png'),
-                          color: Theme.of(context).colorScheme.background,
+                           color: Theme.of(context).colorScheme.background,
                         )),
                   ),
                   Padding(
@@ -100,7 +100,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       child: Center(
                           child: Text(
                         'Kg',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+                        style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Color_const.myWhite),
                       )),
                     ),
                   )
@@ -135,7 +135,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       child: Center(
                           child: Text(
                         'CM',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+                        style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Color_const.myWhite),
                       )),
                     ),
                   )

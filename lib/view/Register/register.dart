@@ -248,7 +248,7 @@ class _RegisterState extends State<Register> {
                 child: Center(
                     child: Text(
                   'Register',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                 )),
               ),
             ),
