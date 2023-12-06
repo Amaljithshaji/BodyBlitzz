@@ -181,7 +181,7 @@ String? newpass;
                   child: Center(
                       child: Text(
                     'Login',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                   )),
                 ),
               ),
