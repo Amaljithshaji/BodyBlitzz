@@ -27,7 +27,8 @@ class _RegisterState extends State<Register> {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
             
          SizedBox(height: 2.h,),
@@ -121,14 +122,14 @@ class _RegisterState extends State<Register> {
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Setup_Screen(),));
               },
               child: Container(
-                width: 250,
-                height: 8.h,
+                width: 65.w,
+                height: 6.5.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30), color: Color_const.myButton),
                 child: Center(
                     child: Text(
                   'Register',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                 )),
               ),
             ),

@@ -33,8 +33,9 @@ class _LoginScreenState extends State<LoginScreen> {
              if (!iskeyboard)  Center(
                 child: 
                 Container(
+                  width: 30.w,
                   height: 30.h,
-                  child:  Image.asset('assets/img/Reg_logo.png',)),
+                  child:  Image.asset('assets/img/fitness.png',)),
               ),
               Center(child: Text('Hey there,',style: TextStyle(fontSize: 20),)),
               
@@ -42,12 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 3.h,),
               Reg_field(controller: mailController, hintText: 'mail', obsecureText: false, prefixIcon: Icon(
                   Icons.mail_outline_rounded,
-                  color: Theme.of(context).colorScheme.background,
+                  color: Colors.black,
                 ),),
                 SizedBox(height: 3.h,),
                 Reg_field(controller: passwordController, hintText: 'Password', obsecureText: true, prefixIcon: Icon(
                   Icons.lock,
-                  color: Theme.of(context).colorScheme.background,
+                  color: Colors.black,
                 ),),
                 SizedBox(height: 2.h,),
                 Text('Forgot your password?',style: TextStyle(fontWeight: FontWeight.normal, decoration: TextDecoration.underline),),
@@ -57,14 +58,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottom_Naviagator(),));
                 },
                 child: Container(
-                  width: 60.w,
-                  height: 8.h,
+                   width: 65.w,
+                height: 6.5.h,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30), color: Color_const.myButton),
                   child: Center(
                       child: Text(
                     'Login',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                   )),
                 ),
               ),

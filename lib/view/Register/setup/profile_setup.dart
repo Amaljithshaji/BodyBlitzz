@@ -75,17 +75,16 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       ),
                       DropdownButtonHideUnderline(
                         child: DropdownButton(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color:  Theme.of(context).colorScheme.background),
                           hint: Text(
                             'Choose Gender',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(color: Theme.of(context).colorScheme.background),
                           ),
                           dropdownColor: Colors.grey.shade200,
-                          //style: TextStyle(color:  Theme.of(context).colorScheme.background),
                           value: dropdownvalue,
                           icon: Icon(
                             Icons.keyboard_arrow_down_outlined,
-                            color: Theme.of(context).colorScheme.background,
+                             color: Theme.of(context).colorScheme.background,
                           ),
                           items: [
                             DropdownMenuItem<String>(
@@ -119,7 +118,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                     onPressed: () => _showDatePicker(context),
                     icon: Icon(
                       Icons.date_range_sharp,
-                      color: Theme.of(context).colorScheme.background,
+                       color: Theme.of(context).colorScheme.background,
                     )),
               ),
               SizedBox(
@@ -136,7 +135,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         obsecureText: false,
                         prefixIcon: ImageIcon(
                           AssetImage('assets/img/weight-scale 1.png'),
-                          color: Theme.of(context).colorScheme.background,
+                           color: Theme.of(context).colorScheme.background,
                         )),
                   ),
                   Padding(
@@ -151,7 +150,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       child: Center(
                           child: Text(
                         'Kg',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+                        style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Color_const.myWhite),
                       )),
                     ),
                   )
@@ -186,7 +185,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       child: Center(
                           child: Text(
                         'CM',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+                        style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Color_const.myWhite),
                       )),
                     ),
                   )
@@ -207,15 +206,15 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
                 },
                   child: Container(
-                    width: 250,
-                    height: 60,
+                    width: 60.w,
+                    height: 7.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Color_const.myButton),
                     child: Center(
                         child: Text(
                       'Next',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                     )),
                   ),
                 ),
