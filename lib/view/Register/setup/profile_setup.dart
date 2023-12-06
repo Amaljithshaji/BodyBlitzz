@@ -56,63 +56,8 @@ class _Setup_ScreenState extends State<Setup_Screen> {
               SizedBox(
                 height: 2.h,
               ),
-              Container(
-                width: 360,
-                height: 8.h,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey.shade200),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.group,
-                        color: Theme.of(context).colorScheme.background,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      DropdownButtonHideUnderline(
-                        child: DropdownButton(
-                          style: TextStyle(color: Colors.black),
-                          hint: Text(
-                            'Choose Gender',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          dropdownColor: Colors.grey.shade200,
-                          //style: TextStyle(color:  Theme.of(context).colorScheme.background),
-                          value: dropdownvalue,
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_outlined,
-                            color: Theme.of(context).colorScheme.background,
-                          ),
-                          items: [
-                            DropdownMenuItem<String>(
-                              child: InkWell(child: Text('Male')),
-                              value: 'Male',
-                            ),
-                            DropdownMenuItem<String>(
-                              child: Text('Female'),
-                              value: 'Female',
-                            ),
-                          ],
-                          onChanged: (newValue) {
-                            setState(() {
-                              dropdownvalue = newValue;
-                            });
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
+              
+            
               Reg_field(
                 controller: date_controller,
                 hintText: 'Date',
@@ -199,28 +144,90 @@ class _Setup_ScreenState extends State<Setup_Screen> {
               SizedBox(
                 height: 20,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
-                      ));
-                },
-                child: InkWell(onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
-                },
-                  child: Container(
-                    width: 250,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color_const.myButton),
-                    child: Center(
-                        child: Text(
-                      'Next',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                    )),
+               Padding(
+                 padding: const EdgeInsets.only(left: 20),
+                 child: Container(
+                  width: 260,
+                  height: 8.h,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.grey.shade200),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.group,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton(
+                            style: TextStyle(color: Colors.black),
+                            hint: Text(
+                              'Choose Gender',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            dropdownColor: Colors.grey.shade200,
+                            //style: TextStyle(color:  Theme.of(context).colorScheme.background),
+                            value: dropdownvalue,
+                            icon: Icon(
+                              Icons.keyboard_arrow_down_outlined,
+                              color: Theme.of(context).colorScheme.background,
+                            ),
+                            items: [
+                              DropdownMenuItem<String>(
+                                child: InkWell(child: Text('Male')),
+                                value: 'Male',
+                              ),
+                              DropdownMenuItem<String>(
+                                child: Text('Female'),
+                                value: 'Female',
+                              ),
+                            ],
+                            onChanged: (newValue) {
+                              setState(() {
+                                dropdownvalue = newValue;
+                              });
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                               ),
+               ),
+               SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ));
+                  },
+                  child: InkWell(onTap: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
+                  },
+                    child: Container(
+                      width: 250,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color_const.myButton),
+                      child: Center(
+                          child: Text(
+                        'Next',
+                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      )),
+                    ),
                   ),
                 ),
               ),

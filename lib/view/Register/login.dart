@@ -51,29 +51,111 @@ String? newpass;
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 1.h),
-             if (!iskeyboard)  Center(
-                child: 
-                Container(
-                  height: 30.h,
-                  child:  Image.asset('assets/img/Reg_logo.png',)),
+              if (!iskeyboard)
+                Center(
+                  child: Container(
+                      height: 30.h,
+                      child: Image.asset(
+                        'assets/img/Reg_logo.png',
+                      )),
+                ),
+              Center(
+                  child: Text(
+                'Hey there,',
+                style: TextStyle(fontSize: 20),
+              )),
+              Text(
+                'Welcome Back',
+                style: GoogleFonts.aDLaMDisplay(fontSize: 28),
               ),
-              Center(child: Text('Hey there,',style: TextStyle(fontSize: 20),)),
-              
-              Text('Welcome Back',style: GoogleFonts.aDLaMDisplay(fontSize: 28),),
-              SizedBox(height: 3.h,),
-              Reg_field(controller: mailController, hintText: 'mail', obsecureText: false, prefixIcon: Icon(
-                  Icons.mail_outline_rounded,
-                  color: Theme.of(context).colorScheme.background,
-                ),),
-                SizedBox(height: 3.h,),
-                Reg_field(controller: passwordController, hintText: 'Password', obsecureText: true, prefixIcon: Icon(
-                  Icons.lock,
-                  color: Theme.of(context).colorScheme.background,
-                ),),
-                SizedBox(height: 2.h,),
-                Text('Forgot your password?',style: TextStyle(fontWeight: FontWeight.normal, decoration: TextDecoration.underline),),
-                SizedBox(height: 3.h,),
-                 GestureDetector(
+              SizedBox(
+                height: 3.h,
+              ),
+              Form(
+                key: loginkey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (mailController.text == newmail) {
+                            return null;
+                          } else {
+                            return 'invaild Email id';
+                          }
+                        },
+                        controller: mailController,
+                        obscureText: false,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            hintText: 'mail',
+                            prefixIcon: Icon(
+                              Icons.mail_outline_rounded,
+                              color: Theme.of(context).colorScheme.background,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(10)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
+                                borderRadius: BorderRadius.circular(10)),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintStyle: TextStyle(color: Colors.grey[500])),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3.h,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (passwordController.text == newpass) {
+                            return null;
+                          } else {
+                            return 'invaild Email id';
+                          }
+                        },
+                        controller: passwordController,
+                        obscureText: true,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            hintText: 'Password',
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Theme.of(context).colorScheme.background,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(10)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
+                                borderRadius: BorderRadius.circular(10)),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintStyle: TextStyle(color: Colors.grey[500])),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Text(
+                'Forgot your password?',
+                style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.underline),
+              ),
+              SizedBox(
+                height: 3.h,
+              ),
+              GestureDetector(
                 onTap: () {
 
                   if(loginkey.currentState!.validate()){
@@ -92,7 +174,7 @@ String? newpass;
                 },
                 child: Container(
                   width: 60.w,
-                  height: 8.h,
+                  height: 7.h,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Color_const.myButton),

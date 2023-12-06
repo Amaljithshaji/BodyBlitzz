@@ -31,10 +31,10 @@ class _RegisterState extends State<Register> {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-            
-         SizedBox(height: 2.h,),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            SizedBox(
+              height: 6.h,
+            ),
             Center(
                 child: Text(
               "Hy There",
@@ -241,7 +241,7 @@ class _RegisterState extends State<Register> {
               },
               child: Container(
                 width: 250,
-                height: 8.h,
+                height: 7.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color_const.myButton),
