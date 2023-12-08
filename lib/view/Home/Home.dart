@@ -22,6 +22,17 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     DateTime? _selectedDate;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        title: Text(
+              'WORKOUT',
+              style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+              
+            ),
+            centerTitle: true,
+            elevation: 0,
+      ),
+      
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,11 +73,11 @@ class _Home_ScreenState extends State<Home_Screen> {
                               setState(() => _selectedDate = date),
                           leftMargin: 20,
                           monthColor: Colors.transparent,
-                          dayColor: Theme.of(context).colorScheme.background,
+                          dayColor: Colors.white,
                           dayNameColor: const Color(0xFF333A47),
                           activeDayColor: Colors.white,
                           activeBackgroundDayColor: Color_const.myButton,
-                          dotsColor: Colors.white,
+                          dotsColor: const Color(0xFF333A47),
                          // selectableDayPredicate: (date) => date.day != 23,
                           locale: 'en',
                         ),
