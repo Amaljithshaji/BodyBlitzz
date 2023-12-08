@@ -35,7 +35,8 @@ double  _height = 30.0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+     Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         body: Container(
           width: double.infinity,
