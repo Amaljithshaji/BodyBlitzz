@@ -57,8 +57,9 @@ String? newpass;
                 Center(
                   child: Container(
                       height: 30.h,
+                      width: 40.w,
                       child: Image.asset(
-                        'assets/img/Reg_logo.png',color: Theme.of(context).colorScheme.onPrimary,  
+                        'assets/img/Reg_logo.png',
                       )),
                 ),
               Center(
@@ -94,7 +95,7 @@ String? newpass;
                             hintText: 'mail',
                             prefixIcon: Icon(
                               Icons.mail_outline_rounded,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: Theme.of(context).colorScheme.background,
                             ),
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),
@@ -128,7 +129,7 @@ String? newpass;
                             hintText: 'Password',
                             prefixIcon: Icon(
                               Icons.lock,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: Theme.of(context).colorScheme.background,
                             ),
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),

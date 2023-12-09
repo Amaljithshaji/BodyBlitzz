@@ -29,12 +29,12 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor:  Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.center,
+            //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                   height: 35.h,
@@ -66,7 +66,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                     onPressed: () => _showDatePicker(context),
                     icon: Icon(
                       Icons.date_range_sharp,
-                       color: Theme.of(context).colorScheme.background,
+                       color: Colors.black,
                     )),
               ),
                
@@ -85,7 +85,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         obsecureText: false,
                         prefixIcon: ImageIcon(
                           AssetImage('assets/img/weight-scale 1.png'),
-                           color: Theme.of(context).colorScheme.background,
+                           color: Colors.black,
                         )),
                   ),
                   Padding(
@@ -120,7 +120,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         obsecureText: false,
                         prefixIcon: Icon(
                           Icons.height,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Colors.black,
                         )),
                   ),
                   Padding(
@@ -160,7 +160,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       children: [
                         Icon(
                           Icons.group,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Colors.black,
                         ),
                         SizedBox(
                           width: 20,
@@ -173,11 +173,11 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                               style: TextStyle(color: Colors.black),
                             ),
                             dropdownColor: Colors.grey.shade200,
-                            //style: TextStyle(color:  Theme.of(context).colorScheme.background),
+                            //style: TextStyle(color:  Colors.black),
                             value: dropdownvalue,
                             icon: Icon(
                               Icons.keyboard_arrow_down_outlined,
-                              color: Theme.of(context).colorScheme.background,
+                              color: Colors.black,
                             ),
                             items: [
                               DropdownMenuItem<String>(
@@ -217,15 +217,15 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
                   },
                     child: Container(
-                      width: 250,
-                      height: 60,
+                     width: 75.w,
+                height: 6.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Color_const.myButton),
                       child: Center(
                           child: Text(
                         'Next',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
                       )),
                     ),
                   ),
