@@ -23,6 +23,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     DateTime? _selectedDate;
     return Scaffold(
       appBar: AppBar(
+        leading: SizedBox(),
         backgroundColor: Theme.of(context).colorScheme.background,
         title: Text(
               'WORKOUT',
