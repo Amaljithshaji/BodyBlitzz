@@ -59,7 +59,7 @@ String? newpass;
                       height: 30.h,
                       width: 40.w,
                       child: Image.asset(
-                        'assets/img/Reg_logo.png',
+                        'assets/img/Reg_logo.png',color: Theme.of(context).colorScheme.onPrimary,
                       )),
                 ),
               Center(
