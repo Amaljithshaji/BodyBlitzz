@@ -13,8 +13,6 @@ class Progress_Screen extends StatefulWidget {
 }
 
 class _Progress_ScreenState extends State<Progress_Screen> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,155 +24,168 @@ class _Progress_ScreenState extends State<Progress_Screen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     children: [
                       Container(
                         width: 190,
                         height: 20.h,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-                        color: Colors.green),
-                      ),SizedBox(height: 5,),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.green),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Container(
                         width: 190,
                         height: 15.h,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-                        color: Colors.green),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.green),
                       ),
-                      
                     ],
                   ),
-                  SizedBox(width: 5,),
-                   Column(
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Column(
                     children: [
                       Container(
                         width: 190,
                         height: 15.h,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-                        color: Colors.green),
-                      ),SizedBox(height: 5,),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.green),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Container(
                         width: 190,
                         height: 20.h,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-                        color: Colors.green),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.green),
                       ),
-                      
                     ],
                   ),
-                  
-
                 ],
               ),
             ),
-            SizedBox(height: 2.h,),
-           Container(
-                      width: 370,
-                      height: 200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: Colors.blue, width: 2),
-                          color: Colors.grey.shade200),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Weight log',
-                            style: GoogleFonts.aDLaMDisplay(
-                                fontSize: 28,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                      'Starting Weight',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      '239 KG',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      'Target Weight',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      '239 KG',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ],
-                                ),
-                              ],
+            SizedBox(
+              height: 2.h,
+            ),
+            Container(
+              width: 370,
+              height: 200,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(color: Colors.blue, width: 2),
+                  color: Colors.grey.shade200),
+              child: Column(
+                children: [
+                  Text(
+                    'Weight log',
+                    style: GoogleFonts.aDLaMDisplay(
+                        fontSize: 28,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              'Starting Weight',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
                             ),
-                          ),
-                          GestureDetector(
-                            onTap: (){
-                               _ShowWeight();
-                            },
-                            child: Container(
-                              width: 150,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Color_const.myButton),
-                              child: Center(
-                                  child: Text(
-                                'Update',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Colors.white),
-                              )),
+                            Text(
+                              '239 KG',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
                             ),
-                          ),
-                         
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 3.h,),
-                    Container(
-                      width: 370,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: Colors.blue, width: 2),
-                          color: Colors.grey.shade200),
-                      child: Center(
-                        child: Text(
-                          'BMI CALCULATOR',
-                          style: GoogleFonts.aDLaMDisplay(
-                              fontSize: 28,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black),
+                          ],
                         ),
-                      ),
+                        Column(
+                          children: [
+                            Text(
+                              'Target Weight',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                            Text(
+                              '239 KG',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-            
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      _ShowWeight();
+                    },
+                    child: Container(
+                      width: 150,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Color_const.myButton),
+                      child: Center(
+                          child: Text(
+                        'Update',
+                        style: GoogleFonts.aDLaMDisplay(
+                            fontSize: 20, color: Colors.white),
+                      )),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 3.h,
+            ),
+            Container(
+              width: 370,
+              height: 100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(color: Colors.blue, width: 2),
+                  color: Colors.grey.shade200),
+              child: Center(
+                child: Text(
+                  'BMI CALCULATOR',
+                  style: GoogleFonts.aDLaMDisplay(
+                      fontSize: 28,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+
   _ShowWeight() {
     RulerPickerController? _rulerPickerController;
     RulerPickerController? _rulerPickerController1;
@@ -229,7 +240,8 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.aDLaMDisplay(
+                                    fontSize: 24, color: Colors.white))),
                       )
                     ],
                   ),
@@ -289,7 +301,8 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.aDLaMDisplay(
+                                    fontSize: 24, color: Colors.white))),
                       )
                     ],
                   ),
@@ -334,33 +347,36 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                 SizedBox(
                   height: 1.h,
                 ),
-                 Container(
-                      width: 250,
-                      height: 6.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.transparent,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Cancel',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
-                    ),
-                     SizedBox(height: 2.h,),
-                 Container(
-                   width: 350,
-                   height: 6.h,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(25),
-                     color: Color_const.myButton,
-                   ),
-                   child: Center(
-                       child: Text(
-                     'Save Changes',
-                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
-                   )),
-                 )
+                Container(
+                  width: 250,
+                  height: 6.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.transparent,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Cancel',
+                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  )),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                Container(
+                  width: 350,
+                  height: 6.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Color_const.myButton,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Save Changes',
+                    style: GoogleFonts.aDLaMDisplay(
+                        fontSize: 24, color: Colors.white),
+                  )),
+                )
               ]),
             );
           });

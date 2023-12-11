@@ -9,7 +9,9 @@ ThemeData darkmode = ThemeData(
     background: Colors.black,
     primary: Colors.grey.shade500,
     secondary: Color(0xfffe7763),
-    onPrimary: Colors.white
+    onPrimary: Colors.white,
+     primaryContainer: Colors.white,
+     
    
   )
 );

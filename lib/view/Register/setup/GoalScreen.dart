@@ -16,13 +16,19 @@ class Goal_Screen extends StatefulWidget {
 
 class _Goal_ScreenState extends State<Goal_Screen> {
   List<Color> _containerColors =
-      List.filled(5, Colors.transparent); // Initialize all containers to red
+      List.filled(5, Color_const.myWhite); 
+       List<Color> fontColors =
+      List.filled(5, Colors.black);// Initialize all containers to red
 
   void _changeColor(int index) {
     setState(() {
       // Change the color of the pressed container to blue, others to red
       _containerColors = List.generate(
-          5, (i) => (i == index) ? Color_const.myButton : Colors.transparent);
+          5, (i) => (i == index) ? Color_const.myButton : Color_const.myWhite);
+          fontColors = List.generate(
+          5, (i) => (i == index) ? Color_const.myWhite : Colors.black);
+
+
     });
   }
 
@@ -102,7 +108,7 @@ class _Goal_ScreenState extends State<Goal_Screen> {
                     child: Center(
                         child: Text(
                       _getBodyPartText(i),
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: fontColors[i]),
                     )),
                   ),
                 ),
