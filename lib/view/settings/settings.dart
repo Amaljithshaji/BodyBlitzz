@@ -1,4 +1,5 @@
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
+import 'package:bodyblitz/view/settings/profile_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,25 +42,13 @@ class _Settings_ScreenState extends State<Settings_Screen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 6.h,
+              height: 8.h,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Row(
-                children: [
-                  Icon(Icons.settings),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Settings',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 30),
-                  ),
-                ],
-              ),
-            ),
+            
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile_Setting()));
+              },
               child: Center(
                 child: Stack(
                   children: [
@@ -116,8 +105,9 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 30),
-                  child: Column(
+                  padding: const EdgeInsets.only(left: 20,),
+                  child: ListView(
+                    physics: NeverScrollableScrollPhysics(),
                     children: [
                       InkWell(
                         onTap: () {
@@ -283,6 +273,125 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
               ),
             ),
+             Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Container(
+                width: 95.w,
+                height: 35.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20,),
+                  child: ListView(
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      InkWell(
+                        onTap: () {
+                    
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.favorite_border_outlined, color: Colors.black),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Share with Friends',
+                              style: TextStyle(
+                                  fontSize: 2.5.h,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                        
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.thumb_up_alt_outlined, color: Colors.black),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Rate us',
+                              style: TextStyle(
+                                  fontSize: 2.5.h,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
+                            
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                       
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.feedback_outlined, color: Colors.black),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Feedback',
+                              style: TextStyle(
+                                  fontSize: 2.5.h,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
+                            
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                       
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.security_outlined, color: Colors.black),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Privacy Policy',
+                              style: TextStyle(
+                                  fontSize: 2.5.h,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
+                            
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                     
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10.h,)
           ],
         ),
       ),
@@ -312,7 +421,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
             return Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: 62.h,
               width: double.infinity,
               child: Column(children: [
                 SizedBox(
@@ -343,7 +452,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24))),
+                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
                       )
                     ],
                   ),
@@ -403,7 +512,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24))),
+                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
                       )
                     ],
                   ),
@@ -446,30 +555,14 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                       fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 SizedBox(
-                  height: 4.h,
+                  height: 1.h,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: 150,
+                 Container(
+                      width: 250,
                       height: 6.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Color_const.myButton,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Save',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
-                    ),
-                    Container(
-                      width: 150,
-                      height: 6.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Color_const.myButton,
+                        color: Colors.transparent,
                       ),
                       child: Center(
                           child: Text(
@@ -477,8 +570,20 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         style: GoogleFonts.aDLaMDisplay(fontSize: 24),
                       )),
                     ),
-                  ],
-                )
+                     SizedBox(height: 2.h,),
+                 Container(
+                   width: 350,
+                   height: 6.h,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(25),
+                     color: Color_const.myButton,
+                   ),
+                   child: Center(
+                       child: Text(
+                     'Save Changes',
+                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
+                   )),
+                 )
               ]),
             );
           });
@@ -510,7 +615,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                   style: GoogleFonts.aDLaMDisplay(fontSize: 24),
                 ),
                 SizedBox(
-                  height: 6.h,
+                  height: 4.h,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -530,13 +635,13 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24))),
+                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
                       )
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 5.h,
+                  height: 2.h,
                 ),
                 RulerPicker(
                   rulerBackgroundColor: Colors.transparent,
@@ -576,30 +681,14 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                       fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 SizedBox(
-                  height: 6.h,
+                  height: 1.h,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: 150,
+                 Container(
+                      width: 250,
                       height: 6.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Color_const.myButton,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Save',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
-                    ),
-                    Container(
-                      width: 150,
-                      height: 6.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Color_const.myButton,
+                        color: Colors.transparent,
                       ),
                       child: Center(
                           child: Text(
@@ -607,8 +696,20 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         style: GoogleFonts.aDLaMDisplay(fontSize: 24),
                       )),
                     ),
-                  ],
-                )
+                     SizedBox(height: 2.h,),
+                 Container(
+                   width: 350,
+                   height: 6.h,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(25),
+                     color: Color_const.myButton,
+                   ),
+                   child: Center(
+                       child: Text(
+                     'Save Changes',
+                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
+                   )),
+                 )
               ]),
             );
           });
@@ -907,11 +1008,11 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
                 SizedBox(height: 5.h,),
                  Container(
-                      width: 150,
+                      width: 250,
                       height: 6.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Color_const.myButton,
+                        color: Colors.transparent,
                       ),
                       child: Center(
                           child: Text(
@@ -921,16 +1022,16 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     ),
                      SizedBox(height: 2.h,),
                  Container(
-                   width: 150,
+                   width: 350,
                    height: 6.h,
                    decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(15),
+                     borderRadius: BorderRadius.circular(25),
                      color: Color_const.myButton,
                    ),
                    child: Center(
                        child: Text(
-                     'Save',
-                     style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                     'Save Changes',
+                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
                    )),
                  )
               ]),
