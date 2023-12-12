@@ -1,3 +1,5 @@
+import 'package:bodyblitz/utills/constant/Themedata/Light_theme.dart';
+import 'package:bodyblitz/utills/constant/Themedata/dark_theme.dart';
 import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/register.dart';
 import 'package:flutter/material.dart';
@@ -55,8 +57,9 @@ String? newpass;
                 Center(
                   child: Container(
                       height: 30.h,
+                      width: 40.w,
                       child: Image.asset(
-                        'assets/img/Reg_logo.png',
+                        'assets/img/Reg_logo.png',color: Theme.of(context).colorScheme.onPrimary,
                       )),
                 ),
               Center(
@@ -181,7 +184,7 @@ String? newpass;
                   child: Center(
                       child: Text(
                     'Login',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                   )),
                 ),
               ),

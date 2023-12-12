@@ -84,11 +84,13 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
       ],
     ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Center(child: Text('Please choose your focus area',style:GoogleFonts.aDLaMDisplay(fontSize: 24) ,)),
-            SizedBox(height: 5.h,),
+            SizedBox(height: 7.h,),
              for (int i = 0; i < 5; i++)
            GestureDetector(
               onTap: (){
@@ -100,23 +102,23 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
                   width: 260,
                   height: 8.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Color_const.myWhite,
                     border: Border.all(color: Theme.of(context).colorScheme.primary,width: 1)
                   ),
-                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 20),)),
+                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: _isSelected[i] ? Color_const.myWhite: Colors.black),)),
                 ),
               ),
             ),
-            SizedBox(height: 5.h,),
+            SizedBox(height: 7.h,),
             GestureDetector(
               onTap: (){
                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Goal_Screen(),) );
               },
               child: Container(
-                width: 350,
-                height: 8.h,
+                width: 75.w,
+                height: 6.h,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color_const.myButton),
-                child: Center(child: Text('NEXT',style: GoogleFonts.aDLaMDisplay(fontSize: 28),),),
+                child: Center(child: Text('NEXT',style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Color_const.myWhite),),),
               ),
             )
           ],
