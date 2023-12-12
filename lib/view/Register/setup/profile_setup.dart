@@ -1,12 +1,15 @@
+import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/login.dart';
 import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
+import '../../bottomNavigation/Bottomnavigator.dart';
 
 class Setup_Screen extends StatefulWidget {
   const Setup_Screen({super.key});
@@ -18,245 +21,208 @@ class Setup_Screen extends StatefulWidget {
 class _Setup_ScreenState extends State<Setup_Screen> {
   final date_controller = TextEditingController();
 
-  final _weightController = TextEditingController();
-
   var dropdownvalue;
   @override
   void initState() {
+    
     super.initState();
   }
+  bool Male = false;
+  bool Female = false;
 
   @override
   Widget build(BuildContext context) {
+    final addcontroll = Provider.of<WorkoutController>(context);
     return Scaffold(
+       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Theme.of(context).colorScheme.background,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Filtter_Screen(),
+                  ));
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Color_const.myButton,
+            )),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: Center(
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottom_Naviagator(),));
+                    },
+                    child: Text(
+                      'Skip',
+                      style: TextStyle(color: Color_const.myButton, fontSize: 16),
+                    ))),
+          )
+        ],
+      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  height: 35.h,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: Image.asset(dropdownvalue == 'Male'
-                      ? 'assets/img/setupimage1.png'
-                      : 'assets/img/setupimage.png')),
-              SizedBox(
-                height: 1.h,
-              ),
-              Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+             Center(
+            child: Container(
+                width: 300,
                 child: Text(
-                  'Let’s complete your profile',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                ),
-              ),
-              Center(child: Text('It will help us to know more about you!')),
-              SizedBox(
-                height: 2.h,
-              ),
-              
+                  "what's your gender?",
+                  style: GoogleFonts.aDLaMDisplay(
+                    fontSize: 28,
+                  ),
+                  textAlign: TextAlign.center,
+                ))),
+            SizedBox(
+              height: 2.h,
+            ),
+            Container(
+                height: 57.h,
+                width: double.infinity,
+                color: Colors.transparent,
+                child: Image.asset(dropdownvalue == 'Male'
+                    ? 'assets/img/male.png'
+                    : 'assets/img/female.png')),
+            SizedBox(
+              height: 1.h,
+            ),
+           
             
-              Reg_field(
-                controller: date_controller,
-                hintText: 'Date',
-                obsecureText: false,
-                prefixIcon: IconButton(
-                    onPressed: () => _showDatePicker(context),
-                    icon: Icon(
-                      Icons.date_range_sharp,
-                      color: Theme.of(context).colorScheme.background,
-                    )),
-              ),
-               
-             
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          
+            // Reg_field(
+            //   controller: date_controller,
+            //   hintText: 'Date',
+            //   obsecureText: false,
+            //   prefixIcon: IconButton(
+            //       onPressed: () => _showDatePicker(context),
+            //       icon: Icon(
+            //         Icons.date_range_sharp,
+            //          color: Theme.of(context).colorScheme.background,
+            //       )),
+            // ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 300,
-                    child: Reg_field(
-                        controller: _weightController,
-                        hintText: 'Your Weight',
-                        obsecureText: false,
-                        prefixIcon: ImageIcon(
-                          AssetImage('assets/img/weight-scale 1.png'),
-                          color: Theme.of(context).colorScheme.background,
-                        )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Container(
-                      width: 80,
-                      height: 58,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color_const.myButton,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Kg',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 20),
-                      )),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 300,
-                    child: Reg_field(
-                        controller: _weightController,
-                        hintText: 'Your Height',
-                        obsecureText: false,
-                        prefixIcon: Icon(
-                          Icons.height,
-                          color: Theme.of(context).colorScheme.background,
-                        )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Container(
-                      width: 80,
-                      height: 58,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color_const.myButton,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'CM',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 20),
-                      )),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-               Padding(
-                 padding: const EdgeInsets.only(left: 20),
-                 child: Container(
-                  width: 260,
-                  height: 8.h,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.shade200),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.group,
-                          color: Theme.of(context).colorScheme.background,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            style: TextStyle(color: Colors.black),
-                            hint: Text(
-                              'Choose Gender',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            dropdownColor: Colors.grey.shade200,
-                            //style: TextStyle(color:  Theme.of(context).colorScheme.background),
-                            value: dropdownvalue,
-                            icon: Icon(
-                              Icons.keyboard_arrow_down_outlined,
-                              color: Theme.of(context).colorScheme.background,
-                            ),
-                            items: [
-                              DropdownMenuItem<String>(
-                                child: InkWell(child: Text('Male')),
-                                value: 'Male',
-                              ),
-                              DropdownMenuItem<String>(
-                                child: Text('Female'),
-                                value: 'Female',
-                              ),
-                            ],
-                            onChanged: (newValue) {
-                              setState(() {
-                                dropdownvalue = newValue;
-                              });
-                            },
+                  Stack(
+                    children: [
+                      Ink(
+                        child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              dropdownvalue = 'Male';
+                              Male = true;
+                              Female = false;
+                            });
+                          },
+                          child: Container(
+                            width: 170,
+                            height: 8.h,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color:  Male == true ? Color_const.myButton : Colors.transparent,width: 2)),
+                             child: Center(child: Text('Male',style: GoogleFonts.aDLaMDisplay(fontSize: 24),)),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                      Positioned(top: 10,right: 10,
+                        child: Icon(Icons.check_circle_rounded,color:  Male == true ? Color_const.myButton : Colors.transparent,))
+                    ],
                   ),
-                               ),
-               ),
-               SizedBox(
-                height: 20,
+                  Stack(
+                    children: [
+                      Ink(
+                        child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              dropdownvalue = 'Female';
+                              Female = true;
+                              Male = false;
+                            });
+                          },
+                          child: Container(
+                            width: 170,
+                            height: 8.h,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Female == true ? Color_const.myButton : Colors.transparent,width: 2)),
+                             child: Center(child: Text('Female',style: GoogleFonts.aDLaMDisplay(fontSize: 24),)),
+                          ),
+                        ),
+                      ),
+                      Positioned(top: 10,right: 10,
+                        child: Icon(Icons.check_circle_rounded,color:  Female == true ? Color_const.myButton : Colors.transparent,))
+                    ],
+                  ),
+                ],
               ),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        ));
-                  },
-                  child: InkWell(onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
-                  },
-                    child: Container(
-                      width: 250,
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color_const.myButton),
-                      child: Center(
-                          child: Text(
-                        'Next',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
-                    ),
+            ),
+            
+            SizedBox(
+              height: 20,
+            ),
+             
+            Center(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ));
+                },
+                child: InkWell(onTap: () {
+                
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
+                },
+                  child: Container(
+                    width: 300,
+                    height: 7.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Color_const.myButton),
+                    child: Center(
+                        child: Text(
+                      'Next',
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),
+                    )),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  void _showDatePicker(BuildContext context ) async {
-    // Hide the keyboard if it is shown
-    FocusScope.of(context).requestFocus(FocusNode());
+  // void _showDatePicker(BuildContext context ) async {
+  //   // Hide the keyboard if it is shown
+  //   FocusScope.of(context).requestFocus(FocusNode());
 
-    // Get the selected date from the date picker
-    final DateTime? selectedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-    );
+  //   // Get the selected date from the date picker
+  //   final DateTime? selectedDate = await showDatePicker(
+  //     context: context,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime(1900),
+  //     lastDate: DateTime.now(),
+  //   );
 
-    // If the user selected a date, update the text field with the formatted date
-    if (selectedDate != null) {
-      setState(() {
-        // Use the intl package to format the date
+  //   // If the user selected a date, update the text field with the formatted date
+  //   if (selectedDate != null) {
+  //     setState(() {
+  //       // Use the intl package to format the date
 
-        date_controller.text = DateFormat.yMd().format(selectedDate);
-      });
-    }
-  }
+  //       date_controller.text = DateFormat.yMd().format(selectedDate);
+  //     });
+  //   }
+  // }
 }

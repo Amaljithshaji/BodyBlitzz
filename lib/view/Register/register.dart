@@ -69,7 +69,7 @@ class _RegisterState extends State<Register> {
                           hintText: 'First Name',
                           prefixIcon: Icon(
                             Icons.person,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
@@ -103,7 +103,7 @@ class _RegisterState extends State<Register> {
                           hintText: 'Last name',
                           prefixIcon: Icon(
                             Icons.person,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
@@ -137,7 +137,7 @@ class _RegisterState extends State<Register> {
                           hintText: 'Email id',
                           prefixIcon: Icon(
                             Icons.mail_outline_rounded,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
@@ -171,7 +171,7 @@ class _RegisterState extends State<Register> {
                           hintText: 'password',
                           prefixIcon: Icon(
                             Icons.lock,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
@@ -248,7 +248,7 @@ class _RegisterState extends State<Register> {
                 child: Center(
                     child: Text(
                   'Register',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
                 )),
               ),
             ),
