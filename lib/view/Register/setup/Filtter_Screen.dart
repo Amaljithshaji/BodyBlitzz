@@ -102,10 +102,10 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
                   width: 260,
                   height: 8.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Color_const.myWhite,
                     border: Border.all(color: Theme.of(context).colorScheme.primary,width: 1)
                   ),
-                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 20),)),
+                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: _isSelected[i] ? Color_const.myWhite: Colors.black),)),
                 ),
               ),
             ),

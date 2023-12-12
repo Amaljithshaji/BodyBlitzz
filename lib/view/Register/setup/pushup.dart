@@ -16,12 +16,18 @@ class PushUp extends StatefulWidget {
 }
 
 class _PushUpState extends State<PushUp> {
-  List<Color> _containerColors = List.filled(5, Colors.transparent); // Initialize all containers to red
+  List<Color> _containerColors = List.filled(5, Color_const.myWhite); 
+  List<Color> fontColors =
+      List.filled(5, Colors.black);
+  // Initialize all containers to red
 
   void _changeColor(int index) {
     setState(() {
       // Change the color of the pressed container to blue, others to red
-      _containerColors = List.generate(5, (i) => (i == index) ? Color_const.myButton : Colors.transparent);
+      _containerColors = List.generate(5, (i) => (i == index) ? Color_const.myButton : Color_const.myWhite);
+        fontColors = List.generate(
+          5, (i) => (i == index) ? Color_const.myWhite : Colors.black);
+
     });
   }
   @override
@@ -102,7 +108,7 @@ class _PushUpState extends State<PushUp> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(top: 15),
-                                      child: Text(_getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 28),),
+                                      child: Text(_getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: fontColors[i]),),
                                     ),SizedBox(height: 5,),
                                     Text(_getsubText(i),style: TextStyle(fontSize: 16),)
                                   ],
