@@ -5,7 +5,6 @@ import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
@@ -32,7 +31,6 @@ class _Setup_ScreenState extends State<Setup_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final addcontroll = Provider.of<WorkoutController>(context);
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -180,8 +178,6 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       ));
                 },
                 child: InkWell(onTap: () {
-                  final gender = dropdownvalue;
-                    addcontroll.adddata(gender:gender, height: 125, Weight: 57, BIM: 23,profile: 'sdv');
                 
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
                 },
@@ -209,7 +205,17 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   // void _showDatePicker(BuildContext context ) async {
   //   // Hide the keyboard if it is shown
   //   FocusScope.of(context).requestFocus(FocusNode());
+  // void _showDatePicker(BuildContext context ) async {
+  //   // Hide the keyboard if it is shown
+  //   FocusScope.of(context).requestFocus(FocusNode());
 
+  //   // Get the selected date from the date picker
+  //   final DateTime? selectedDate = await showDatePicker(
+  //     context: context,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime(1900),
+  //     lastDate: DateTime.now(),
+  //   );
   //   // Get the selected date from the date picker
   //   final DateTime? selectedDate = await showDatePicker(
   //     context: context,
@@ -222,7 +228,15 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   //   if (selectedDate != null) {
   //     setState(() {
   //       // Use the intl package to format the date
+  //   // If the user selected a date, update the text field with the formatted date
+  //   if (selectedDate != null) {
+  //     setState(() {
+  //       // Use the intl package to format the date
 
+  //       date_controller.text = DateFormat.yMd().format(selectedDate);
+  //     });
+  //   }
+  // }
   //       date_controller.text = DateFormat.yMd().format(selectedDate);
   //     });
   //   }
