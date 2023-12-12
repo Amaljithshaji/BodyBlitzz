@@ -1,5 +1,6 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/model/model.dart';
+import 'package:bodyblitz/models/models.dart';
+// import 'package:bodyblitz/model/database.dart';
 import 'package:bodyblitz/utills/constant/Themedata/Light_theme.dart';
 import 'package:bodyblitz/utills/constant/Themedata/dark_theme.dart';
 import 'package:bodyblitz/view/Register/login.dart';
@@ -8,8 +9,14 @@ import 'package:bodyblitz/view/Register/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+ Hive.registerAdapter(ProfilemodelAdapter()); 
+ await Hive.openBox<Profilemodel>('dataBox');
+
+
   runApp(const Myapp());
 }
 

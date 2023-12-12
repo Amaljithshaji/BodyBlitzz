@@ -1,11 +1,14 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:bodyblitz/model/model.dart';
+import 'package:bodyblitz/models/database.dart';
+import 'package:bodyblitz/models/models.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class WorkoutController extends ChangeNotifier {
   List<Workout> _workouts = [];
   int workout_count = 0;
   List<Workout> get workouts => _workouts;
+ late Box<Profilemodel> _databox;
 
   void loadWorkouts(List<Map<String, dynamic>> Workoutitems1) {
     _workouts = Workoutitems1.map((map) => Workout(
@@ -35,5 +38,29 @@ class WorkoutController extends ChangeNotifier {
     await AudioPlayer().play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
     
   }
-  // Add other functions to access the workout data as needed
+WorkoutController(){
+  _init();
+}
+  
+  Future<void> _init() async{
+    _databox = await Hive.openBox('dataBox');
+    notifyListeners();
+  }
+
+  void adddata({required String gender,required int height,required int  Weight,required int BIM ,required String profile}){
+    final profilemodel = Profilemodel(gender: gender, height: height, Weight: Weight, BIM:BIM ,profile: profile);
+    _databox.add(profilemodel);
+    print(_databox.get(profilemodel.Weight));
+    notifyListeners();
+  }
+  
+//   addgender( dynamic _gender){
+
+// box.add(Profilemodel(gender: _gender));
+// print(box.get(_gender));
+// notifyListeners();
+
+//   }
+  
+
 }
