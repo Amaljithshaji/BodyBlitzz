@@ -1,4 +1,4 @@
-import 'package:bodyblitz/model/model.dart';
+import 'package:bodyblitz/models/database.dart';
 import 'package:bodyblitz/utills/Database/Database1.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';

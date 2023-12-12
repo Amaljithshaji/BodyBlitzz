@@ -1,7 +1,7 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/model/model.dart';
+// import 'package:bodyblitz/model/database.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
-import 'package:bodyblitz/view/Home/Home.dart';
+// import 'package:bodyblitz/view/Home/Home.dart';
 import 'package:bodyblitz/view/Workout/workout_starter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
