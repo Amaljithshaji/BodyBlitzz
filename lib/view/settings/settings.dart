@@ -401,9 +401,10 @@ class _Settings_ScreenState extends State<Settings_Screen> {
   _ShowWeight() {
     RulerPickerController? _rulerPickerController;
     RulerPickerController? _rulerPickerController1;
-
-    num currentValue = 50;
-    num currentValue1 = 50;
+    var height = Provider.of<WorkoutController>(context,listen: false).getValues['height'].toString();
+    var weight = Provider.of<WorkoutController>(context,listen: false).getValues['weight'].toString();
+    num currentValue = int.parse(height);
+    num currentValue1 = int.parse(weight);
 
     List<RulerRange> ranges = const [
       RulerRange(begin: 0, end: 249, scale: 1),
@@ -562,18 +563,21 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 SizedBox(
                   height: 1.h,
                 ),
-                Container(
-                  width: 250,
-                  height: 6.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.transparent,
+                InkWell(
+                  onTap: ()=>Navigator.pop(context),
+                  child: Container(
+                    width: 250,
+                    height: 6.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.transparent,
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Cancel',
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    )),
                   ),
-                  child: Center(
-                      child: Text(
-                    'Cancel',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                  )),
                 ),
                 SizedBox(
                   height: 2.h,
