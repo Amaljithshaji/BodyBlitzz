@@ -1,8 +1,10 @@
+import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/settings/profile_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
@@ -17,6 +19,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
   @override
   void initState() {
     getdata();
+  
     super.initState();
   }
 
@@ -32,9 +35,9 @@ class _Settings_ScreenState extends State<Settings_Screen> {
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<WorkoutController>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
@@ -44,10 +47,10 @@ class _Settings_ScreenState extends State<Settings_Screen> {
             SizedBox(
               height: 8.h,
             ),
-            
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile_Setting()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile_Setting()));
               },
               child: Center(
                 child: Stack(
@@ -59,10 +62,11 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         padding: const EdgeInsets.all(4.0),
                         child: Container(
                           decoration: ShapeDecoration(
-                              shape: CircleBorder(), color: Colors.white,image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: AssetImage('assets/img/avatar1.png'))),
-                     
+                              shape: CircleBorder(),
+                              color: Colors.white,
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage(controller.getValues['profile'].toString()))),
                         ),
                       ),
                     ),
@@ -105,7 +109,9 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20,),
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                  ),
                   child: ListView(
                     physics: NeverScrollableScrollPhysics(),
                     children: [
@@ -217,10 +223,10 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   color: Colors.black),
                             ),
                             SizedBox(
-                              width: 70,
+                              width: 50,
                             ),
                             Text(
-                              '25 Kg ı 25 Cm',
+                              " ${controller.getValues['weight']} Kg ı ${controller.getValues['height']} Cm",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -273,7 +279,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
               ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Container(
                 width: 95.w,
@@ -283,17 +289,18 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20,),
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                  ),
                   child: ListView(
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       InkWell(
-                        onTap: () {
-                    
-                        },
+                        onTap: () {},
                         child: Row(
                           children: [
-                            Icon(Icons.favorite_border_outlined, color: Colors.black),
+                            Icon(Icons.favorite_border_outlined,
+                                color: Colors.black),
                             SizedBox(
                               width: 10,
                             ),
@@ -311,12 +318,11 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         height: 4.h,
                       ),
                       InkWell(
-                        onTap: () {
-                        
-                        },
+                        onTap: () {},
                         child: Row(
                           children: [
-                            Icon(Icons.thumb_up_alt_outlined, color: Colors.black),
+                            Icon(Icons.thumb_up_alt_outlined,
+                                color: Colors.black),
                             SizedBox(
                               width: 10,
                             ),
@@ -327,7 +333,6 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black),
                             ),
-                            
                           ],
                         ),
                       ),
@@ -335,9 +340,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         height: 4.h,
                       ),
                       InkWell(
-                        onTap: () {
-                       
-                        },
+                        onTap: () {},
                         child: Row(
                           children: [
                             Icon(Icons.feedback_outlined, color: Colors.black),
@@ -351,7 +354,6 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black),
                             ),
-                            
                           ],
                         ),
                       ),
@@ -359,9 +361,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         height: 4.h,
                       ),
                       InkWell(
-                        onTap: () {
-                       
-                        },
+                        onTap: () {},
                         child: Row(
                           children: [
                             Icon(Icons.security_outlined, color: Colors.black),
@@ -375,14 +375,12 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black),
                             ),
-                            
                           ],
                         ),
                       ),
                       SizedBox(
                         height: 4.h,
                       ),
-                     
                       SizedBox(
                         height: 4.h,
                       ),
@@ -391,7 +389,9 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
               ),
             ),
-            SizedBox(height: 10.h,)
+            SizedBox(
+              height: 10.h,
+            )
           ],
         ),
       ),
@@ -411,6 +411,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
     List<RulerRange> ranges1 = const [
       RulerRange(begin: 0, end: 249, scale: 1),
     ];
+  
 
     _rulerPickerController = RulerPickerController(value: currentValue);
     _rulerPickerController1 = RulerPickerController(value: currentValue1);
@@ -420,6 +421,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
         builder: (contex) {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
+                final controller = Provider.of<WorkoutController>(context,listen: false);
+               
             return Container(
               height: 62.h,
               width: double.infinity,
@@ -452,7 +455,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.aDLaMDisplay(
+                                    fontSize: 24, color: Colors.white))),
                       )
                     ],
                   ),
@@ -512,7 +516,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.aDLaMDisplay(
+                                    fontSize: 24, color: Colors.white))),
                       )
                     ],
                   ),
@@ -557,33 +562,47 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 SizedBox(
                   height: 1.h,
                 ),
-                 Container(
-                      width: 250,
-                      height: 6.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.transparent,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Cancel',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
+                Container(
+                  width: 250,
+                  height: 6.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.transparent,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Cancel',
+                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  )),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                     final weight =  currentValue1.toStringAsFixed(0);
+                final height =  currentValue.toStringAsFixed(0);
+                controller.setData('height', height);
+                controller.setData('weight',weight );
+                 print(controller.getValues['height']);
+                 print(controller.getValues['weight']);
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 6.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Color_const.myButton,
                     ),
-                     SizedBox(height: 2.h,),
-                 Container(
-                   width: 350,
-                   height: 6.h,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(25),
-                     color: Color_const.myButton,
-                   ),
-                   child: Center(
-                       child: Text(
-                     'Save Changes',
-                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
-                   )),
-                 )
+                    child: Center(
+                        child: Text(
+                      'Save Changes',
+                      style: GoogleFonts.aDLaMDisplay(
+                          fontSize: 24, color: Colors.white),
+                    )),
+                  ),
+                )
               ]),
             );
           });
@@ -635,7 +654,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.aDLaMDisplay(
+                                    fontSize: 24, color: Colors.white))),
                       )
                     ],
                   ),
@@ -683,33 +703,36 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 SizedBox(
                   height: 1.h,
                 ),
-                 Container(
-                      width: 250,
-                      height: 6.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.transparent,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Cancel',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
-                    ),
-                     SizedBox(height: 2.h,),
-                 Container(
-                   width: 350,
-                   height: 6.h,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(25),
-                     color: Color_const.myButton,
-                   ),
-                   child: Center(
-                       child: Text(
-                     'Save Changes',
-                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
-                   )),
-                 )
+                Container(
+                  width: 250,
+                  height: 6.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.transparent,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Cancel',
+                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  )),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                Container(
+                  width: 350,
+                  height: 6.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Color_const.myButton,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Save Changes',
+                    style: GoogleFonts.aDLaMDisplay(
+                        fontSize: 24, color: Colors.white),
+                  )),
+                )
               ]),
             );
           });
@@ -877,12 +900,26 @@ class _Settings_ScreenState extends State<Settings_Screen> {
   _Showgender() {
     bool isSlectedM = false;
     bool isSlectedF = false;
+     var profilepic;
+    String gender;
+     if (Provider.of<WorkoutController>(context,listen: false).getValues['gender'] ==
+                'Male') {
+            
+                isSlectedM = true;
+                gender = 'Male';
+           
+            }else{
+             
+                isSlectedF = true;
+                gender = 'Female';
+            }
     return showModalBottomSheet(
-      isScrollControlled: true,
+        isScrollControlled: true,
         context: context,
         builder: (contex) {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
+           
             return Container(
               height: MediaQuery.of(context).size.height * 0.6,
               width: MediaQuery.of(context).size.width,
@@ -908,8 +945,10 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                             child: InkWell(
                               onTap: () {
                                 setState(() {
-                                  isSlectedM =true;
+                                  isSlectedM = true;
                                   isSlectedF = false;
+                                  gender = "Male";
+                                    profilepic = 'assets/img/avatar1.png';
                                 });
                               },
                               child: Container(
@@ -942,8 +981,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               child: Icon(
                                 Icons.check_circle_outline_rounded,
                                 color: isSlectedM == true
-                                            ? Color_const.myButton
-                                            : Colors.transparent,
+                                    ? Color_const.myButton
+                                    : Colors.transparent,
                               )),
                           Positioned(
                               bottom: 10,
@@ -957,10 +996,12 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         children: [
                           Ink(
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   isSlectedM = false;
                                   isSlectedF = true;
+                                  gender = "Female";
+                                   profilepic ='assets/img/avatar2.png';
                                 });
                               },
                               child: Container(
@@ -969,16 +1010,18 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.grey.shade300,
-                                    border:
-                                        Border.all(color: isSlectedF == true
+                                    border: Border.all(
+                                        color: isSlectedF == true
                                             ? Color_const.myButton
-                                            : Colors.transparent, width: 2)),
+                                            : Colors.transparent,
+                                        width: 2)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(25.0),
                                   child: CircleAvatar(
                                     radius: 10,
                                     backgroundColor: Colors.transparent,
-                                    child: Image.asset('assets/img/avatar2.png'),
+                                    child:
+                                        Image.asset('assets/img/avatar2.png'),
                                   ),
                                 ),
                               ),
@@ -990,8 +1033,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               child: Icon(
                                 Icons.check_circle_outline_rounded,
                                 color: isSlectedF == true
-                                            ? Color_const.myButton
-                                            : Colors.transparent,
+                                    ? Color_const.myButton
+                                    : Colors.transparent,
                               )),
                           Positioned(
                               bottom: 10,
@@ -1006,34 +1049,56 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 5.h,),
-                 Container(
-                      width: 250,
-                      height: 6.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.transparent,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Cancel',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
-                      )),
+                SizedBox(
+                  height: 5.h,
+                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 250,
+                    height: 6.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.transparent,
                     ),
-                     SizedBox(height: 2.h,),
-                 Container(
-                   width: 350,
-                   height: 6.h,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(25),
-                     color: Color_const.myButton,
-                   ),
-                   child: Center(
-                       child: Text(
-                     'Save Changes',
-                     style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white),
-                   )),
-                 )
+                    child: Center(
+                        child: Text(
+                      'Cancel',
+                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    )),
+                  ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                    final profile = profilepic;
+                    Provider.of<WorkoutController>(context,listen: false).setData('profile', profile);
+                    Provider.of<WorkoutController>(context,listen: false).setData('gender', gender);
+                    print(gender);
+                    print(profile);
+                    print(Provider.of<WorkoutController>(context,listen: false).getValues['profile']);
+                    print(Provider.of<WorkoutController>(context,listen: false).getValues['gender']);
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 6.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Color_const.myButton,
+                    ),
+                    child: Center(
+                        child: Text(
+                      'Save Changes',
+                      style: GoogleFonts.aDLaMDisplay(
+                          fontSize: 24, color: Colors.white),
+                    )),
+                  ),
+                )
               ]),
             );
           });

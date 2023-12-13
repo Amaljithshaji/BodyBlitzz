@@ -112,6 +112,7 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
             SizedBox(height: 7.h,),
             GestureDetector(
               onTap: (){
+                
                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Goal_Screen(),) );
               },
               child: Container(
