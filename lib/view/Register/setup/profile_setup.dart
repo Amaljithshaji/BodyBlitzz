@@ -22,9 +22,10 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   final date_controller = TextEditingController();
 
   var dropdownvalue;
+  var profilepic;
   @override
   void initState() {
-    
+  
     super.initState();
   }
   bool Male = false;
@@ -32,7 +33,8 @@ class _Setup_ScreenState extends State<Setup_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final addcontroll = Provider.of<WorkoutController>(context);
+    var addcontroll = Provider.of<WorkoutController>(context);
+    addcontroll.loadData();
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -121,6 +123,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Male';
+                              profilepic = 'assets/img/avatar1.png';
                               Male = true;
                               Female = false;
                             });
@@ -145,6 +148,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Female';
+                              profilepic ='assets/img/avatar2.png';
                               Female = true;
                               Male = false;
                             });
@@ -179,9 +183,14 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         builder: (context) => LoginScreen(),
                       ));
                 },
-                child: InkWell(onTap: () {
+                child: InkWell(onTap: () async{
                   final gender = dropdownvalue;
-                    addcontroll.adddata(gender:gender, height: 125, Weight: 57, BIM: 23,profile: 'sdv');
+                  final profile = profilepic;
+                 await addcontroll.setData('gender', gender);
+                 await addcontroll.setData('profile',profile);
+                  print(addcontroll.getValues['profile']);
+                  print(addcontroll.getValues['gender']);
+                 
                 
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
                 },

@@ -12,12 +12,13 @@ import 'package:sizer/sizer.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
- Hive.registerAdapter(ProfilemodelAdapter()); 
- await Hive.openBox<Profilemodel>('dataBox');
-
-
+  initHive();
   runApp(const Myapp());
+}
+Future<void> initHive() async{
+ await Hive.openBox('databox');
 }
 
 class Myapp extends StatelessWidget {

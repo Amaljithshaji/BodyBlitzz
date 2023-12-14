@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
 import '../../bottomNavigation/Bottomnavigator.dart';
+import 'height&weight.dart';
 
 class PushUp extends StatefulWidget {
   const PushUp({super.key});
@@ -122,7 +123,7 @@ class _PushUpState extends State<PushUp> {
              SizedBox(height: 5.h,),
             InkWell(
               onTap: (){
-               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Start_Screen(),) );
+               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Weight(),) );
               },
               child: Container(
                width: 75.w,
