@@ -25,7 +25,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   var profilepic;
   @override
   void initState() {
-    
+  
     super.initState();
   }
   bool Male = false;
@@ -214,4 +214,26 @@ class _Setup_ScreenState extends State<Setup_Screen> {
       ),
     );
   }
+
+  // void _showDatePicker(BuildContext context ) async {
+  //   // Hide the keyboard if it is shown
+  //   FocusScope.of(context).requestFocus(FocusNode());
+
+  //   // Get the selected date from the date picker
+  //   final DateTime? selectedDate = await showDatePicker(
+  //     context: context,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime(1900),
+  //     lastDate: DateTime.now(),
+  //   );
+
+  //   // If the user selected a date, update the text field with the formatted date
+  //   if (selectedDate != null) {
+  //     setState(() {
+  //       // Use the intl package to format the date
+
+  //       date_controller.text = DateFormat.yMd().format(selectedDate);
+  //     });
+  //   }
+  // }
 }
