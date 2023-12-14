@@ -19,7 +19,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
   @override
   void initState() {
     getdata();
-  
+  var controller = Provider.of<WorkoutController>(context,listen: false);
+    controller.loadData();
     super.initState();
   }
 
@@ -37,7 +38,9 @@ class _Settings_ScreenState extends State<Settings_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<WorkoutController>(context);
+    var controller = Provider.of<WorkoutController>(context);
+    controller.loadData();
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
@@ -99,292 +102,296 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 style: GoogleFonts.aDLaMDisplay(fontSize: 28),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                width: 95.w,
-                height: 45.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Container(
+                  width: 90.w,
+                  height: 45.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          _Showgender();
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.person, color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Gender',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            )
-                          ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 20,
+                    ),
+                    child: ListView(
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            _Showgender();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.person, color: Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Gender',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _showCustomDialogRest(context);
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.forward_5, color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Training Rest',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              width: 140,
-                            ),
-                            Text(
-                              '30 sec',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color_const.myButton),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 4.h,
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _showCustomDialog(context);
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.av_timer, color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Countdown Time',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              width: 102,
-                            ),
-                            Text(
-                              '30 sec',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color_const.myButton),
-                            ),
-                          ],
+                        InkWell(
+                          onTap: () {
+                            _showCustomDialogRest(context);
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.forward_5, color: Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Training Rest',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(
+                                width: 140,
+                              ),
+                              Text(
+                                '30 sec',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color_const.myButton),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _ShowWeight();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset('assets/img/weight-scale 1.png',
-                                color: Colors.black),
-                            SizedBox(
-                              width: 14,
-                            ),
-                            Text(
-                              'Weight ı Height',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Text(
-                              " ${controller.getValues['weight']} Kg ı ${controller.getValues['height']} Cm",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color_const.myButton),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 4.h,
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _ShowTargetweight();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/img/weight-scale 1.png',
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 14,
-                            ),
-                            Text(
-                              'Target Weight',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              width: 140,
-                            ),
-                            Text(
-                              '15 Kg',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color_const.myButton),
-                            ),
-                          ],
+                        InkWell(
+                          onTap: () {
+                            _showCustomDialog(context);
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.av_timer, color: Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Countdown Time',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(
+                                width: 102,
+                              ),
+                              Text(
+                                '30 sec',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color_const.myButton),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                    ],
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            _ShowWeight();
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset('assets/img/weight-scale 1.png',
+                                  color: Colors.black),
+                              SizedBox(
+                                width: 14,
+                              ),
+                              Text(
+                                'Weight ı Height',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(
+                                width: 50,
+                              ),
+                              Text(
+                                " ${controller.getValues['weight']} Kg ı ${controller.getValues['height']} Cm",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color_const.myButton),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            _ShowTargetweight();
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/img/weight-scale 1.png',
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 14,
+                              ),
+                              Text(
+                                'Target Weight',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(
+                                width: 140,
+                              ),
+                              Text(
+                                '15 Kg',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color_const.myButton),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                width: 95.w,
-                height: 35.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Container(
+                  width: 90.w,
+                  height: 35.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Icon(Icons.favorite_border_outlined,
-                                color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Share with Friends',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 20,
+                    ),
+                    child: ListView(
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(Icons.favorite_border_outlined,
                                   color: Colors.black),
-                            )
-                          ],
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Share with Friends',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Icon(Icons.thumb_up_alt_outlined,
-                                color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Rate us',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(Icons.thumb_up_alt_outlined,
                                   color: Colors.black),
-                            ),
-                          ],
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Rate us',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Icon(Icons.feedback_outlined, color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Feedback',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 4.h,
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Icon(Icons.security_outlined, color: Colors.black),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Privacy Policy',
-                              style: TextStyle(
-                                  fontSize: 2.5.h,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                          ],
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(Icons.feedback_outlined, color: Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Feedback',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                    ],
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(Icons.security_outlined, color: Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Privacy Policy',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -422,10 +429,11 @@ class _Settings_ScreenState extends State<Settings_Screen> {
         builder: (contex) {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
-                final controller = Provider.of<WorkoutController>(context,listen: false);
+                var controller = Provider.of<WorkoutController>(context);
+                controller.loadData();
                
             return Container(
-              height: 62.h,
+              height: 64.h,
               width: double.infinity,
               child: Column(children: [
                 SizedBox(
@@ -583,12 +591,12 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                   height: 2.h,
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () async{
                     Navigator.pop(context);
                      final weight =  currentValue1.toStringAsFixed(0);
                 final height =  currentValue.toStringAsFixed(0);
-                controller.setData('height', height);
-                controller.setData('weight',weight );
+                await controller.setData('height', height);
+                await controller.setData('weight',weight );
                  print(controller.getValues['height']);
                  print(controller.getValues['weight']);
                   },
@@ -923,7 +931,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
         builder: (contex) {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
-           
+           var addcontroll = Provider.of<WorkoutController>(context);
+                addcontroll.loadData();
             return Container(
               height: MediaQuery.of(context).size.height * 0.6,
               width: MediaQuery.of(context).size.width,
@@ -967,12 +976,24 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                             : Colors.transparent,
                                         width: 2)),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: CircleAvatar(
-                                    radius: 12,
-                                    backgroundColor: Colors.transparent,
-                                    child: Image.asset(
-                                      'assets/img/avatar1.png',
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Container(
+                                     width: 43.w,
+                                height: 25.h,
+                              
+                                    child: Column(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 60,
+                                          backgroundColor: Colors.transparent,
+                                          child: Image.asset(
+                                            'assets/img/avatar1.png',
+                                          ),
+                                        ),
+                                         Text('Male',
+                                  style: GoogleFonts.aDLaMDisplay(
+                                      fontSize: 24, color: Colors.black))
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -988,12 +1009,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                     ? Color_const.myButton
                                     : Colors.transparent,
                               )),
-                          Positioned(
-                              bottom: 10,
-                              left: 50,
-                              child: Text('Male',
-                                  style: GoogleFonts.aDLaMDisplay(
-                                      fontSize: 24, color: Colors.black))),
+                        
                         ],
                       ),
                       Stack(
@@ -1020,12 +1036,26 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                             : Colors.transparent,
                                         width: 2)),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(25.0),
-                                  child: CircleAvatar(
-                                    radius: 10,
-                                    backgroundColor: Colors.transparent,
-                                    child:
-                                        Image.asset('assets/img/avatar2.png'),
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Container(
+                                     width: 41.w,
+                                height: 25.h,
+                             
+                                    child: Column(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 50,
+                                          backgroundColor: Colors.transparent,
+                                          child:
+                                              Image.asset('assets/img/avatar2.png'),
+                                        ),
+                                        Text(
+                                'Female',
+                                style: GoogleFonts.aDLaMDisplay(
+                                    fontSize: 24, color: Colors.black),
+                              )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -1040,14 +1070,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                     ? Color_const.myButton
                                     : Colors.transparent,
                               )),
-                          Positioned(
-                              bottom: 10,
-                              left: 50,
-                              child: Text(
-                                'Female',
-                                style: GoogleFonts.aDLaMDisplay(
-                                    fontSize: 24, color: Colors.black),
-                              ))
+                          
                         ],
                       )
                     ],
@@ -1078,15 +1101,15 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                   height: 2.h,
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () async{
                     Navigator.pop(context);
                     final profile = profilepic;
-                    Provider.of<WorkoutController>(context,listen: false).setData('profile', profile);
-                    Provider.of<WorkoutController>(context,listen: false).setData('gender', gender);
+                    await addcontroll.setData('profile', profile);
+                    await addcontroll.setData('gender', gender);
                     print(gender);
                     print(profile);
-                    print(Provider.of<WorkoutController>(context,listen: false).getValues['profile']);
-                    print(Provider.of<WorkoutController>(context,listen: false).getValues['gender']);
+                    print(addcontroll.getValues['profile']);
+                    print(addcontroll.getValues['gender']);
                   },
                   child: Container(
                     width: 350,

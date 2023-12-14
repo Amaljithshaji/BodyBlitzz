@@ -42,6 +42,7 @@ class _WeightState extends State<Weight> {
   @override
   Widget build(BuildContext context) {
     var addcontroll = Provider.of<WorkoutController>(context);
+    addcontroll.loadData();
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -75,7 +76,7 @@ class _WeightState extends State<Weight> {
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(children: [
-        SizedBox(height: 4.h,),
+        SizedBox(height: 3.h,),
          Center(
               child: Container(
                   width: 350,
@@ -215,13 +216,13 @@ class _WeightState extends State<Weight> {
                 ),
                 
                 
-                     SizedBox(height: 10.h,),
+                     SizedBox(height: 7.h,),
                  InkWell(
-              onTap: (){
+              onTap: ()async{
                 final weight =  currentValue1.toStringAsFixed(0);
                 final height =  currentValue.toStringAsFixed(0);
-                addcontroll.setData('height', height);
-                addcontroll.setData('weight',weight );
+               await addcontroll.setData('height', height);
+              await  addcontroll.setData('weight',weight );
                  print(addcontroll.getValues['height']);
                  print(addcontroll.getValues['weight']);
 

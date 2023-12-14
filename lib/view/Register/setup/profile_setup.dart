@@ -25,7 +25,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   var profilepic;
   @override
   void initState() {
-    Provider.of<WorkoutController>(context,listen: false).loadData();
+  
     super.initState();
   }
   bool Male = false;
@@ -34,6 +34,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   @override
   Widget build(BuildContext context) {
     var addcontroll = Provider.of<WorkoutController>(context);
+    addcontroll.loadData();
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -182,11 +183,11 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         builder: (context) => LoginScreen(),
                       ));
                 },
-                child: InkWell(onTap: () {
+                child: InkWell(onTap: () async{
                   final gender = dropdownvalue;
                   final profile = profilepic;
-                  addcontroll.setData('gender', gender);
-                  addcontroll.setData('profile',profile);
+                 await addcontroll.setData('gender', gender);
+                 await addcontroll.setData('profile',profile);
                   print(addcontroll.getValues['profile']);
                   print(addcontroll.getValues['gender']);
                  
