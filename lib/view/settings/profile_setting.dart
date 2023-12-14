@@ -46,14 +46,17 @@ class _Profile_SettingState extends State<Profile_Setting> {
                       child: Text('Profile Picture',style: TextStyle(fontSize: 13),),
                     )),
                   ),
-                  Image.asset('assets/img/avatar1.png'),
+                  Container(
+                      width: 200,
+              height: 23.6.h,
+                    child: Image.asset('assets/img/avatar1.png')),
                 ],
               ),
             ),
           ),
         ),
         SizedBox(
-          height: 2.h,
+          height: 1.h,
         ),
         Text(
           'Update your Profile Picture',
@@ -63,7 +66,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
               color: Colors.grey.shade500),
         ),
         SizedBox(
-          height: 2.h,
+          height: 1.h,
         ),
         Container(
           width: double.infinity,
@@ -78,7 +81,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
               itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CircleAvatar(
-                      radius: 9.h,
+                      radius: 8.h,
                       backgroundColor: Color_const.myButton,
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
