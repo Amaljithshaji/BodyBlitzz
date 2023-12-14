@@ -5,6 +5,7 @@ import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../utills/constant/colors_constant/colors_const.dart';
@@ -21,9 +22,10 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   final date_controller = TextEditingController();
 
   var dropdownvalue;
+  var profilepic;
   @override
   void initState() {
-    
+    Provider.of<WorkoutController>(context,listen: false).loadData();
     super.initState();
   }
   bool Male = false;
@@ -31,6 +33,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    var addcontroll = Provider.of<WorkoutController>(context);
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -119,6 +122,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Male';
+                              profilepic = 'assets/img/avatar1.png';
                               Male = true;
                               Female = false;
                             });
@@ -143,6 +147,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Female';
+                              profilepic ='assets/img/avatar2.png';
                               Female = true;
                               Male = false;
                             });
@@ -178,6 +183,13 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                       ));
                 },
                 child: InkWell(onTap: () {
+                  final gender = dropdownvalue;
+                  final profile = profilepic;
+                  addcontroll.setData('gender', gender);
+                  addcontroll.setData('profile',profile);
+                  print(addcontroll.getValues['profile']);
+                  print(addcontroll.getValues['gender']);
+                 
                 
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Filtter_Screen(),));
                 },
