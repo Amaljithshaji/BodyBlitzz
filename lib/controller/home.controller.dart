@@ -15,7 +15,7 @@ Map<String, String> _getdata = {};
   Map<String, String> get getValues => _getdata;
 
   Future<void> setData(String key, String value) async {
-    final box = await Hive.openBox('user_values');
+    final box = await Hive.openBox('databox');
     await box.put(key, value);
     _getdata = Map<String, String>.fromEntries(box.toMap().entries.map((entry) =>
         MapEntry(entry.key.toString(), entry.value.toString())));
@@ -23,7 +23,7 @@ Map<String, String> _getdata = {};
   }
 
   Future<void> loadData() async {
-    final box = await Hive.openBox('user_values');
+    final box = await Hive.openBox('databox');
     _getdata = Map<String, String>.fromEntries(box.toMap().entries.map((entry) =>
         MapEntry(entry.key.toString(), entry.value.toString())));
     notifyListeners();
