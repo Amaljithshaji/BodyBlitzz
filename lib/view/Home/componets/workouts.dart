@@ -50,7 +50,7 @@ class Workouts extends StatelessWidget {
               height: 10.h,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.blue,
+                  color: Colors.transparent,
                   image: DecorationImage(image: AssetImage(images[index]),fit: BoxFit.fitHeight)
                   ),
                   child: Column(

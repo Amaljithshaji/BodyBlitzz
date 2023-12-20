@@ -34,7 +34,7 @@ class _Home_ScreenState extends State<Home_Screen> {
    } 
     return Scaffold(
       appBar: AppBar(
-        leading: SizedBox(),
+        leading: SizedBox(width: 1,),
         backgroundColor: Theme.of(context).colorScheme.background,
         title: Text(
               'WORKOUT',

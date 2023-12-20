@@ -1,7 +1,9 @@
+import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/view/Register/setup/GoalScreen.dart';
 import 'package:bodyblitz/view/Register/setup/start.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 
@@ -33,6 +35,8 @@ class _PushUpState extends State<PushUp> {
   }
   @override
   Widget build(BuildContext context) {
+    var addcontroll = Provider.of<WorkoutController>(context);
+    addcontroll.loadData();
     return Scaffold( appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -123,6 +127,8 @@ class _PushUpState extends State<PushUp> {
              SizedBox(height: 5.h,),
             InkWell(
               onTap: (){
+               addcontroll.setData('Rest', '20');
+               addcontroll.setData('Countdown', '15');
                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Weight(),) );
               },
               child: Container(

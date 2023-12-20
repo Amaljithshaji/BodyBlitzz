@@ -25,7 +25,9 @@ class _Rest_ScreenState extends State<Rest_Screen> {
   void initState() {
     super.initState();
     controller = Provider.of<WorkoutController>(context, listen: false);
-    _countdownDuration = Duration(seconds: 10); // Initial duration is 1 minute
+    String _rest = controller.getValues['Rest'].toString();
+    int _duration =int.parse(_rest);
+    _countdownDuration = Duration(seconds: _duration); // Initial duration is 1 minute
     _timerRunning = true;
     _startCountdown();
   }

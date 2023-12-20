@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../bottomNavigation/Bottomnavigator.dart';
+
 class Profile_Setting extends StatefulWidget {
   const Profile_Setting({super.key,required this.oldpro});
   final String oldpro;
@@ -36,7 +38,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
         leading: IconButton(onPressed: (){
            controller.setData('profile', widget.oldpro);
             print(controller.getValues['profile']);
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Settings_Screen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
         }, icon: Icon(Icons.arrow_back_ios_new)),
         centerTitle: true,
         title: Text(
@@ -135,7 +137,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
           onTap: (){
               controller.setData('profile', widget.oldpro);
              print(controller.getValues['profile']);
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Settings_Screen()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
           },
           child: Container(
             width: 250,
@@ -159,7 +161,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
         ),
         InkWell(
           onTap: (){
-           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Settings_Screen()));
+           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
           },
           child: Container(
             width: 350,
