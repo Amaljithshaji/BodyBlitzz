@@ -123,7 +123,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Male';
-                              profilepic = 'assets/img/avatar1.png';
+                              profilepic = 'assets/img/m5avatar.png';
                               Male = true;
                               Female = false;
                             });
@@ -148,7 +148,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Female';
-                              profilepic ='assets/img/avatar2.png';
+                              profilepic ='assets/img/f2avatar.png';
                               Female = true;
                               Male = false;
                             });

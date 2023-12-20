@@ -19,36 +19,31 @@ class Workout_Screen extends StatefulWidget {
   State<Workout_Screen> createState() => _Workout_ScreenState();
 }
 
-class _Workout_ScreenState extends State<Workout_Screen> {
+class _Workout_ScreenState extends State<Workout_Screen>  {
 
-  // @override
-  // void initState() {
-  //  Provider.of<WorkoutController>(context,).loadWorkouts(DataBase.Workoutitems1);
-  //   super.initState();
-  // }
+   @override
+  void initState() {
+    super.initState();
+
+    // Schedule the operation after the current build cycle is complete
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final controller = Provider.of<WorkoutController>(context, listen: false);
+      controller.loadWorkouts(widget.Workoutlist);
+    });
+  }
+
+
   
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<WorkoutController>(context);
-
-    // Load the workouts when this screen is built
-    controller.loadWorkouts(widget.Workoutlist);
-    //  final controller = Provider.of<WorkoutController>(context);
-  // final player = AudioPlayer();
-  // Future<void>  playAudioFromUrl() async {
-  //   await player.play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
-  // };
-    var workoutz = Provider.of<WorkoutController>(context).workouts;
-   // final img = Images_const();
+    final controller = Provider.of<WorkoutController>(context); 
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
         child: GestureDetector(
           onTap: (){
            Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Starter(),));
-        //  final player = AudioPlayer(); assets\audio\referee-whistle-blow-gymnasium-6320.mp3
-        //  player.play(AssetSource("assets/audio/065594_coach-whistle-88613.mp3"));
-       // playAudioFromUrl();
+        
           },
           child: Container(
             width: 300,
@@ -101,7 +96,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
               width: double.infinity,
               height: 50.h,
              
-              child: ListView.separated(itemCount: workoutz.length,
+              child: ListView.separated(itemCount: controller.workouts.length,
               separatorBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Divider(thickness: 2,color:Colors.grey.shade500 ,),
@@ -122,7 +117,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
                         width: 100,
                         height: 100,
                       //  color: Colors.green,
-                        child: Lottie.asset(workoutz[index].workoutDemo,fit: BoxFit.fill,),
+                        child: Lottie.asset(controller.workouts[index].workoutDemo,fit: BoxFit.fill,),
                       ),
                       SizedBox(width: 35,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +126,7 @@ class _Workout_ScreenState extends State<Workout_Screen> {
                         Container(
                           width: 200,
                        
-                          child: Text(workoutz[index].workoutName,style: GoogleFonts.aDLaMDisplay(fontSize: 16,))),
+                          child: Text(controller.workouts[index].workoutName,style: GoogleFonts.aDLaMDisplay(fontSize: 16,))),
                        if(controller.workouts[index].duration == 0) 
                         Text('${controller.workouts[index].count}X',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)) 
                        else

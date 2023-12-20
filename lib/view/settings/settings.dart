@@ -53,7 +53,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile_Setting()));
+                    MaterialPageRoute(builder: (context) => Profile_Setting(oldpro: controller.getValues['profile'].toString(),)));
               },
               child: Center(
                 child: Stack(
@@ -68,7 +68,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               shape: CircleBorder(),
                               color: Colors.white,
                               image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.fitHeight,
                                   image: AssetImage(controller.getValues['profile'].toString()))),
                         ),
                       ),
@@ -106,8 +106,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Container(
-                  width: 90.w,
-                  height: 45.h,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height* 0.4,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.primary,
@@ -116,167 +116,175 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     padding: const EdgeInsets.only(
                       left: 20,
                     ),
-                    child: ListView(
-                      physics: NeverScrollableScrollPhysics(),
+                    child: Row(
+                     
                       children: [
-                        InkWell(
-                          onTap: () {
-                            _Showgender();
-                          },
-                          child: Row(
+                        Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                             Icon(Icons.person, color: Colors.black),
+                           Icon(Icons.av_timer, color: Colors.black),
+                               Icon(Icons.forward_5, color: Colors.black),
+                             Icon(Icons.monitor_weight_outlined,color: Colors.black),
+                             Icon(Icons.monitor_weight_outlined,color: Colors.black)
+                             
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3, left: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                            // physics: NeverScrollableScrollPhysics(),
                             children: [
-                              Icon(Icons.person, color: Colors.black),
-                              SizedBox(
-                                width: 10,
+                              InkWell(
+                                onTap: () {
+                                  _Showgender();
+                                },
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                   
+                                    Text(
+                                      'Gender',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.black),
+                                    )
+                                  ],
+                                ),
                               ),
-                              Text(
-                                'Gender',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black),
-                              )
+                              
+                              InkWell(
+                                onTap: () {
+                                  _showCustomDialogRest(context);
+                                },
+                                child: Container(
+                                  
+                                  width: MediaQuery.of(context).size.width *0.7,
+                                  child: Row(
+                                  
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                     
+                                      Text(
+                                        'Training Rest',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black),
+                                      ),
+                                     
+                                      Text(
+                                        '30 sec',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color_const.myButton),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              
+                              InkWell(
+                                onTap: () {
+                                  _showCustomDialog(context);
+                                },
+                                child: Container(
+                                   
+                                  width: MediaQuery.of(context).size.width *0.7,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                     
+                                      Text(
+                                        'Countdown Time',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black),
+                                      ),
+                                      
+                                      Text(
+                                        '30 sec',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color_const.myButton),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                             
+                              InkWell(
+                                onTap: () {
+                                  _ShowWeight();
+                                },
+                                child: Container(
+                                   
+                                  width: MediaQuery.of(context).size.width *0.7,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      
+                                      Text(
+                                        'Weight ı Height',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black),
+                                      ),
+                                      
+                                      Text(
+                                        " ${controller.getValues['weight']} Kg ı ${controller.getValues['height']} Cm",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color_const.myButton),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            
+                              InkWell(
+                                onTap: () {
+                                  _ShowTargetweight();
+                                },
+                                child: Container(
+                                   
+                                  width: MediaQuery.of(context).size.width *0.7,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      
+                                      Text(
+                                        'Target Weight',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black),
+                                      ),
+                                      
+                                      Text(
+                                        '15 Kg',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color_const.myButton),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                             
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _showCustomDialogRest(context);
-                          },
-                          child: Row(
-                            children: [
-                              Icon(Icons.forward_5, color: Colors.black),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Training Rest',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 140,
-                              ),
-                              Text(
-                                '30 sec',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color_const.myButton),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _showCustomDialog(context);
-                          },
-                          child: Row(
-                            children: [
-                              Icon(Icons.av_timer, color: Colors.black),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Countdown Time',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 102,
-                              ),
-                              Text(
-                                '30 sec',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color_const.myButton),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _ShowWeight();
-                          },
-                          child: Row(
-                            children: [
-                              Image.asset('assets/img/weight-scale 1.png',
-                                  color: Colors.black),
-                              SizedBox(
-                                width: 14,
-                              ),
-                              Text(
-                                'Weight ı Height',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              Text(
-                                " ${controller.getValues['weight']} Kg ı ${controller.getValues['height']} Cm",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color_const.myButton),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _ShowTargetweight();
-                          },
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/img/weight-scale 1.png',
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                                width: 14,
-                              ),
-                              Text(
-                                'Target Weight',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 140,
-                              ),
-                              Text(
-                                '15 Kg',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color_const.myButton),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 4.h,
                         ),
                       ],
                     ),
@@ -313,7 +321,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               Text(
                                 'Share with Friends',
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black),
                               )
@@ -335,7 +343,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               Text(
                                 'Rate us',
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black),
                               ),
@@ -356,7 +364,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               Text(
                                 'Feedback',
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black),
                               ),
@@ -377,7 +385,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                               Text(
                                 'Privacy Policy',
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black),
                               ),
@@ -961,7 +969,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   isSlectedM = true;
                                   isSlectedF = false;
                                   gender = "Male";
-                                    profilepic = 'assets/img/avatar1.png';
+                                    profilepic = 'assets/img/m5avatar.png';
                                 });
                               },
                               child: Container(
@@ -984,10 +992,10 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                     child: Column(
                                       children: [
                                         CircleAvatar(
-                                          radius: 60,
+                                          radius: 80,
                                           backgroundColor: Colors.transparent,
                                           child: Image.asset(
-                                            'assets/img/avatar1.png',
+                                            'assets/img/m5avatar.png',
                                           ),
                                         ),
                                          Text('Male',
@@ -1021,7 +1029,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   isSlectedM = false;
                                   isSlectedF = true;
                                   gender = "Female";
-                                   profilepic ='assets/img/avatar2.png';
+                                   profilepic ='assets/img/f2avatar.png';
                                 });
                               },
                               child: Container(
@@ -1044,10 +1052,11 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                     child: Column(
                                       children: [
                                         CircleAvatar(
-                                          radius: 50,
+                                          radius: 80,
                                           backgroundColor: Colors.transparent,
+                                          
                                           child:
-                                              Image.asset('assets/img/avatar2.png'),
+                                              Image.asset('assets/img/f2avatar.png',fit: BoxFit.cover,),
                                         ),
                                         Text(
                                 'Female',

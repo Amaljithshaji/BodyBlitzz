@@ -44,7 +44,7 @@ class Fastworkout extends StatelessWidget {
               ),
               child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child: Image.asset('assets/img/p4.jpg',fit: BoxFit.fill,),
+                            child: Image.asset('assets/img/advanced abs.jpg',fit: BoxFit.fill,),
                           ),
               
             ),

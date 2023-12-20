@@ -42,7 +42,7 @@ class Stretch extends StatelessWidget {
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child: Image.asset('assets/img/p2.jpg'),
+                            child: Image.asset('assets/img/advanced abs.jpg'),
                           ),
                         ),
                         Container(
