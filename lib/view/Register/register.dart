@@ -1,5 +1,5 @@
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
-import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
+//import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/login.dart';
 import 'package:bodyblitz/view/Register/setup/profile_setup.dart';
 import 'package:flutter/material.dart';

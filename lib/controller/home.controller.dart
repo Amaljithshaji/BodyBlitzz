@@ -8,22 +8,26 @@ class WorkoutController extends ChangeNotifier {
   List<Workout> _workouts = [];
   int workout_count = 0;
   List<Workout> get workouts => _workouts;
+  int training_rest = 5;
+  int countdown_time = 5;
 //  late Box<Profilemodel> _databox;
 //  late List<Profilemodel> _datalist = [];
- Map<String, String> _getdata = {};
+Map<String, String> _getdata = {};
 
   Map<String, String> get getValues => _getdata;
 
-  void setData(String key, String value) {
-    final box = Hive.box('databox');
-    box.put(key, value);
-    _getdata = Map<String, String>.fromEntries(box.toMap().entries.map((entry) => MapEntry(entry.key.toString(), entry.value.toString())));
+  Future<void> setData(String key, String value) async {
+    final box = await Hive.openBox('databox');
+    await box.put(key, value);
+    _getdata = Map<String, String>.fromEntries(box.toMap().entries.map((entry) =>
+        MapEntry(entry.key.toString(), entry.value.toString())));
     notifyListeners();
   }
 
   Future<void> loadData() async {
-    final box = Hive.box('databox');
-    _getdata = Map<String, String>.fromEntries(box.toMap().entries.map((entry) => MapEntry(entry.key.toString(), entry.value.toString())));
+    final box = await Hive.openBox('databox');
+    _getdata = Map<String, String>.fromEntries(box.toMap().entries.map((entry) =>
+        MapEntry(entry.key.toString(), entry.value.toString())));
     notifyListeners();
   }
 
@@ -34,7 +38,6 @@ class WorkoutController extends ChangeNotifier {
       workoutDemo: map['workoutDemo'],
       count: map['count'],
     )).toList();
-    
     notifyListeners();
   }
 
@@ -50,36 +53,38 @@ class WorkoutController extends ChangeNotifier {
     workout_count = 0;
     notifyListeners();
   }
+  void addrest(){
+   if (training_rest < 180) {
+      training_rest++;
+      notifyListeners();
+    }
+}
+  void subrest(){
+ if (training_rest > 5) {
+      training_rest--;
+      notifyListeners();
+    }
+}
+  void addcountdown(){
+  if (countdown_time < 15) {
+      countdown_time++;
+      notifyListeners();
+    }
+}
+  void subcountdown(){
+ if (countdown_time > 5) {
+      countdown_time--;
+      notifyListeners();
+    }
+}
+  
  
   Future<void>  playAudioFromUrl() async {
     await AudioPlayer().play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));
     
   }
-// WorkoutController(){
-//   _init();
-// }
-  
-//   Future<void> _init() async{
-//     _databox = await Hive.openBox<Profilemodel>('dataBox');
-//     _datalist = _databox.values.toList();
-//     notifyListeners();
-//   }
 
-//   void adddata({required String gender,required int height,required int  Weight,required int BIM ,}){
-//     final profilemodel = Profilemodel(gender: gender, height: height, Weight: Weight, BIM:BIM ,);
-//     _databox.add(profilemodel);
-//     _datalist.add(profilemodel);
-//     print(_datalist[8].profile);
-//     notifyListeners();
-//   }
-  
-//   addgender( dynamic _gender){
 
-// box.add(Profilemodel(gender: _gender));
-// print(box.get(_gender));
-// notifyListeners();
-
-//   }
 
   
 

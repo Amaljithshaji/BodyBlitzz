@@ -1,4 +1,5 @@
-import 'package:bodyblitz/view/Register/setup/start.dart';
+import 'package:bodyblitz/view/Register/setup/Target.dart';
+//import 'package:bodyblitz/view/Register/setup/start.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,7 @@ class _WeightState extends State<Weight> {
   @override
   Widget build(BuildContext context) {
     var addcontroll = Provider.of<WorkoutController>(context);
+    addcontroll.loadData();
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -75,7 +77,7 @@ class _WeightState extends State<Weight> {
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(children: [
-        SizedBox(height: 4.h,),
+        SizedBox(height: 3.h,),
          Center(
               child: Container(
                   width: 350,
@@ -215,17 +217,17 @@ class _WeightState extends State<Weight> {
                 ),
                 
                 
-                     SizedBox(height: 10.h,),
+                     SizedBox(height: 7.h,),
                  InkWell(
-              onTap: (){
+              onTap: ()async{
                 final weight =  currentValue1.toStringAsFixed(0);
                 final height =  currentValue.toStringAsFixed(0);
-                addcontroll.setData('height', height);
-                addcontroll.setData('weight',weight );
+               await addcontroll.setData('height', height);
+              await  addcontroll.setData('weight',weight );
                  print(addcontroll.getValues['height']);
                  print(addcontroll.getValues['weight']);
 
-               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Start_Screen(),) );
+               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Target(),) );
               },
               child: Container(
                width: 75.w,

@@ -5,10 +5,10 @@ import '../../../utills/constant/colors_constant/colors_const.dart';
 
 class Workout_Timer extends StatefulWidget {
   const Workout_Timer({
-    super.key,
+    super.key,required this.time
     
   }); 
-
+   final int time;
  
 
   @override
@@ -16,10 +16,12 @@ class Workout_Timer extends StatefulWidget {
 }
 
 class _Workout_TimerState extends State<Workout_Timer> {
-  final int _duration = 15;
-  final CountDownController _controller = CountDownController();
+ 
+  
   @override
   Widget build(BuildContext context) {
+    final int _duration = widget.time;
+  final CountDownController _controller = CountDownController();
     return Center(
       child: CircularCountDownTimer(
         // Countdown duration in Seconds.

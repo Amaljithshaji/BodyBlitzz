@@ -1,10 +1,10 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
+//mport 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/login.dart';
 import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
+//import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -25,7 +25,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   var profilepic;
   @override
   void initState() {
-    Provider.of<WorkoutController>(context,listen: false).loadData();
+  
     super.initState();
   }
   bool Male = false;
@@ -34,6 +34,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
   @override
   Widget build(BuildContext context) {
     var addcontroll = Provider.of<WorkoutController>(context);
+    addcontroll.loadData();
     return Scaffold(
        appBar: AppBar(
         elevation: 0,
@@ -122,7 +123,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Male';
-                              profilepic = 'assets/img/avatar1.png';
+                              profilepic = 'assets/img/m5avatar.png';
                               Male = true;
                               Female = false;
                             });
@@ -147,7 +148,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                           onTap: (){
                             setState(() {
                               dropdownvalue = 'Female';
-                              profilepic ='assets/img/avatar2.png';
+                              profilepic ='assets/img/f2avatar.png';
                               Female = true;
                               Male = false;
                             });
@@ -182,11 +183,11 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                         builder: (context) => LoginScreen(),
                       ));
                 },
-                child: InkWell(onTap: () {
+                child: InkWell(onTap: () async{
                   final gender = dropdownvalue;
                   final profile = profilepic;
-                  addcontroll.setData('gender', gender);
-                  addcontroll.setData('profile',profile);
+                 await addcontroll.setData('gender', gender);
+                 await addcontroll.setData('profile',profile);
                   print(addcontroll.getValues['profile']);
                   print(addcontroll.getValues['gender']);
                  
