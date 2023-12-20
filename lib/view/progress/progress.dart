@@ -1,5 +1,5 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/view/progress/bmi.dart';
+//import 'package:bodyblitz/view/progress/bmi.dart';
 import 'package:circular_seek_bar/circular_seek_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';

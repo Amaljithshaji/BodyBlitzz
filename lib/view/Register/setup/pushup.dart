@@ -1,6 +1,6 @@
 import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/view/Register/setup/GoalScreen.dart';
-import 'package:bodyblitz/view/Register/setup/start.dart';
+//import 'package:bodyblitz/view/Register/setup/start.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

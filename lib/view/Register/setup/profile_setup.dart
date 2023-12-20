@@ -1,10 +1,10 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
+//mport 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/login.dart';
 import 'package:bodyblitz/view/Register/setup/Filtter_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
+//import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

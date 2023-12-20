@@ -1,9 +1,10 @@
 import 'package:bodyblitz/controller/home.controller.dart';
-import 'package:bodyblitz/models/models.dart';
+//import 'package:bodyblitz/models/models.dart';
 // import 'package:bodyblitz/model/database.dart';
 import 'package:bodyblitz/utills/constant/Themedata/Light_theme.dart';
 import 'package:bodyblitz/utills/constant/Themedata/dark_theme.dart';
-import 'package:bodyblitz/view/Register/login.dart';
+//import 'package:bodyblitz/view/Register/login.dart';
+import 'package:bodyblitz/view/Splash/Splash.dart';
 // import 'package:bodyblitz/view/Register/register.dart';
 //import 'package:bodyblitz/view/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class Myapp extends StatelessWidget {
       child: Sizer(
           builder: (context, orientation, deviceType) {
         return  MaterialApp(
-          home: LoginScreen(),
+          home: Splash(),
           theme: lightmode,
           darkTheme: darkmode,
           debugShowCheckedModeBanner: false,

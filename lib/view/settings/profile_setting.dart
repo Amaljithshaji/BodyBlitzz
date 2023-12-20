@@ -1,7 +1,7 @@
 import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/utills/Database/avatardata.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
-import 'package:bodyblitz/view/settings/settings.dart';
+//import 'package:bodyblitz/view/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

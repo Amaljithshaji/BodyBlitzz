@@ -1,5 +1,5 @@
 import 'package:bodyblitz/view/Register/setup/Target.dart';
-import 'package:bodyblitz/view/Register/setup/start.dart';
+//import 'package:bodyblitz/view/Register/setup/start.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
