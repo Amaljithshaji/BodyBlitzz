@@ -1,20 +1,24 @@
 
 import 'package:bodyblitz/models/database.dart';
+import 'package:bodyblitz/utills/Database/FImageDatabase.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import '../../Workout/workout.dart';
 
 class Workouts extends StatelessWidget {
   const Workouts({
-    super.key,required this.Level,required this.length,required this.workoutlevel
+    super.key,required this.Level,required this.length,required this.workoutlevel,required this.images
   });
   final String Level;
   
   final List<String> workoutlevel;
+  final List<String> images;
   final int length;
   @override
   Widget build(BuildContext context) {
+   
     
 
     return Container(
@@ -46,8 +50,8 @@ class Workouts extends StatelessWidget {
               height: 10.h,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.blue,
-                  image: DecorationImage(image: AssetImage('assets/img/six-abs.jpg',),fit: BoxFit.fitHeight)
+                  color: Colors.transparent,
+                  image: DecorationImage(image: AssetImage(images[index]),fit: BoxFit.fitHeight)
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -59,6 +63,11 @@ class Workouts extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // child: ClipRRect(
+                  //    borderRadius: BorderRadius.circular(10),
+                  //    child: BlurHash(hash: 'LCF-Ha039v=^01~9D+NH?FR+e.R*',
+                  //    image: 'assets/img/six-abs.jpg',),
+                  // ),
                  
             ),
           ),

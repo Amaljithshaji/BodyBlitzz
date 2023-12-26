@@ -1,20 +1,45 @@
+import 'package:bodyblitz/controller/home.controller.dart';
+import 'package:bodyblitz/utills/Database/avatardata.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
+//import 'package:bodyblitz/view/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../bottomNavigation/Bottomnavigator.dart';
+
 class Profile_Setting extends StatefulWidget {
-  const Profile_Setting({super.key});
+  const Profile_Setting({super.key,required this.oldpro});
+  final String oldpro;
 
   @override
   State<Profile_Setting> createState() => _Profile_SettingState();
 }
 
 class _Profile_SettingState extends State<Profile_Setting> {
+  var imagedata;
+  var newprofile;
+  
+
   @override
   Widget build(BuildContext context) {
+    var controller = Provider.of<WorkoutController>(context);
+    controller.loadData();
+    if(controller.getValues['gender'] == 'Male'){
+     imagedata = AvatarDatabase().maledata;
+   }else {
+    imagedata = AvatarDatabase().femaledata;
+   }
+   var profile = controller.getValues['profile'].toString();
+   
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(onPressed: (){
+           controller.setData('profile', widget.oldpro);
+            print(controller.getValues['profile']);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+        }, icon: Icon(Icons.arrow_back_ios_new)),
         centerTitle: true,
         title: Text(
           'Profile Setting',
@@ -49,7 +74,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
                   Container(
                       width: 200,
               height: 23.6.h,
-                    child: Image.asset('assets/img/avatar1.png')),
+                    child: Image.asset(profile)),
                 ],
               ),
             ),
@@ -80,54 +105,77 @@ class _Profile_SettingState extends State<Profile_Setting> {
               itemCount: 6,
               itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 8.h,
-                      backgroundColor: Color_const.myButton,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Container(
-                          decoration: ShapeDecoration(
-                              shape: CircleBorder(),
-                              color: Colors.grey.shade400,
-                              image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: AssetImage('assets/img/avatar1.png'))),
+                    child: InkWell(
+                      onTap: (){
+                          controller.setData('profile', imagedata[index]);
+            print(controller.getValues['profile']);
+                      // setState(() {
+                      //   profile = imagedata[index];
+                      //    newprofile = imagedata[index];
+                      //   print(imagedata[index]);
+                      // });
+                      },
+                      child: CircleAvatar(
+                        radius: 8.h,
+                        backgroundColor: Color_const.myButton,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Container(
+                            decoration: ShapeDecoration(
+                                shape: CircleBorder(),
+                                color: Colors.grey.shade400,
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: AssetImage(imagedata[index]))),
+                          ),
                         ),
                       ),
                     ),
                   )),
         ),
-        Container(
-          width: 250,
-          height: 6.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.transparent,
+        InkWell(
+          onTap: (){
+              controller.setData('profile', widget.oldpro);
+             print(controller.getValues['profile']);
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+          },
+          child: Container(
+            width: 250,
+            height: 6.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.transparent,
+            ),
+            child: Center(
+                child: Text(
+              'Cancel',
+              style: GoogleFonts.aDLaMDisplay(
+                  fontSize: 28,
+                  
+                  fontWeight: FontWeight.normal),
+            )),
           ),
-          child: Center(
-              child: Text(
-            'Cancel',
-            style: GoogleFonts.aDLaMDisplay(
-                fontSize: 28,
-                
-                fontWeight: FontWeight.normal),
-          )),
         ),
         SizedBox(
           height: 2.h,
         ),
-        Container(
-          width: 350,
-          height: 6.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: Color_const.myButton,
+        InkWell(
+          onTap: (){
+           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+          },
+          child: Container(
+            width: 350,
+            height: 6.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              color: Color_const.myButton,
+            ),
+            child: Center(
+                child: Text(
+              'Save Changes',
+              style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),
+            )),
           ),
-          child: Center(
-              child: Text(
-            'Save Changes',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),
-          )),
         )
       ]),
     );

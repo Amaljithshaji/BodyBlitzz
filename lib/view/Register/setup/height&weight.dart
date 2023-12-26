@@ -1,4 +1,5 @@
-import 'package:bodyblitz/view/Register/setup/start.dart';
+import 'package:bodyblitz/view/Register/setup/Target.dart';
+//import 'package:bodyblitz/view/Register/setup/start.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -226,7 +227,7 @@ class _WeightState extends State<Weight> {
                  print(addcontroll.getValues['height']);
                  print(addcontroll.getValues['weight']);
 
-               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Start_Screen(),) );
+               Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Target(),) );
               },
               child: Container(
                width: 75.w,

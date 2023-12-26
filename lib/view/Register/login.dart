@@ -1,6 +1,6 @@
-import 'package:bodyblitz/utills/constant/Themedata/Light_theme.dart';
-import 'package:bodyblitz/utills/constant/Themedata/dark_theme.dart';
-import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
+// import 'package:bodyblitz/utills/constant/Themedata/Light_theme.dart';
+// import 'package:bodyblitz/utills/constant/Themedata/dark_theme.dart';
+// import 'package:bodyblitz/view/Register/Componets/reg_field.dart';
 import 'package:bodyblitz/view/Register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

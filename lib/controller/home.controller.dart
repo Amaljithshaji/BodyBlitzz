@@ -8,6 +8,8 @@ class WorkoutController extends ChangeNotifier {
   List<Workout> _workouts = [];
   int workout_count = 0;
   List<Workout> get workouts => _workouts;
+  int training_rest = 5;
+  int countdown_time = 5;
 //  late Box<Profilemodel> _databox;
 //  late List<Profilemodel> _datalist = [];
 Map<String, String> _getdata = {};
@@ -51,6 +53,31 @@ Map<String, String> _getdata = {};
     workout_count = 0;
     notifyListeners();
   }
+  void addrest(){
+   if (training_rest < 180) {
+      training_rest++;
+      notifyListeners();
+    }
+}
+  void subrest(){
+ if (training_rest > 5) {
+      training_rest--;
+      notifyListeners();
+    }
+}
+  void addcountdown(){
+  if (countdown_time < 15) {
+      countdown_time++;
+      notifyListeners();
+    }
+}
+  void subcountdown(){
+ if (countdown_time > 5) {
+      countdown_time--;
+      notifyListeners();
+    }
+}
+  
  
   Future<void>  playAudioFromUrl() async {
     await AudioPlayer().play(AssetSource("audio/referee-whistle-blow-gymnasium-6320.mp3"));

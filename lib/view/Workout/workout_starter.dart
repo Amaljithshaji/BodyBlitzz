@@ -22,7 +22,9 @@ class _Workout_StarterState extends State<Workout_Starter> {
   @override
   void initState() {
    controller =Provider.of<WorkoutController>(context, listen: false);
-    Timer(Duration(seconds: 15), () {
+   String _duration =controller.getValues['Countdown'].toString();
+   int duration =int.parse(_duration);
+    Timer(Duration(seconds: duration), () {
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -39,6 +41,8 @@ class _Workout_StarterState extends State<Workout_Starter> {
   Widget build(BuildContext context) {
     final controller = Provider.of<WorkoutController>(context);
       var workoutz = Provider.of<WorkoutController>(context).workouts;
+      String _duration =controller.getValues['Countdown'].toString();
+   int duration =int.parse(_duration);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -75,7 +79,7 @@ class _Workout_StarterState extends State<Workout_Starter> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 140, right: 30),
-                  child: Workout_Timer(),
+                  child: Workout_Timer(time: duration,),
                 ),
                 IconButton(
                   onPressed: () {

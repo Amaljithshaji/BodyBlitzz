@@ -37,7 +37,7 @@ class Forbeginners extends StatelessWidget {
           Container(height: 30.h,
             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.asset('assets/img/p5.jpg',fit: BoxFit.cover,),
+                              child: Image.asset('assets/img/advanced abs.jpg',fit: BoxFit.cover,),
                             ),
           ),
           Positioned(bottom: 25,left: 10,
