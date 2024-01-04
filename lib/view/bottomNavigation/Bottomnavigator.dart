@@ -34,7 +34,7 @@ class _Bottom_NaviagatorState extends State<Bottom_Naviagator> with TickerProvid
       extendBody: true,
       body: _pages[index],
       bottomNavigationBar:Container(
-        width: 300,
+        width: MediaQuery.of(context).size.width * 0.9,
         height: 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30)

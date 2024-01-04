@@ -38,7 +38,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
         leading: IconButton(onPressed: (){
            controller.setData('profile', widget.oldpro);
             print(controller.getValues['profile']);
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+          Navigator.pop(context);
         }, icon: Icon(Icons.arrow_back_ios_new)),
         centerTitle: true,
         title: Text(
@@ -137,7 +137,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
           onTap: (){
               controller.setData('profile', widget.oldpro);
              print(controller.getValues['profile']);
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+            Navigator.pop(context);
           },
           child: Container(
             width: 250,
@@ -161,7 +161,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
         ),
         InkWell(
           onTap: (){
-           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+           Navigator.pop(context);
           },
           child: Container(
             width: 350,

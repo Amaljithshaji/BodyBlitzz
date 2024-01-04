@@ -70,8 +70,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                         showYears: false,
                         shrink: false,
                         initialDate: DateTime.now(),
-                        firstDate: DateTime.now().subtract(const Duration(days: 0)),
-                        lastDate: DateTime.now().add(const Duration(days: 7)),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime.now().add( Duration(days: 8)),
                         onDateSelected: (date) =>
                             setState(() => _selectedDate = date),
                         leftMargin: 20,

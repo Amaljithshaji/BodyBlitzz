@@ -32,10 +32,15 @@ class _Workout_pageState extends State<Workout_page> {
   late Duration _initialDuration;
   late bool _timerRunning;
   late WorkoutController controller;
+  late DateTime startTime;
+  late DateTime stopTime;
 
   @override
   void initState() {
     super.initState();
+    setState(() {
+        startTime = DateTime.now();
+    });
     playAudioFromUrl();
     Timer(Duration(seconds: 2), () { 
       AudioPlayer().stop();
@@ -59,7 +64,17 @@ Future<void>  playAudioFromUrl() async {
         if (_countdownDuration.inSeconds == 0) {
           timer.cancel();
           controller.workout_count == controller.workouts.length - 1
-              ? {_navigateToNextworkdone(), controller.resetCounter()}
+              ? {_navigateToNextworkdone(), controller.resetCounter(),
+               setState(() {
+                           // Set the stop time when the button is pressed
+                  stopTime = DateTime.now();
+
+                  // Calculate the duration
+                  Duration duration = stopTime.difference(startTime);
+
+                  // Print the duration
+                  print('Time Duration: ${duration.inSeconds} seconds');
+                        })}
               : _navigateToNextPage();
         } else if (_timerRunning) {
           setState(() {
@@ -123,7 +138,8 @@ Future<void>  playAudioFromUrl() async {
         backgroundColor: Colors.transparent,
         leading: IconButton(
             onPressed: () {
-              _showQuitmodel();
+              // _showQuitmodel();
+              Navigator.pop(context);
               _pauseCountdown();
             },
             icon: Icon(
@@ -174,7 +190,17 @@ Future<void>  playAudioFromUrl() async {
             GestureDetector(
               onTap: () {
                 controller.workout_count == controller.workouts.length - 1
-                    ? {_navigateToNextworkdone(), controller.resetCounter()}
+                    ? {_navigateToNextworkdone(), controller.resetCounter(),
+                     setState(() {
+                           // Set the stop time when the button is pressed
+                  stopTime = DateTime.now();
+
+                  // Calculate the duration
+                  Duration duration = stopTime.difference(startTime);
+
+                  // Print the duration
+                  print('Time Duration: ${duration.inSeconds} seconds');
+                        })}
                     : _navigateToNextPage();
               },
               child: Container(
@@ -235,71 +261,82 @@ Future<void>  playAudioFromUrl() async {
               ),
             ),
           SizedBox(
-            height: 10,
+            height: MediaQuery.of(context).size.height * 0.02,
           ),
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  controller.workout_count == 0
-                      ? null
-                      : Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Rest_Screen(
-                              counter: 1,
-                            ),
-                          ));
-                  controller.workout_count == 0 ? null : _pauseCountdown();
-                },
-                child: Container(
-                    width: 200,
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Icon(
-                          Icons.skip_previous_outlined,
-                          size: 35,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        Text('Previous', style: TextStyle(fontSize: 20))
-                      ],
-                    )),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  _stopcountdown();
-                  _pauseCountdown();
-                  controller.workout_count == controller.workouts.length - 1
-                      ? {_navigateToNextworkdone(), controller.resetCounter()}
-                      : _navigateToNextPage();
-                },
-                child: Container(
-                    width: 200,
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text('Skip', style: TextStyle(fontSize: 20)),
-                        Icon(
-                          Icons.skip_next_outlined,
-                          size: 35,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        )
-                      ],
-                    )),
-              ),
-            ],
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    controller.workout_count == 0
+                        ? null
+                        : Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Rest_Screen(
+                                counter: 1,
+                              ),
+                            ));
+                    controller.workout_count == 0 ? null : _pauseCountdown();
+                  },
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: 80,
+                    
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+             
+                        children: [
+                         
+                          Icon(
+                            Icons.skip_previous_outlined,
+                            size: 35,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          Text('Prev', style: TextStyle(fontSize: 20))
+                        ],
+                      )),
+                ),
+               
+                GestureDetector(
+                  onTap: () {
+                    _stopcountdown();
+                    _pauseCountdown();
+                    controller.workout_count == controller.workouts.length - 1
+                        ? {_navigateToNextworkdone(), controller.resetCounter(),
+                        setState(() {
+                           // Set the stop time when the button is pressed
+                  stopTime = DateTime.now();
+
+                  // Calculate the duration
+                  Duration duration = stopTime.difference(startTime);
+
+                  // Print the duration
+                  print('Time Duration: ${duration.inSeconds} seconds');
+                        })}
+                        : _navigateToNextPage();
+                  },
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: 80,
+                       
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('Skip', style: TextStyle(fontSize: 20)),
+                          Icon(
+                            Icons.skip_next_outlined,
+                            size: 35,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                         
+                        ],
+                      )),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -454,11 +491,7 @@ Future<void>  playAudioFromUrl() async {
               GestureDetector(
                 onTap: () {
                   controller.resetCounter();
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Workout_Screen(Workoutlist: DataBase.Workoutitems1,),
-                      ));
+                  Navigator.pop(context);
                 },
                 child: Container(
                   width: 270,

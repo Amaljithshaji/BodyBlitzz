@@ -13,7 +13,9 @@ import '../bottomNavigation/Bottomnavigator.dart';
 
 
 class Workout_Screen extends StatefulWidget {
-  const Workout_Screen({super.key, required this.Workoutlist});
+  const Workout_Screen({super.key, required this.Workoutlist, required this.barimage,required this.title});
+  final String barimage;
+  final String title;
   final List<Map<String, dynamic>> Workoutlist;
   @override
   State<Workout_Screen> createState() => _Workout_ScreenState();
@@ -63,7 +65,8 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
             //title:  Text('ABS BEGINNER',style: GoogleFonts.aDLaMDisplay(fontSize: 16),),
             backgroundColor: Theme.of(context).colorScheme.background,
             leading: IconButton(onPressed: () {
-              _showQuitmodel();
+              // _showQuitmodel();
+              Navigator.pop(context);
             }, icon: Icon(Icons.arrow_back,color: Colors.white,)),
             pinned: false,
             primary: true,
@@ -72,8 +75,8 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
             elevation: 0,
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset('assets/img/six-abs.jpg',fit: BoxFit.fill,),
-              title: Text('ABS BEGINNER',style: GoogleFonts.aDLaMDisplay(fontSize: 16),),
+              background: Image.asset(widget.barimage,fit: BoxFit.fill,),
+              title: Text(widget.title,style: GoogleFonts.aDLaMDisplay(fontSize: 16,color: Colors.white),),
               titlePadding: EdgeInsets.only(left: 20,bottom: 30),
               collapseMode: CollapseMode.parallax,
             ),

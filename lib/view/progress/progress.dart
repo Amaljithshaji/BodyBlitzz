@@ -184,7 +184,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                 ),
                               ),
                               Text(
-                                '239 KG',
+                                '${controller.getValues['Target'].toString()} kg',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.normal,
@@ -227,11 +227,13 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                   child: Center(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 174,
+                               width: MediaQuery.of(context).size.width* 0.4,
                               height: 20.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -279,7 +281,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                               height: 5,
                             ),
                             Container(
-                              width: 174,
+                              width: MediaQuery.of(context).size.width* 0.4,
                               height: 15.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -291,6 +293,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'WORKOUT',
@@ -316,7 +319,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                       ],
                                     ),
                                     Container(
-                                        width: 60,
+                                        width: 50,
                                         height: 80,
                                         child: Image.asset(
                                           'assets/img/workout.png',
@@ -328,13 +331,12 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
+                       
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 174,
+                               width: MediaQuery.of(context).size.width* 0.4,
                               height: 15.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -373,7 +375,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                       ],
                                     ),
                                     Container(
-                                        width: 60,
+                                        width: 50,
                                         height: 130,
                                         child: Image.asset(
                                           'assets/img/Kcal.png',
@@ -388,7 +390,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                               height: 5,
                             ),
                             Container(
-                              width: 174,
+                               width: MediaQuery.of(context).size.width* 0.4,
                               height: 20.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
