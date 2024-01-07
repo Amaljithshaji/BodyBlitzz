@@ -25,6 +25,7 @@ class _Workout_StarterState extends State<Workout_Starter> {
    String _duration =controller.getValues['Countdown'].toString();
    int duration =int.parse(_duration);
     Timer(Duration(seconds: duration), () {
+      controller.StartTime();
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -48,7 +49,9 @@ class _Workout_StarterState extends State<Workout_Starter> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.arrow_back,
               color: Theme.of(context).colorScheme.primary,
@@ -83,7 +86,7 @@ class _Workout_StarterState extends State<Workout_Starter> {
                 ),
                 IconButton(
                   onPressed: () {
-                   
+                   controller.StartTime();
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

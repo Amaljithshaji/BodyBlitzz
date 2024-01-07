@@ -10,10 +10,10 @@ import 'package:sizer/sizer.dart';
 import '../../controller/home.controller.dart';
 import '../../utills/constant/colors_constant/colors_const.dart';
 import '../progress/progress.dart';
-
+Duration? duration1;  
 class Work_done extends StatefulWidget {
   const Work_done({super.key});
-
+ 
   @override
   State<Work_done> createState() => _Work_doneState();
 }
@@ -23,7 +23,12 @@ class _Work_doneState extends State<Work_done> {
   @override
   void initState() {
     var controller = Provider.of<WorkoutController>(context, listen: false);
+    controller.stopTime();
     controller.loadData();
+      Duration total_duration = parseDuration(controller.getValues['Duration'].toString());
+   setState(() {
+     duration1 = total_duration;
+   });
     super.initState();
   }
 
@@ -33,6 +38,20 @@ class _Work_doneState extends State<Work_done> {
 
     super.dispose();
   }
+   Duration parseDuration(String? durationString) {
+  List<String> parts = durationString!.split(':');
+
+  if (parts.length == 3) {
+    int hours = int.parse(parts[0]);
+    int minutes = int.parse(parts[1]);
+    double seconds = double.parse(parts[2]);
+
+    int totalSeconds = (hours * 3600 + minutes * 60 + seconds).round();
+    return Duration(seconds: totalSeconds);
+  } else {
+    return Duration(seconds: 1);
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +60,21 @@ class _Work_doneState extends State<Work_done> {
     var weight = controller.getValues['weight']?.toString() ?? "0";
     int _height = int.tryParse(height) ?? 0;
     int _weight = int.tryParse(weight) ?? 0;
+    var ex_count = controller.getValues['ex_count']?.toString() ??'0';
+    int _excount =int.tryParse(ex_count) ?? 0;
+    int finalcount = controller.exerise_count;  
     double _Progres = _weight / _height / _height * 10000;
+     Duration duration = controller.stoptime!.difference(controller.start_time!);
+     int _minute = duration.inMinutes;
+     int _sec = duration.inSeconds % 60;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         leading: IconButton(
-            onPressed: () {
+            onPressed: () async{
+              
+           controller.rest();
               Navigator.pop(context);
             },
             icon: Icon(Icons.arrow_back_ios_new)),
@@ -62,7 +90,14 @@ class _Work_doneState extends State<Work_done> {
             vertical: MediaQuery.of(context).size.height * 0.02,
             horizontal: MediaQuery.of(context).size.width * 0.04),
         child: InkWell(
-          onTap: () {
+          onTap: () async{
+            Duration Time = duration + duration1!;
+            String totalTime = Time.toString();
+             print(totalTime);
+           await controller.setData('Duration', totalTime);
+            String exerise = (finalcount + _excount).toString();
+          await  controller.setData('ex_count', exerise);
+           controller.rest();
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -118,7 +153,7 @@ class _Work_doneState extends State<Work_done> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '11',
+                          '${controller.exerise_count}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
@@ -146,7 +181,7 @@ class _Work_doneState extends State<Work_done> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '0',
+                         '${_minute.toString().padLeft(2, '0')}:${_sec.toString().padLeft(2, '0')}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -154,7 +189,7 @@ class _Work_doneState extends State<Work_done> {
                         height: 10,
                       ),
                       Text(
-                        'Minute',
+                        'Duration',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 22),
                       ),
@@ -176,7 +211,7 @@ class _Work_doneState extends State<Work_done> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '3',
+                          '${controller.workouts.length - controller.exerise_count}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
@@ -184,7 +219,7 @@ class _Work_doneState extends State<Work_done> {
                           height: 10,
                         ),
                         Text(
-                          'Calories',
+                          'Skiped ',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 22),
                         )
@@ -202,7 +237,7 @@ class _Work_doneState extends State<Work_done> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Colors.grey.shade300,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.1,
@@ -289,7 +324,14 @@ class _Work_doneState extends State<Work_done> {
               children: [
                 Ink(
                   child: InkWell(
-                    onTap: () {
+                    onTap: () async{
+                       Duration Time = duration + duration1!;
+            String totalTime = Time.toString();
+             print(totalTime);
+           await controller.setData('Duration', totalTime);
+                      String exerise = (finalcount + _excount).toString();
+          await  controller.setData('ex_count', exerise);
+           controller.rest();
                       Navigator.pop(context);
                     },
                     child: Container(
@@ -305,8 +347,15 @@ class _Work_doneState extends State<Work_done> {
                 ),
                 Ink(
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
+                    onTap: () async{
+                       Duration Time = duration + duration1!;
+            String totalTime = Time.toString();
+             print(totalTime);
+           await controller.setData('Duration', totalTime);
+                      String exerise = (finalcount + _excount).toString();
+          await  controller.setData('ex_count', exerise);
+           controller.rest();
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => Progress_Screen(),

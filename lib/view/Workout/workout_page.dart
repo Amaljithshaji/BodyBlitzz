@@ -1,9 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:bodyblitz/models/database.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Rest_Screen.dart';
 import 'package:bodyblitz/view/Workout/workdone.dart';
-import 'package:bodyblitz/view/Workout/workout.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -32,15 +30,11 @@ class _Workout_pageState extends State<Workout_page> {
   late Duration _initialDuration;
   late bool _timerRunning;
   late WorkoutController controller;
-  late DateTime startTime;
-  late DateTime stopTime;
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-        startTime = DateTime.now();
-    });
+    
     playAudioFromUrl();
     Timer(Duration(seconds: 2), () { 
       AudioPlayer().stop();
@@ -64,18 +58,9 @@ Future<void>  playAudioFromUrl() async {
         if (_countdownDuration.inSeconds == 0) {
           timer.cancel();
           controller.workout_count == controller.workouts.length - 1
-              ? {_navigateToNextworkdone(), controller.resetCounter(),
-               setState(() {
-                           // Set the stop time when the button is pressed
-                  stopTime = DateTime.now();
-
-                  // Calculate the duration
-                  Duration duration = stopTime.difference(startTime);
-
-                  // Print the duration
-                  print('Time Duration: ${duration.inSeconds} seconds');
-                        })}
-              : _navigateToNextPage();
+              ? {_navigateToNextworkdone(), controller.resetCounter(),controller.exerise()
+              }
+              : {_navigateToNextPage(),controller.exerise()};
         } else if (_timerRunning) {
           setState(() {
             _countdownDuration = _countdownDuration - oneSec;
@@ -132,6 +117,7 @@ Future<void>  playAudioFromUrl() async {
     // final controller = Provider.of<WorkoutController>(context);
     int minutes = _countdownDuration.inMinutes;
     int seconds = _countdownDuration.inSeconds % 60;
+  
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -190,18 +176,9 @@ Future<void>  playAudioFromUrl() async {
             GestureDetector(
               onTap: () {
                 controller.workout_count == controller.workouts.length - 1
-                    ? {_navigateToNextworkdone(), controller.resetCounter(),
-                     setState(() {
-                           // Set the stop time when the button is pressed
-                  stopTime = DateTime.now();
-
-                  // Calculate the duration
-                  Duration duration = stopTime.difference(startTime);
-
-                  // Print the duration
-                  print('Time Duration: ${duration.inSeconds} seconds');
-                        })}
-                    : _navigateToNextPage();
+                    ? {_navigateToNextworkdone(), controller.resetCounter(),controller.exerise()
+                     }
+                    : {_navigateToNextPage(),controller.exerise()};
               },
               child: Container(
                 width: 250,
@@ -306,16 +283,7 @@ Future<void>  playAudioFromUrl() async {
                     _pauseCountdown();
                     controller.workout_count == controller.workouts.length - 1
                         ? {_navigateToNextworkdone(), controller.resetCounter(),
-                        setState(() {
-                           // Set the stop time when the button is pressed
-                  stopTime = DateTime.now();
-
-                  // Calculate the duration
-                  Duration duration = stopTime.difference(startTime);
-
-                  // Print the duration
-                  print('Time Duration: ${duration.inSeconds} seconds');
-                        })}
+                        }
                         : _navigateToNextPage();
                   },
                   child: Container(

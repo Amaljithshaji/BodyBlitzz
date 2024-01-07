@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../utills/constant/colors_constant/colors_const.dart';
-
+Duration? duration; 
 class Progress_Screen extends StatefulWidget {
   const Progress_Screen({super.key});
 
@@ -23,6 +23,10 @@ class _Progress_ScreenState extends State<Progress_Screen> {
   void initState() {
     var controller = Provider.of<WorkoutController>(context, listen: false);
     controller.loadData();
+    Duration total_duration = parseDuration(controller.getValues['Duration'].toString());
+   setState(() {
+     duration = total_duration;
+   });
     super.initState();
   }
 
@@ -34,6 +38,20 @@ class _Progress_ScreenState extends State<Progress_Screen> {
     // Provider.of<WorkoutController>(context,listen: false).Bmicalulator(height: int.parse(height!), weight: int.parse(weight!));
     super.dispose();
   }
+  Duration parseDuration(String? durationString) {
+  List<String> parts = durationString!.split(':');
+
+  if (parts.length == 3) {
+    int hours = int.parse(parts[0]);
+    int minutes = int.parse(parts[1]);
+    double seconds = double.parse(parts[2]);
+
+    int totalSeconds = (hours * 3600 + minutes * 60 + seconds).round();
+    return Duration(seconds: totalSeconds);
+  } else {
+      return Duration(seconds: 0);
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +61,11 @@ class _Progress_ScreenState extends State<Progress_Screen> {
     int _height = int.tryParse(height) ?? 0;
     int _weight = int.tryParse(weight) ?? 0;
     double _Progres = _weight / _height / _height * 10000;
+    
+    int _hour =duration?.inHours ?? 0;
+    int _minute = duration?.inMinutes ?? 0;
+    int _sec = duration?.inSeconds ?? 0 % 60;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -197,7 +220,8 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _ShowWeight();
+                    
+                       _ShowWeight();
                       },
                       child: Container(
                         width: 150,
@@ -261,7 +285,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                           )),
                                     ),
                                     Text(
-                                      '00:00:00',
+                                      '${_hour.toString().padLeft(2, '0')}:${_minute.toString().padLeft(2, '0')}:${_sec.toString().padLeft(2, '0')}',
                                       style: GoogleFonts.aDLaMDisplay(
                                           color: Color(0xffbdebe5),
                                           fontSize: 28),
@@ -302,7 +326,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                               fontSize: 18),
                                         ),
                                         Text(
-                                          '1',
+                                          controller.getValues['ex_count']?.toString() ?? "0",
                                           style: GoogleFonts.aDLaMDisplay(
                                               color: Color(0xffddf1fe),
                                               fontSize: 38),
@@ -350,7 +374,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'CALORIES',
+                                          'HEIGHT',
                                           style: GoogleFonts.aDLaMDisplay(
                                               color: Color(0xfffee7aa),
                                               fontSize: 18),
@@ -359,7 +383,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                           height: 10,
                                         ),
                                         Text(
-                                          '0.02',
+                                          controller.getValues['height'].toString(),
                                           style: GoogleFonts.aDLaMDisplay(
                                               color: Color(0xfffee7aa),
                                               fontSize: 38),
@@ -367,19 +391,19 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                         Container(
                                             width: 100,
                                             child: Text(
-                                              'Kcal Burned',
+                                              'CM',
                                               style: GoogleFonts.aDLaMDisplay(
                                                   color: Color(0xfffee7aa),
-                                                  fontSize: 16),
+                                                  fontSize: 20),
                                             )),
                                       ],
                                     ),
                                     Container(
                                         width: 50,
-                                        height: 130,
+                                        height: 150,
                                         child: Image.asset(
-                                          'assets/img/Kcal.png',
-                                          fit: BoxFit.fill,
+                                          'assets/img/height.png',
+                                          fit: BoxFit.contain,
                                           color: Color(0xfffee7aa),
                                         )),
                                   ],

@@ -56,7 +56,7 @@ class _Bottom_NaviagatorState extends State<Bottom_Naviagator> with TickerProvid
               BottomNavigationBarItem( icon: Icon(Icons.home),
               label: 'Home',
               backgroundColor: Color_const.myButton,),
-               BottomNavigationBarItem( icon: Icon(Icons.explore),label: 'Explore',
+               BottomNavigationBarItem( icon: Icon(Icons.explore),label: 'News',
                backgroundColor:Color_const.myButton, ),
               BottomNavigationBarItem( icon:Icon( Icons.stacked_bar_chart, ),label: 'Report',
               backgroundColor: Color_const.myButton,),

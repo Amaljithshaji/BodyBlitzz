@@ -48,7 +48,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
         
           },
           child: Container(
-            width: 300,
+            width: MediaQuery.of(context).size.width*0.6,
             height: 7.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),color: Color_const.myButton

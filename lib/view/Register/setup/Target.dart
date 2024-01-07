@@ -159,6 +159,8 @@ class _TargetState extends State<Target> {
                  InkWell(
               onTap: ()async{
                 final target =  currentValue1.toStringAsFixed(0);
+                
+                
               await  addcontroll.setData('Target',target );
                  print(addcontroll.getValues['height']);
                  print(addcontroll.getValues['weight']);

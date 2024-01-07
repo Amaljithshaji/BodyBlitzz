@@ -28,11 +28,11 @@ class _WorkoutsState extends State<Workouts> {
  
   Widget build(BuildContext context) {
    List workoutlist =[
-  DataBase.Workoutitems1,
-  DataBase.Workoutitems2,
-  DataBase.Workoutitems3,
-  DataBase.Workoutitems4,
-  DataBase.Workoutitems5,
+  DataBase.abs,
+  DataBase.chest,
+  DataBase.arm,
+  DataBase.leg,
+  DataBase.shoulder,
   ];
   
     return Container(
