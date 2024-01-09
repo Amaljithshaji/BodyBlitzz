@@ -83,7 +83,7 @@ class _WeightState extends State<Weight> {
                   width: 350,
                   child: Text(
                     "Let us Know you better",
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                       fontSize: 28,
                     ),
                     textAlign: TextAlign.center,
@@ -99,7 +99,7 @@ class _WeightState extends State<Weight> {
                     children: [
                       Text(
                         'Height',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
                       ),
                       Container(
                         width: 60,
@@ -110,7 +110,7 @@ class _WeightState extends State<Weight> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24,color: Colors.white))),
                       )
                     ],
                   ),
@@ -150,7 +150,7 @@ class _WeightState extends State<Weight> {
                 ),
                 Text(
                   '${currentValue.toStringAsFixed(0)} CM',
-                  style: GoogleFonts.aDLaMDisplay(
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                       fontSize: 28),
                 ),
                 SizedBox(height: 3.h,),
@@ -161,7 +161,7 @@ class _WeightState extends State<Weight> {
                     children: [
                       Text(
                         'Weight',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
                       ),
                       Container(
                         width: 60,
@@ -172,7 +172,7 @@ class _WeightState extends State<Weight> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Colors.white))),
+                                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24,color: Colors.white))),
                       )
                     ],
                   ),
@@ -212,7 +212,7 @@ class _WeightState extends State<Weight> {
                 ),
                 Text(
                   '${currentValue1.toStringAsFixed(0)} KG',
-                  style: GoogleFonts.aDLaMDisplay(
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                       fontSize: 28),
                 ),
                 
@@ -233,7 +233,7 @@ class _WeightState extends State<Weight> {
                width: 75.w,
                 height: 6.h,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color_const.myButton),
-                child: Center(child: Text('NEXT',style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Color_const.myWhite),),),
+                child: Center(child: Text('NEXT',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: Color_const.myWhite),),),
               ),
             )
       ]),

@@ -33,7 +33,7 @@ class _Detail1State extends State<Detail1> {
                     Icons.arrow_back_ios_new,
                     
                   )),
-                  title: Text('DETAILS',style: GoogleFonts.aDLaMDisplay(fontSize: 18,),),
+                  title: Text('DETAILS',style: GoogleFonts.roboto(fontSize: 18,fontWeight: FontWeight.bold),),
                   centerTitle: true,
                   actions: [
                      IconButton(onPressed: (){
@@ -86,7 +86,7 @@ class _Detail1State extends State<Detail1> {
                   height: 110,
                   color: Theme.of(context).colorScheme.background,
                   child: Text(detailsController.responsedata1?.articles?[widget.itemIndex].title.toString() ?? '',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24,),
+                  style: GoogleFonts.roboto(fontSize: 24,),
                   ),
                 ),
               ),
@@ -124,7 +124,7 @@ class _Detail1State extends State<Detail1> {
                                         .responsedata1?.articles?[widget.itemIndex].urlToImage
                                          == null ? Text(''):
                   Text(detailsController.responsedata1?.articles?[widget.itemIndex].content.toString()??'news',style: 
-                  GoogleFonts.aDLaMDisplay(
+                  GoogleFonts.roboto(
                     
                     fontSize: 24,
               

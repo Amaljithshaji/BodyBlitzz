@@ -43,7 +43,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
         centerTitle: true,
         title: Text(
           'Profile Setting',
-          style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
       ),
@@ -149,7 +149,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
             child: Center(
                 child: Text(
               'Cancel',
-              style: GoogleFonts.aDLaMDisplay(
+              style: GoogleFonts.roboto(
                   fontSize: 28,
                   
                   fontWeight: FontWeight.normal),
@@ -173,7 +173,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
             child: Center(
                 child: Text(
               'Save Changes',
-              style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),
+              style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: Colors.white),
             )),
           ),
         )

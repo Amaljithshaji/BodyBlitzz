@@ -38,7 +38,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         backgroundColor: Theme.of(context).colorScheme.background,
         title: Text(
               'WORKOUT',
-              style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+              style: GoogleFonts.roboto(fontSize: 28),
               
             ),
             centerTitle: true,
@@ -64,7 +64,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                     children: [
                       // Padding(
                       //   padding: const EdgeInsets.only(left: 10),
-                      //   child: Text('WEEK GOAL',style: GoogleFonts.aDLaMDisplay(fontSize: 16),),
+                      //   child: Text('WEEK GOAL',style: GoogleFonts.roboto(fontSize: 16),),
                       // ),
                       CalendarTimeline(
                         showYears: false,

@@ -11,7 +11,7 @@ class FImageDatabase {
 
 List<String>  InterImagedata =[
   'assets/img/intermediate abs.png',
-  'assets/img/intermediate chest.png',
+  'assets/img/gencraft_image_1704786400414-1.png',
   'assets/img/intermediate arm.png',
   'assets/img/intermediate leg.png',
   'assets/img/intermediate shoulder.png'

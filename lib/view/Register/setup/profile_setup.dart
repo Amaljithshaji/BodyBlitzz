@@ -74,10 +74,10 @@ class _Setup_ScreenState extends State<Setup_Screen> {
           children: [
              Center(
             child: Container(
-                width: 300,
+                width: MediaQuery.of(context).size.width*0.7,
                 child: Text(
                   "what's your gender?",
-                  style: GoogleFonts.aDLaMDisplay(
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                     fontSize: 28,
                   ),
                   textAlign: TextAlign.center,
@@ -92,28 +92,13 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                 child: Image.asset(dropdownvalue == 'Male'
                     ? 'assets/img/male.png'
                     : 'assets/img/female.png')),
-            SizedBox(
-              height: 1.h,
-            ),
            
-            
-          
-            // Reg_field(
-            //   controller: date_controller,
-            //   hintText: 'Date',
-            //   obsecureText: false,
-            //   prefixIcon: IconButton(
-            //       onPressed: () => _showDatePicker(context),
-            //       icon: Icon(
-            //         Icons.date_range_sharp,
-            //          color: Theme.of(context).colorScheme.background,
-            //       )),
-            // ),
+           
             SizedBox(
-              height: 20,
+              height: MediaQuery.of(context).size.height*0.03,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Stack(
@@ -129,11 +114,11 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                             });
                           },
                           child: Container(
-                            width: 170,
+                            width: MediaQuery.of(context).size.width*0.4,
                             height: 8.h,
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
                             border: Border.all(color:  Male == true ? Color_const.myButton : Colors.transparent,width: 2)),
-                             child: Center(child: Text('Male',style: GoogleFonts.aDLaMDisplay(fontSize: 24),)),
+                             child: Center(child: Text('Male',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),)),
                           ),
                         ),
                       ),
@@ -154,11 +139,11 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                             });
                           },
                           child: Container(
-                            width: 170,
+                            width: MediaQuery.of(context).size.width*0.4,
                             height: 8.h,
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
                             border: Border.all(color: Female == true ? Color_const.myButton : Colors.transparent,width: 2)),
-                             child: Center(child: Text('Female',style: GoogleFonts.aDLaMDisplay(fontSize: 24),)),
+                             child: Center(child: Text('Female',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),)),
                           ),
                         ),
                       ),
@@ -203,7 +188,7 @@ class _Setup_ScreenState extends State<Setup_Screen> {
                     child: Center(
                         child: Text(
                       'Next',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: Colors.white),
                     )),
                   ),
                 ),

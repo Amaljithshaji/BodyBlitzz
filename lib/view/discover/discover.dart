@@ -52,7 +52,7 @@ class _Discover_ScreenState extends State<Discover_Screen> {
               Center(
                 child: Text(
                   'THE NEWS',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
                 ),
               ),
               SizedBox(
@@ -62,7 +62,7 @@ class _Discover_ScreenState extends State<Discover_Screen> {
                 padding: const EdgeInsets.only(left: 10),
                 child: Text('SPORTS NEWS',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24)),
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24)),
               ),
               SizedBox(
                 height: 1.h,
@@ -207,7 +207,7 @@ class _Discover_ScreenState extends State<Discover_Screen> {
                 padding: const EdgeInsets.only(left: 10),
                 child: Text('HEALTH NEWS',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24)),
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24)),
               ),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Container(

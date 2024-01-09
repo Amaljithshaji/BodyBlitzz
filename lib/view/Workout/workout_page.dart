@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Rest_Screen.dart';
 import 'package:bodyblitz/view/Workout/workdone.dart';
+import 'package:bodyblitz/view/bottomNavigation/Bottomnavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -155,7 +156,7 @@ Future<void>  playAudioFromUrl() async {
                     child: Text(
                       widget.workoutName,
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 26),
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 26),
                     ),
                   ),
                 ),
@@ -192,7 +193,7 @@ Future<void>  playAudioFromUrl() async {
                   children: [
                     Text(
                       'DONE',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 28, color: Colors.white),
                     ),
                     SizedBox(
@@ -230,7 +231,7 @@ Future<void>  playAudioFromUrl() async {
                     ),
                     Text(
                       'PAUSE',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 28, color: Colors.white),
                     ),
                   ],
@@ -340,7 +341,7 @@ Future<void>  playAudioFromUrl() async {
                   ),
                   Text(
                     'Paused',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                   ),
                 ],
               ),
@@ -362,7 +363,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                     child: Text(
                       'Restart this Exercise',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),
@@ -384,7 +385,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                       child: Text(
                     'Quit',
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 24, color: Colors.white),
                   )),
                 ),
@@ -406,7 +407,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                     child: Text(
                       'Resume',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),
@@ -438,7 +439,7 @@ Future<void>  playAudioFromUrl() async {
             children: [
               Text(
                 '🙄',
-                style: GoogleFonts.aDLaMDisplay(
+                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                   fontSize: 50,
                 ),
               ),
@@ -449,7 +450,7 @@ Future<void>  playAudioFromUrl() async {
                 child: Container(
                     child: Text('Are you Sure you want to Quit Exercise?',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.aDLaMDisplay(
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ))),
               ),
@@ -459,7 +460,7 @@ Future<void>  playAudioFromUrl() async {
               GestureDetector(
                 onTap: () {
                   controller.resetCounter();
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottom_Naviagator(),));
                 },
                 child: Container(
                   width: 270,
@@ -470,7 +471,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                       child: Text(
                     'Quit',
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 24, color: Colors.white),
                   )),
                 ),
@@ -492,7 +493,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                     child: Text(
                       'Close',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),

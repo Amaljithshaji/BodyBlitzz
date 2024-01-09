@@ -53,7 +53,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),color: Color_const.myButton
             ),
-            child: Center(child: Text('Start',style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),)),
+            child: Center(child: Text('Start',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: Colors.white),)),
             
           ),
         ),
@@ -62,7 +62,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            //title:  Text('ABS BEGINNER',style: GoogleFonts.aDLaMDisplay(fontSize: 16),),
+            //title:  Text('ABS BEGINNER',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 16),),
             backgroundColor: Theme.of(context).colorScheme.background,
             leading: IconButton(onPressed: () {
               // _showQuitmodel();
@@ -76,7 +76,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(widget.barimage,fit: BoxFit.fill,),
-              title: Text(widget.title,style: GoogleFonts.aDLaMDisplay(fontSize: 16,color: Colors.white),),
+              title: Text(widget.title,style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 16,color: Colors.white),),
               titlePadding: EdgeInsets.only(left: 20,bottom: 30),
               collapseMode: CollapseMode.parallax,
             ),
@@ -87,8 +87,8 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               
                 children: [
-                  Text('${controller.workouts.length} Workouts',style: GoogleFonts.aDLaMDisplay(fontSize: 26)),
-                  Text('20 mins',style: GoogleFonts.aDLaMDisplay(fontSize: 24)),
+                  Text('${controller.workouts.length} Workouts',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 26)),
+                  Text('20 mins',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24)),
                 ],
               ),
             ),
@@ -97,49 +97,46 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
             child: Container(
               
               width: double.infinity,
-              height: 50.h,
+              height: MediaQuery.of(context).size.height*0.5,
              
               child: ListView.separated(itemCount: controller.workouts.length,
               separatorBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
                 child: Divider(thickness: 2,color:Colors.grey.shade500 ,),
               ),
            
            
                 itemBuilder: (context, index) {
                  
-                  return Padding(
-                padding: const EdgeInsets.only(left: 20,right: 20,),
-                child: Container(
-                  width: 300,
-                  height: 100,
-                //  color: Colors.red,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                      //  color: Colors.green,
-                        child: Lottie.asset(controller.workouts[index].workoutDemo,fit: BoxFit.fill,),
-                      ),
-                      SizedBox(width: 35,),
-                      Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                        children:[
+                  return Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    height: 100,
+                  //  color: Colors.red,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
                         Container(
-                          width: 200,
-                       
-                          child: Text(controller.workouts[index].workoutName,style: GoogleFonts.aDLaMDisplay(fontSize: 16,))),
-                       if(controller.workouts[index].duration == 0) 
-                        Text('${controller.workouts[index].count}X',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)) 
-                       else
-                       Text('00:${controller.workouts[index].duration}',style: GoogleFonts.aDLaMDisplay(fontSize: 16))
-                      ])
-                    ],
-                  ),
-                ),
-                
-              );
+                          width: 100,
+                          height: 100,
+                        //  color: Colors.green,
+                          child: Lottie.asset(controller.workouts[index].workoutDemo,fit: BoxFit.fill,),
+                        ),
+                        
+                        Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                          children:[
+                          Container(
+                            width: 200,
+                         
+                            child: Text(controller.workouts[index].workoutName,style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 16,))),
+                         if(controller.workouts[index].duration == 0) 
+                          Text('${controller.workouts[index].count}X',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)) 
+                         else
+                         Text('00:${controller.workouts[index].duration}',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 16))
+                        ])
+                      ],
+                    ),
+                  );
                 } ),
             )
           )
@@ -166,7 +163,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
             children: [
               Text(
                 '🙄',
-                style: GoogleFonts.aDLaMDisplay(
+                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                   fontSize: 50,
                 ),
               ),
@@ -177,7 +174,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
                 child: Container(
                     child: Text('Are you Sure you want to Quit ?',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.aDLaMDisplay(
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ))),
               ),
@@ -201,7 +198,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
                   child: Center(
                       child: Text(
                     'Quit',
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 24, color: Colors.white),
                   )),
                 ),
@@ -223,7 +220,7 @@ class _Workout_ScreenState extends State<Workout_Screen>  {
                   child: Center(
                     child: Text(
                       'Close',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),

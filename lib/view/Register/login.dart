@@ -68,7 +68,7 @@ String? newpass;
               )),
               Text(
                 'Welcome Back',
-                style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
               ),
               SizedBox(
                 height: 3.h,
@@ -183,7 +183,7 @@ String? newpass;
                   child: Center(
                       child: Text(
                     'Login',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
+                    style: GoogleFonts.roboto(fontSize: 24,color: Color_const.myWhite),
                   )),
                 ),
               ),
@@ -205,7 +205,7 @@ String? newpass;
                       child: Text(
                         "Or",
                         style:
-                            GoogleFonts.aDLaMDisplay(color: Colors.grey[700]),
+                            GoogleFonts.roboto(color: Colors.grey[700]),
                       ),
                     ),
                     Expanded(
@@ -223,7 +223,7 @@ String? newpass;
                 children: [
                   Text(
                     'Don’t have an account yet?',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 16),
+                    style: GoogleFonts.roboto(fontSize: 16),
                   ),
                   TextButton(
                       onPressed: () {},
@@ -237,7 +237,7 @@ String? newpass;
                           },
                           child: Text(
                             'Register',
-                            style: GoogleFonts.aDLaMDisplay(
+                            style: GoogleFonts.roboto(
                                 color: Color_const.myButton,
                                 fontSize: 16,
                                 decoration: TextDecoration.underline),

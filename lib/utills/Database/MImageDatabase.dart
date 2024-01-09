@@ -13,7 +13,7 @@ List<String>  InterImagedata =[
   'assets/img/intermediate mabs.png',
   'assets/img/intermediate mchest.png',
   'assets/img/Intermediate marm.png',
-  'assets/img/intermediate mleg.png',
+  'assets/img/leg-day.jpg',
   'assets/img/intermediate mshoulder.png'
 
  ];

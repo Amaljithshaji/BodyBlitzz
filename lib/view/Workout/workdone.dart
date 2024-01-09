@@ -80,7 +80,7 @@ class _Work_doneState extends State<Work_done> {
             icon: Icon(Icons.arrow_back_ios_new)),
         title: Text(
           'WorkDone',
-          style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
         ),
         centerTitle: true,
       ),
@@ -114,7 +114,7 @@ class _Work_doneState extends State<Work_done> {
                 child: Text(
               'Done',
               style:
-                  GoogleFonts.aDLaMDisplay(fontSize: 28, color: Colors.white),
+                  GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28, color: Colors.white),
             )),
           ),
         ),
@@ -301,10 +301,10 @@ class _Work_doneState extends State<Work_done> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text('${value.toStringAsFixed(1)}',
-                                      style: GoogleFonts.aDLaMDisplay(
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                           fontSize: 20)),
                                   Text(_getText(_Progres),
-                                      style: GoogleFonts.aDLaMDisplay(
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                           fontSize: 20)),
                                 ],
                               )),
@@ -431,7 +431,7 @@ class _Work_doneState extends State<Work_done> {
                 ),
                 Text(
                   'Enter Details',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                 ),
                 SizedBox(
                   height: 1.h,
@@ -443,7 +443,7 @@ class _Work_doneState extends State<Work_done> {
                     children: [
                       Text(
                         'Height',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -454,7 +454,7 @@ class _Work_doneState extends State<Work_done> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -504,7 +504,7 @@ class _Work_doneState extends State<Work_done> {
                     children: [
                       Text(
                         'Weight',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -515,7 +515,7 @@ class _Work_doneState extends State<Work_done> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -575,7 +575,7 @@ class _Work_doneState extends State<Work_done> {
                     child: Center(
                         child: Text(
                       'Cancel',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                     )),
                   ),
                 ),
@@ -602,7 +602,7 @@ class _Work_doneState extends State<Work_done> {
                     child: Center(
                         child: Text(
                       'Save Changes',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     )),
                   ),

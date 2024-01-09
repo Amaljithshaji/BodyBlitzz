@@ -70,18 +70,19 @@ class _Workout_StarterState extends State<Workout_Starter> {
           ),
           Text(
             'Ready to GO',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+            style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
           ),
           Text(
             'Jumping Jacks',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+            style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0, bottom: 0),
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 140, right: 30),
+                  padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width*0.4,
+                   right: MediaQuery.of(context).size.width*0.1),
                   child: Workout_Timer(time: duration,),
                 ),
                 IconButton(

@@ -41,7 +41,7 @@ class _WorkoutsState extends State<Workouts> {
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(widget.Level,
-                style: GoogleFonts.aDLaMDisplay(fontSize: 20)),
+                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20)),
           ),
             SizedBox(
       height: 10,
@@ -73,7 +73,7 @@ class _WorkoutsState extends State<Workouts> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 20,bottom: 20),
-                        child: Text(widget.workoutlevel[index],style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Colors.white)),
+                        child: Text(widget.workoutlevel[index],style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white)),
                       ),
                     ],
                   ),
@@ -103,7 +103,7 @@ class _WorkoutsState extends State<Workouts> {
 //                     ),
             
 //                     Positioned(bottom: 40,left: 20,
-//                       child: Text(workoutlevel[index],style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Colors.white)),),
+//                       child: Text(workoutlevel[index],style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white)),),
 //                        Positioned(bottom: 20,left: 20,
 //                       child: Text('20 MiNS : 16 EXERCISES',style: TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.normal)),)
 //                   ]),
