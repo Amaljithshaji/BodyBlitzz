@@ -89,7 +89,7 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Center(child: Text('Please choose your focus area',style:GoogleFonts.aDLaMDisplay(fontSize: 24) ,)),
+            Center(child: Text('Please choose your focus area',style:GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24) ,)),
             SizedBox(height: 7.h,),
              for (int i = 0; i < 5; i++)
            GestureDetector(
@@ -105,7 +105,7 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
                     borderRadius: BorderRadius.circular(10),color: _isSelected[i] ? Color_const.myButton: Color_const.myWhite,
                     border: Border.all(color: Theme.of(context).colorScheme.primary,width: 1)
                   ),
-                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: _isSelected[i] ? Color_const.myWhite: Colors.black),)),
+                  child: Center(child: Text( _getBodyPartText(i),style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20,color: _isSelected[i] ? Color_const.myWhite: Colors.black),)),
                 ),
               ),
             ),
@@ -119,7 +119,7 @@ class _Filtter_ScreenState extends State<Filtter_Screen> {
                 width: 75.w,
                 height: 6.h,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color_const.myButton),
-                child: Center(child: Text('NEXT',style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Color_const.myWhite),),),
+                child: Center(child: Text('NEXT',style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: Color_const.myWhite),),),
               ),
             )
           ],

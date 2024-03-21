@@ -1,5 +1,7 @@
 import 'package:bodyblitz/controller/home.controller.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
+import 'package:bodyblitz/view/Register/login.dart';
+import 'package:bodyblitz/view/settings/Privacy_Policy.dart';
 import 'package:bodyblitz/view/settings/profile_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
@@ -52,8 +54,21 @@ class _Settings_ScreenState extends State<Settings_Screen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 8.h,
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
+            Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                    icon: Icon(
+                      Icons.power_settings_new,
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ));
+                    })),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -101,7 +116,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
             Center(
                 child: Text(
               'hy $first_name $last_name',
-              style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+              style:
+                  GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 24),
             )),
             SizedBox(
               height: 3.h,
@@ -110,7 +126,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
               padding: const EdgeInsets.only(left: 10),
               child: Text(
                 'Workout',
-                style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.bold, fontSize: 28),
               ),
             ),
             Center(
@@ -140,7 +157,11 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                             Icon(Icons.monitor_weight_outlined,
                                 color: Colors.black),
                             Icon(Icons.monitor_weight_outlined,
-                                color: Colors.black)
+                                color: Colors.black),
+                            Icon(
+                              Icons.restart_alt,
+                              color: Colors.black,
+                            ),
                           ],
                         ),
                         Padding(
@@ -290,6 +311,20 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                   ),
                                 ),
                               ),
+                              InkWell(
+                                onTap: () => _showQuitmodel(),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.7,
+                                  child: Text(
+                                    'Reset',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -384,7 +419,9 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                           height: 4.h,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Privacy(),));
+                          },
                           child: Row(
                             children: [
                               Icon(Icons.security_outlined,
@@ -462,7 +499,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
                 Text(
                   'Enter Details',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 SizedBox(
                   height: 1.h,
@@ -474,7 +512,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     children: [
                       Text(
                         'Height',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold, fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -485,7 +524,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -535,7 +574,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     children: [
                       Text(
                         'Weight',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold, fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -546,7 +586,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -604,7 +644,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     child: Center(
                         child: Text(
                       'Cancel',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.bold, fontSize: 24),
                     )),
                   ),
                 ),
@@ -631,8 +672,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     child: Center(
                         child: Text(
                       'Save Changes',
-                      style: GoogleFonts.aDLaMDisplay(
-                          fontSize: 24, color: Colors.white),
+                      style:
+                          GoogleFonts.roboto(fontSize: 24, color: Colors.white),
                     )),
                   ),
                 )
@@ -669,7 +710,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
                 Text(
                   'Enter Details',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 SizedBox(
                   height: 4.h,
@@ -681,7 +723,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     children: [
                       Text(
                         'Weight',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold, fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -692,7 +735,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -749,13 +792,14 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     color: Colors.transparent,
                   ),
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     child: Center(
                         child: Text(
                       'Cancel',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.bold, fontSize: 24),
                     )),
                   ),
                 ),
@@ -780,8 +824,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     child: Center(
                         child: Text(
                       'Save Changes',
-                      style: GoogleFonts.aDLaMDisplay(
-                          fontSize: 24, color: Colors.white),
+                      style:
+                          GoogleFonts.roboto(fontSize: 24, color: Colors.white),
                     )),
                   ),
                 )
@@ -801,7 +845,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
           title: Center(
               child: Text(
             'Set duration (10 - 15 secs)',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+            style:
+                GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 20),
           )),
           content: Container(
             width: 440,
@@ -893,7 +938,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
           title: Center(
               child: Text(
             'Set duration (5 ~ 180 secs)',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+            style:
+                GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 20),
           )),
           content: Container(
             width: 440,
@@ -1006,7 +1052,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                 ),
                 Text(
                   'Please Select your Gender',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 SizedBox(
                   height: 4.h,
@@ -1054,7 +1101,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                           ),
                                         ),
                                         Text('Male',
-                                            style: GoogleFonts.aDLaMDisplay(
+                                            style: GoogleFonts.roboto(
                                                 fontSize: 24,
                                                 color: Colors.black))
                                       ],
@@ -1115,7 +1162,7 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                                         ),
                                         Text(
                                           'Female',
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          style: GoogleFonts.roboto(
                                               fontSize: 24,
                                               color: Colors.black),
                                         )
@@ -1157,7 +1204,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     child: Center(
                         child: Text(
                       'Cancel',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.bold, fontSize: 24),
                     )),
                   ),
                 ),
@@ -1185,8 +1233,8 @@ class _Settings_ScreenState extends State<Settings_Screen> {
                     child: Center(
                         child: Text(
                       'Save Changes',
-                      style: GoogleFonts.aDLaMDisplay(
-                          fontSize: 24, color: Colors.white),
+                      style:
+                          GoogleFonts.roboto(fontSize: 24, color: Colors.white),
                     )),
                   ),
                 )
@@ -1194,5 +1242,96 @@ class _Settings_ScreenState extends State<Settings_Screen> {
             );
           });
         });
+  }
+
+  void _showQuitmodel() {
+    showModalBottomSheet(
+      isDismissible: true,
+      enableDrag: true,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+      context: context,
+      builder: (context) {
+        return Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height * 0.5,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                '🙄',
+                style: GoogleFonts.roboto( fontWeight: FontWeight.bold,
+                  fontSize: 50,
+                ),
+              ),
+              Center(
+                child: Container(
+                    child: Text('Are you Sure you want to Reset data?',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.roboto( fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ))),
+              ),
+              Center(
+                child: Container(
+                    child: Text('This action cannot be undo.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.roboto(
+                          fontSize: 20,
+                        ))),
+              ),
+               GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: 270,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      ),
+                  child: Center(
+                    child: Text(
+                      'Cancel',
+                      style: GoogleFonts.roboto( fontWeight: FontWeight.bold,
+                          fontSize: 24, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  final SharedPreferences Logincred =
+                      await SharedPreferences.getInstance();
+                  Logincred.remove('mail');
+                  Logincred.remove('pasword');
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ));
+                },
+                child: Container(
+                  width: 270,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color_const.myButton),
+                  child: Center(
+                      child: Text(
+                    'Reset',
+                    style: GoogleFonts.roboto( fontWeight: FontWeight.bold,
+                        fontSize: 24, color: Colors.white),
+                  )),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

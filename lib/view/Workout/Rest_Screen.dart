@@ -106,7 +106,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
                 Center(
                     child: Text(
                   'Rest',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 48),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 48),
                 )),
                 Text(
                     '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
@@ -182,7 +182,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
                 ),
                 Text(
                   'Next',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 36),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 36),
                 ),
                 SizedBox(
                   height: 1.h,
@@ -198,7 +198,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
                             : workoutz[controller.workout_count - 1]
                                 .workoutName,
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 30),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 30),
                       ),
                     ),
                   ),
@@ -230,7 +230,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
   //           children: [
   //             Text(
   //               '🙄',
-  //               style: GoogleFonts.aDLaMDisplay(
+  //               style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
   //                 fontSize: 50,
   //               ),
   //             ),
@@ -241,7 +241,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
   //               child: Container(
   //                   child: Text('Are you Sure you want to Quit Exercise?',
   //                       textAlign: TextAlign.center,
-  //                       style: GoogleFonts.aDLaMDisplay(
+  //                       style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
   //                         fontSize: 24,
   //                       ))),
   //             ),
@@ -265,7 +265,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
   //                 child: Center(
   //                     child: Text(
   //                   'Quit',
-  //                   style: GoogleFonts.aDLaMDisplay(
+  //                   style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
   //                       fontSize: 24, color: Colors.white),
   //                 )),
   //               ),
@@ -287,7 +287,7 @@ class _Rest_ScreenState extends State<Rest_Screen> {
   //                 child: Center(
   //                   child: Text(
   //                     'Close',
-  //                     style: GoogleFonts.aDLaMDisplay(
+  //                     style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
   //                         fontSize: 24, color: Colors.white),
   //                   ),
   //                 ),

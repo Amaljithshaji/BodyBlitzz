@@ -25,6 +25,7 @@ class _Workout_StarterState extends State<Workout_Starter> {
    String _duration =controller.getValues['Countdown'].toString();
    int duration =int.parse(_duration);
     Timer(Duration(seconds: duration), () {
+      controller.StartTime();
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -48,7 +49,9 @@ class _Workout_StarterState extends State<Workout_Starter> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.arrow_back,
               color: Theme.of(context).colorScheme.primary,
@@ -67,23 +70,24 @@ class _Workout_StarterState extends State<Workout_Starter> {
           ),
           Text(
             'Ready to GO',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+            style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
           ),
           Text(
             'Jumping Jacks',
-            style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+            style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0, bottom: 0),
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 140, right: 30),
+                  padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width*0.4,
+                   right: MediaQuery.of(context).size.width*0.1),
                   child: Workout_Timer(time: duration,),
                 ),
                 IconButton(
                   onPressed: () {
-                   
+                   controller.StartTime();
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import '../../Workout/workout.dart';
 
-class Workouts extends StatelessWidget {
+class Workouts extends StatefulWidget {
   const Workouts({
     super.key,required this.Level,required this.length,required this.workoutlevel,required this.images
   });
@@ -16,18 +16,32 @@ class Workouts extends StatelessWidget {
   final List<String> workoutlevel;
   final List<String> images;
   final int length;
-  @override
-  Widget build(BuildContext context) {
-   
-    
 
+  @override
+  State<Workouts> createState() => _WorkoutsState();
+}
+
+class _WorkoutsState extends State<Workouts> {
+  @override
+ 
+
+ 
+  Widget build(BuildContext context) {
+   List workoutlist =[
+  DataBase.abs,
+  DataBase.chest,
+  DataBase.arm,
+  DataBase.leg,
+  DataBase.shoulder,
+  ];
+  
     return Container(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: Text(Level,
-                style: GoogleFonts.aDLaMDisplay(fontSize: 20)),
+            child: Text(widget.Level,
+                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20)),
           ),
             SizedBox(
       height: 10,
@@ -36,22 +50,22 @@ class Workouts extends StatelessWidget {
       width: double.infinity,
       height: 35.h,
       child: ListView.builder(
-        itemCount: length,
+        itemCount: widget.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: ()  {
-       Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Screen(Workoutlist: DataBase.Workoutitems1,),));
+       Navigator.push(context, MaterialPageRoute(builder: (context) => Workout_Screen(Workoutlist:workoutlist[index],barimage: widget.images[index],title: widget.workoutlevel[index],),));
             },
             
             child: Container(
-              width: 30.h,
-              height: 10.h,
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery.of(context).size.height * 0.9,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.transparent,
-                  image: DecorationImage(image: AssetImage(images[index]),fit: BoxFit.fitHeight)
+                  image: DecorationImage(image: AssetImage(widget.images[index]),fit: BoxFit.fitHeight)
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -59,7 +73,7 @@ class Workouts extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 20,bottom: 20),
-                        child: Text(workoutlevel[index],style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Colors.white)),
+                        child: Text(widget.workoutlevel[index],style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white)),
                       ),
                     ],
                   ),
@@ -89,7 +103,7 @@ class Workouts extends StatelessWidget {
 //                     ),
             
 //                     Positioned(bottom: 40,left: 20,
-//                       child: Text(workoutlevel[index],style: GoogleFonts.aDLaMDisplay(fontSize: 20,color: Colors.white)),),
+//                       child: Text(workoutlevel[index],style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white)),),
 //                        Positioned(bottom: 20,left: 20,
 //                       child: Text('20 MiNS : 16 EXERCISES',style: TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.normal)),)
 //                   ]),

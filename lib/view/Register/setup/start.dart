@@ -33,13 +33,13 @@ class _Start_ScreenState extends State<Start_Screen> {
                   children: [
                     Text(
                       "BodyBlitz".toUpperCase(),
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 45, color: Color_const.myWhite),
                       textAlign: TextAlign.start,
                     ),
                     Text(
                       'Start your fitness journey with BODYBLITZ Now.',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 20, color: Colors.white60),
                       textAlign: TextAlign.center,
                     ),
@@ -64,7 +64,7 @@ class _Start_ScreenState extends State<Start_Screen> {
                       child: Center(
                         child: Text(
                           'let’s Start',
-                          style: GoogleFonts.aDLaMDisplay(
+                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                               fontSize: 28, color: Color_const.myWhite),
                         ),
                       ),

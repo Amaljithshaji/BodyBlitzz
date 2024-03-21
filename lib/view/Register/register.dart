@@ -38,12 +38,12 @@ class _RegisterState extends State<Register> {
             Center(
                 child: Text(
               "Hy There",
-              style: GoogleFonts.aDLaMDisplay(fontSize: 20),
+              style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 20),
             )),
             Center(
                 child: Text(
               "Create An Account",
-              style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+              style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
             )),
             SizedBox(
               height: 2.h,
@@ -199,6 +199,7 @@ class _RegisterState extends State<Register> {
                 ),
                 Checkbox(
                   value: values,
+                  
                   activeColor: Color_const.myButton,
                   onChanged: (value) {
                     setState(() {
@@ -210,7 +211,7 @@ class _RegisterState extends State<Register> {
                     width: 330,
                     child: Text(
                       'By continuing you accept our Privacy Policy and Term of Use',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(
                           fontSize: 14, fontWeight: FontWeight.normal),
                     ))
               ],
@@ -248,7 +249,7 @@ class _RegisterState extends State<Register> {
                 child: Center(
                     child: Text(
                   'Register',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24,color: Color_const.myWhite),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24,color: Color_const.myWhite),
                 )),
               ),
             ),
@@ -269,7 +270,7 @@ class _RegisterState extends State<Register> {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Or",
-                      style: GoogleFonts.aDLaMDisplay(color: Colors.grey[700]),
+                      style: GoogleFonts.roboto(color: Colors.grey[700]),
                     ),
                   ),
                   Expanded(
@@ -288,7 +289,7 @@ class _RegisterState extends State<Register> {
               children: [
                 Text(
                   'Already have an account?',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 16),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 16),
                 ),
                 TextButton(
                     onPressed: () {
@@ -300,7 +301,7 @@ class _RegisterState extends State<Register> {
                     },
                     child: Text(
                       'Login',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(
                           color: Color_const.myButton,
                           fontSize: 16,
                           decoration: TextDecoration.underline),

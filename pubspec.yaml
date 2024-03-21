@@ -37,13 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: 
   intl: ^0.18.1
-  
   date_picker_timeline: ^1.2.5
   calendar_timeline: ^1.1.2
   lottie: ^2.7.0
-
   circular_countdown_timer: ^0.2.3
-
   custom_timer: ^0.2.3
   percent_indicator: ^4.2.3
   flutter_xlider: ^3.5.0
@@ -60,6 +57,11 @@ dependencies:
   step_progress_indicator: ^1.0.2
   circular_seek_bar: ^1.1.1
   flutter_blurhash: ^0.8.2
+  http: ^1.1.2
+  shimmer: ^3.0.0
+  share:
+  url_launcher:
+  change_app_package_name: 
 
   
  

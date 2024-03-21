@@ -38,12 +38,12 @@ class _Profile_SettingState extends State<Profile_Setting> {
         leading: IconButton(onPressed: (){
            controller.setData('profile', widget.oldpro);
             print(controller.getValues['profile']);
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+          Navigator.pop(context);
         }, icon: Icon(Icons.arrow_back_ios_new)),
         centerTitle: true,
         title: Text(
           'Profile Setting',
-          style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
       ),
@@ -137,7 +137,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
           onTap: (){
               controller.setData('profile', widget.oldpro);
              print(controller.getValues['profile']);
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+            Navigator.pop(context);
           },
           child: Container(
             width: 250,
@@ -149,7 +149,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
             child: Center(
                 child: Text(
               'Cancel',
-              style: GoogleFonts.aDLaMDisplay(
+              style: GoogleFonts.roboto(
                   fontSize: 28,
                   
                   fontWeight: FontWeight.normal),
@@ -161,7 +161,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
         ),
         InkWell(
           onTap: (){
-           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottom_Naviagator()));
+           Navigator.pop(context);
           },
           child: Container(
             width: 350,
@@ -173,7 +173,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
             child: Center(
                 child: Text(
               'Save Changes',
-              style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: Colors.white),
+              style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: Colors.white),
             )),
           ),
         )

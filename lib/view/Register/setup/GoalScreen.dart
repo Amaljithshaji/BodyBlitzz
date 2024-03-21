@@ -81,7 +81,7 @@ class _Goal_ScreenState extends State<Goal_Screen> {
                     width: 300,
                     child: Text(
                       'What are your main goals ?',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 28,
                       ),
                       textAlign: TextAlign.center,
@@ -108,7 +108,7 @@ class _Goal_ScreenState extends State<Goal_Screen> {
                     child: Center(
                         child: Text(
                       _getBodyPartText(i),
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 28,color: fontColors[i]),
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28,color: fontColors[i]),
                     )),
                   ),
                 ),
@@ -133,7 +133,7 @@ class _Goal_ScreenState extends State<Goal_Screen> {
                 child: Center(
                   child: Text(
                     'NEXT',
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 28, color: Color_const.myWhite),
                   ),
                 ),

@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../utills/constant/colors_constant/colors_const.dart';
-
+Duration? duration; 
 class Progress_Screen extends StatefulWidget {
   const Progress_Screen({super.key});
 
@@ -23,6 +23,10 @@ class _Progress_ScreenState extends State<Progress_Screen> {
   void initState() {
     var controller = Provider.of<WorkoutController>(context, listen: false);
     controller.loadData();
+    Duration total_duration = parseDuration(controller.getValues['Duration'].toString());
+   setState(() {
+     duration = total_duration;
+   });
     super.initState();
   }
 
@@ -34,6 +38,20 @@ class _Progress_ScreenState extends State<Progress_Screen> {
     // Provider.of<WorkoutController>(context,listen: false).Bmicalulator(height: int.parse(height!), weight: int.parse(weight!));
     super.dispose();
   }
+  Duration parseDuration(String? durationString) {
+  List<String> parts = durationString!.split(':');
+
+  if (parts.length == 3) {
+    int hours = int.parse(parts[0]);
+    int minutes = int.parse(parts[1]);
+    double seconds = double.parse(parts[2]);
+
+    int totalSeconds = (hours * 3600 + minutes * 60 + seconds).round();
+    return Duration(seconds: totalSeconds);
+  } else {
+      return Duration(seconds: 0);
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +61,17 @@ class _Progress_ScreenState extends State<Progress_Screen> {
     int _height = int.tryParse(height) ?? 0;
     int _weight = int.tryParse(weight) ?? 0;
     double _Progres = _weight / _height / _height * 10000;
+    
+    int _hour =duration?.inHours ?? 0;
+    int _minute = duration?.inMinutes ?? 0;
+    int _sec = duration?.inSeconds ?? 0 % 60;
+
     return Scaffold(
       appBar: AppBar(
+        leading: SizedBox(),
         title: Text(
           'Reports',
-          style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
         ),
         elevation: 0,
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -77,7 +101,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                       padding: const EdgeInsets.only(left: 20),
                       child: Text(
                         'BMI',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 28),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 28),
                       ),
                     ),
                     Center(
@@ -118,10 +142,10 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text('${value.toStringAsFixed(1)}',
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                               fontSize: 28)),
                                       Text(_getText(_Progres),
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                               fontSize: 24)),
                                     ],
                                   )),
@@ -145,7 +169,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                   children: [
                     Text(
                       'Weight log',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(
                         fontSize: 28,
                         fontWeight: FontWeight.normal,
                       ),
@@ -184,7 +208,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                 ),
                               ),
                               Text(
-                                '239 KG',
+                                '${controller.getValues['Target'].toString()} kg',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.normal,
@@ -197,7 +221,8 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _ShowWeight();
+                    
+                       _ShowWeight();
                       },
                       child: Container(
                         width: 150,
@@ -208,7 +233,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                         child: Center(
                             child: Text(
                           'Update',
-                          style: GoogleFonts.aDLaMDisplay(
+                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                               fontSize: 20, color: Colors.white),
                         )),
                       ),
@@ -227,11 +252,13 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                   child: Center(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 174,
+                               width: MediaQuery.of(context).size.width* 0.4,
                               height: 20.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -244,7 +271,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                   children: [
                                     Text(
                                       'DURATION',
-                                      style: GoogleFonts.aDLaMDisplay(
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                           color: Color(0xffbdebe5),
                                           fontSize: 18),
                                     ),
@@ -259,8 +286,8 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                           )),
                                     ),
                                     Text(
-                                      '00:00:00',
-                                      style: GoogleFonts.aDLaMDisplay(
+                                      '${_hour.toString().padLeft(2, '0')}:${_minute.toString().padLeft(2, '0')}:${_sec.toString().padLeft(2, '0')}',
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                           color: Color(0xffbdebe5),
                                           fontSize: 28),
                                     ),
@@ -279,7 +306,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                               height: 5,
                             ),
                             Container(
-                              width: 174,
+                              width: MediaQuery.of(context).size.width* 0.4,
                               height: 15.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -291,16 +318,17 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'WORKOUT',
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                               color: Color(0xffddf1fe),
                                               fontSize: 18),
                                         ),
                                         Text(
-                                          '1',
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          controller.getValues['ex_count']?.toString() ?? "0",
+                                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                               color: Color(0xffddf1fe),
                                               fontSize: 38),
                                         ),
@@ -309,14 +337,14 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                             height: 50,
                                             child: Text(
                                               'No of workouts',
-                                              style: GoogleFonts.aDLaMDisplay(
+                                              style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                                   color: Color(0xffddf1fe),
                                                   fontSize: 18),
                                             )),
                                       ],
                                     ),
                                     Container(
-                                        width: 60,
+                                        width: 50,
                                         height: 80,
                                         child: Image.asset(
                                           'assets/img/workout.png',
@@ -328,13 +356,12 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
+                       
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 174,
+                               width: MediaQuery.of(context).size.width* 0.4,
                               height: 15.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -348,8 +375,8 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'CALORIES',
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          'HEIGHT',
+                                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                               color: Color(0xfffee7aa),
                                               fontSize: 18),
                                         ),
@@ -357,27 +384,27 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                           height: 10,
                                         ),
                                         Text(
-                                          '0.02',
-                                          style: GoogleFonts.aDLaMDisplay(
+                                          controller.getValues['height'].toString(),
+                                          style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                               color: Color(0xfffee7aa),
                                               fontSize: 38),
                                         ),
                                         Container(
                                             width: 100,
                                             child: Text(
-                                              'Kcal Burned',
-                                              style: GoogleFonts.aDLaMDisplay(
+                                              'CM',
+                                              style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                                   color: Color(0xfffee7aa),
-                                                  fontSize: 16),
+                                                  fontSize: 20),
                                             )),
                                       ],
                                     ),
                                     Container(
-                                        width: 60,
-                                        height: 130,
+                                        width: 50,
+                                        height: 150,
                                         child: Image.asset(
-                                          'assets/img/Kcal.png',
-                                          fit: BoxFit.fill,
+                                          'assets/img/height.png',
+                                          fit: BoxFit.contain,
                                           color: Color(0xfffee7aa),
                                         )),
                                   ],
@@ -388,7 +415,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                               height: 5,
                             ),
                             Container(
-                              width: 174,
+                               width: MediaQuery.of(context).size.width* 0.4,
                               height: 20.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -410,7 +437,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                         children: [
                                           Text(
                                             'BMI',
-                                            style: GoogleFonts.aDLaMDisplay(
+                                            style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                                 color: Color(0xfffec1c7),
                                                 fontSize: 18),
                                           ),
@@ -428,13 +455,13 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                                     ),
                                     Text(
                                       '${_Progres.toStringAsFixed(1)}',
-                                      style: GoogleFonts.aDLaMDisplay(
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                           fontSize: 38,
                                           color: Color(0xfffec1c7)),
                                     ),
                                     Text(
                                       _getText(_Progres),
-                                      style: GoogleFonts.aDLaMDisplay(
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                           fontSize: 18,
                                           color: Color(0xfffec1c7)),
                                     )
@@ -509,7 +536,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                 ),
                 Text(
                   'Enter Details',
-                  style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                 ),
                 SizedBox(
                   height: 1.h,
@@ -521,7 +548,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                     children: [
                       Text(
                         'Height',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -532,7 +559,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                         ),
                         child: Center(
                             child: Text('CM',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -582,7 +609,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                     children: [
                       Text(
                         'Weight',
-                        style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                       ),
                       Container(
                         width: 60,
@@ -593,7 +620,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                         ),
                         child: Center(
                             child: Text('KG',
-                                style: GoogleFonts.aDLaMDisplay(
+                                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                                     fontSize: 24, color: Colors.white))),
                       )
                     ],
@@ -653,7 +680,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                     child: Center(
                         child: Text(
                       'Cancel',
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                     )),
                   ),
                 ),
@@ -680,7 +707,7 @@ class _Progress_ScreenState extends State<Progress_Screen> {
                     child: Center(
                         child: Text(
                       'Save Changes',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     )),
                   ),

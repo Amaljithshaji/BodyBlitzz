@@ -1,9 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:bodyblitz/models/database.dart';
 import 'package:bodyblitz/utills/constant/colors_constant/colors_const.dart';
 import 'package:bodyblitz/view/Workout/Rest_Screen.dart';
 import 'package:bodyblitz/view/Workout/workdone.dart';
-import 'package:bodyblitz/view/Workout/workout.dart';
+import 'package:bodyblitz/view/bottomNavigation/Bottomnavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -36,6 +35,7 @@ class _Workout_pageState extends State<Workout_page> {
   @override
   void initState() {
     super.initState();
+    
     playAudioFromUrl();
     Timer(Duration(seconds: 2), () { 
       AudioPlayer().stop();
@@ -59,8 +59,9 @@ Future<void>  playAudioFromUrl() async {
         if (_countdownDuration.inSeconds == 0) {
           timer.cancel();
           controller.workout_count == controller.workouts.length - 1
-              ? {_navigateToNextworkdone(), controller.resetCounter()}
-              : _navigateToNextPage();
+              ? {_navigateToNextworkdone(), controller.resetCounter(),controller.exerise()
+              }
+              : {_navigateToNextPage(),controller.exerise()};
         } else if (_timerRunning) {
           setState(() {
             _countdownDuration = _countdownDuration - oneSec;
@@ -117,13 +118,15 @@ Future<void>  playAudioFromUrl() async {
     // final controller = Provider.of<WorkoutController>(context);
     int minutes = _countdownDuration.inMinutes;
     int seconds = _countdownDuration.inSeconds % 60;
+  
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
             onPressed: () {
-              _showQuitmodel();
+              // _showQuitmodel();
+              Navigator.pop(context);
               _pauseCountdown();
             },
             icon: Icon(
@@ -153,7 +156,7 @@ Future<void>  playAudioFromUrl() async {
                     child: Text(
                       widget.workoutName,
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.aDLaMDisplay(fontSize: 26),
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 26),
                     ),
                   ),
                 ),
@@ -174,8 +177,9 @@ Future<void>  playAudioFromUrl() async {
             GestureDetector(
               onTap: () {
                 controller.workout_count == controller.workouts.length - 1
-                    ? {_navigateToNextworkdone(), controller.resetCounter()}
-                    : _navigateToNextPage();
+                    ? {_navigateToNextworkdone(), controller.resetCounter(),controller.exerise()
+                     }
+                    : {_navigateToNextPage(),controller.exerise()};
               },
               child: Container(
                 width: 250,
@@ -189,7 +193,7 @@ Future<void>  playAudioFromUrl() async {
                   children: [
                     Text(
                       'DONE',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 28, color: Colors.white),
                     ),
                     SizedBox(
@@ -227,7 +231,7 @@ Future<void>  playAudioFromUrl() async {
                     ),
                     Text(
                       'PAUSE',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 28, color: Colors.white),
                     ),
                   ],
@@ -235,71 +239,73 @@ Future<void>  playAudioFromUrl() async {
               ),
             ),
           SizedBox(
-            height: 10,
+            height: MediaQuery.of(context).size.height * 0.02,
           ),
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  controller.workout_count == 0
-                      ? null
-                      : Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Rest_Screen(
-                              counter: 1,
-                            ),
-                          ));
-                  controller.workout_count == 0 ? null : _pauseCountdown();
-                },
-                child: Container(
-                    width: 200,
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Icon(
-                          Icons.skip_previous_outlined,
-                          size: 35,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        Text('Previous', style: TextStyle(fontSize: 20))
-                      ],
-                    )),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  _stopcountdown();
-                  _pauseCountdown();
-                  controller.workout_count == controller.workouts.length - 1
-                      ? {_navigateToNextworkdone(), controller.resetCounter()}
-                      : _navigateToNextPage();
-                },
-                child: Container(
-                    width: 200,
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text('Skip', style: TextStyle(fontSize: 20)),
-                        Icon(
-                          Icons.skip_next_outlined,
-                          size: 35,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        )
-                      ],
-                    )),
-              ),
-            ],
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    controller.workout_count == 0
+                        ? null
+                        : Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Rest_Screen(
+                                counter: 1,
+                              ),
+                            ));
+                    controller.workout_count == 0 ? null : _pauseCountdown();
+                  },
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: 80,
+                    
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+             
+                        children: [
+                         
+                          Icon(
+                            Icons.skip_previous_outlined,
+                            size: 35,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          Text('Prev', style: TextStyle(fontSize: 20))
+                        ],
+                      )),
+                ),
+               
+                GestureDetector(
+                  onTap: () {
+                    _stopcountdown();
+                    _pauseCountdown();
+                    controller.workout_count == controller.workouts.length - 1
+                        ? {_navigateToNextworkdone(), controller.resetCounter(),
+                        }
+                        : _navigateToNextPage();
+                  },
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: 80,
+                       
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('Skip', style: TextStyle(fontSize: 20)),
+                          Icon(
+                            Icons.skip_next_outlined,
+                            size: 35,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                         
+                        ],
+                      )),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -335,7 +341,7 @@ Future<void>  playAudioFromUrl() async {
                   ),
                   Text(
                     'Paused',
-                    style: GoogleFonts.aDLaMDisplay(fontSize: 24),
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,fontSize: 24),
                   ),
                 ],
               ),
@@ -357,7 +363,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                     child: Text(
                       'Restart this Exercise',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),
@@ -379,7 +385,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                       child: Text(
                     'Quit',
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 24, color: Colors.white),
                   )),
                 ),
@@ -401,7 +407,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                     child: Text(
                       'Resume',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),
@@ -433,7 +439,7 @@ Future<void>  playAudioFromUrl() async {
             children: [
               Text(
                 '🙄',
-                style: GoogleFonts.aDLaMDisplay(
+                style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                   fontSize: 50,
                 ),
               ),
@@ -444,7 +450,7 @@ Future<void>  playAudioFromUrl() async {
                 child: Container(
                     child: Text('Are you Sure you want to Quit Exercise?',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.aDLaMDisplay(
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ))),
               ),
@@ -454,11 +460,7 @@ Future<void>  playAudioFromUrl() async {
               GestureDetector(
                 onTap: () {
                   controller.resetCounter();
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Workout_Screen(Workoutlist: DataBase.Workoutitems1,),
-                      ));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottom_Naviagator(),));
                 },
                 child: Container(
                   width: 270,
@@ -469,7 +471,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                       child: Text(
                     'Quit',
-                    style: GoogleFonts.aDLaMDisplay(
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                         fontSize: 24, color: Colors.white),
                   )),
                 ),
@@ -491,7 +493,7 @@ Future<void>  playAudioFromUrl() async {
                   child: Center(
                     child: Text(
                       'Close',
-                      style: GoogleFonts.aDLaMDisplay(
+                      style: GoogleFonts.roboto(fontWeight: FontWeight.bold,
                           fontSize: 24, color: Colors.white),
                     ),
                   ),

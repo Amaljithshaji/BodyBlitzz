@@ -2,74 +2,177 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
-class Fastworkout extends StatelessWidget {
+import 'Skleton.dart';
+
+class Fastworkout extends StatefulWidget {
   const Fastworkout({
     super.key,
   });
 
   @override
+  State<Fastworkout> createState() => _FastworkoutState();
+}
+
+class _FastworkoutState extends State<Fastworkout> {
+  @override
+  void initState() {
+   
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-    padding: const EdgeInsets.only(left: 10),
-    child: Text('Fast workout',
-        style: GoogleFonts.aDLaMDisplay(fontSize: 24)),
-          ),
-    SizedBox(
-      height: 1.h,
-    ),
-    Container(
-    //color: Colors.amber,
-      height: 100.h,
-      child: ListView.builder(
-        itemCount: 6,
-        physics: NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 1,horizontal: 10),
-          child: Container(
-    width: 20.w,
-    height: 15.h,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 25.w,
-              height: 12.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Container(
+        //color: Colors.amber,
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: ListView.builder(
+          itemCount: 6,
+          scrollDirection: Axis.vertical,
+          itemBuilder: (context, index) => Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Container(
+          height: MediaQuery.of(context).size.height * 0.3,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               ),
-              child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Image.asset('assets/img/advanced abs.jpg',fit: BoxFit.fill,),
+          child:  Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.01),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.asset(
+                                'assets/img/advanced abs.jpg',
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                           ),
-              
-            ),
-            SizedBox(width: 5.w,),
-            Column(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top:30
-                  ),
-                  child: Text('4 MIN Tabata',style: GoogleFonts.aDLaMDisplay(fontSize: 20),),
-                ),
-                SizedBox(height: 1.h,),
-                Text('4 min . Beginner',style: TextStyle(fontSize: 14,color: Colors.grey.shade700),),
-                SizedBox(height: 2.h,),
-                Container(width: 250,
-                height: 1,color: Theme.of(context).colorScheme.primary,)
-              ],
-            )
-          ],
-        )
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  color: Colors.red,
+                                  child: Text(
+                                    '4 MIN Tabata',
+                                    style:
+                                        GoogleFonts.aDLaMDisplay(fontSize: 16),
+                                  )),
+                              SizedBox(
+                                height: 1.h,
+                              ),
+                              Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  height: 140,
+                                  color: Colors.red,
+                                  child: Text(
+                                    '4 min . Beginner',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey.shade700),
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('data'),
+                          Icon(Icons.more_vert)
+                        ],
+                      ),
+                    )
+                  ],
+                )),
           ),
+    ),
         ),
-      ),
-    )
     ]);
   }
 }
+
+
+
+//  Column(
+//                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                   children: [
+//                     Padding(
+//                       padding: EdgeInsets.symmetric(
+//                           horizontal: MediaQuery.of(context).size.width * 0.01),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                         children: [
+//                           Container(
+//                             width: MediaQuery.of(context).size.width * 0.4,
+//                             height: MediaQuery.of(context).size.height * 0.2,
+//                             decoration: BoxDecoration(
+//                               borderRadius: BorderRadius.circular(10),
+//                             ),
+//                             child: ClipRRect(
+//                               borderRadius: BorderRadius.circular(15),
+//                               child: Image.asset(
+//                                 'assets/img/advanced abs.jpg',
+//                                 fit: BoxFit.fill,
+//                               ),
+//                             ),
+//                           ),
+//                           Column(
+//                             crossAxisAlignment: CrossAxisAlignment.start,
+//                             children: [
+//                               Container(
+//                                   width:
+//                                       MediaQuery.of(context).size.width * 0.5,
+//                                   color: Colors.red,
+//                                   child: Text(
+//                                     '4 MIN Tabata',
+//                                     style:
+//                                         GoogleFonts.aDLaMDisplay(fontSize: 16),
+//                                   )),
+//                               SizedBox(
+//                                 height: 1.h,
+//                               ),
+//                               Container(
+//                                   width:
+//                                       MediaQuery.of(context).size.width * 0.5,
+//                                   height: 140,
+//                                   color: Colors.red,
+//                                   child: Text(
+//                                     '4 min . Beginner',
+//                                     style: TextStyle(
+//                                         fontSize: 14,
+//                                         color: Colors.grey.shade700),
+//                                   )),
+//                             ],
+//                           )
+//                         ],
+//                       ),
+//                     ),
+//                     Padding(
+//                       padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                         children: [
+//                           Text('data'),
+//                           Icon(Icons.more_vert)
+//                         ],
+//                       ),
+//                     )
+//                   ],
+//                 )),
